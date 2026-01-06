@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Página de pagos de GuimarBot - Realiza tus compras de cursos de forma segura" />
+    <title>GuimarBot - Pagos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/carrito.css" />
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+    <div class="contenedor-app">
+      <header class="encabezado-principal">
+        <button id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="logo"><a href="inicioj.html"></a>UGuimar</h1>
+        <form id="search-form" class="barra-busqueda">
+            <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
+        </form>
+
+        <nav class="navegacion-principal" id="main-nav">
+            <ul>
+                <li><a href="inicioj.html">🏠 Inicio</a></li>
+                <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
+                <li><a href="becasj.html">🎓 Beca</a></li>
+                <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+            </ul>
+        </nav>
+        
+        <div class="acciones-usuario">
+            <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+            <div class="menu-perfil">
+                <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                <div class="menu-desplegable" id="profile-dropdown">
+                    <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                    <p class="tipo-plan">UGuimar Free</p>
+                    <ul>
+                        <li><a href="perfil.html">Ver mi perfil</a></li>
+                        <li><a href="#">Obtén 1 mes gratis</a></li>
+                        <li><a href="#">Mi Suscripción</a></li>
+                        <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+          <section class="payment-section">
+              <div class="payment-info">
+                  <h2>Detalles de Pago</h2>
+
+                  <div class="payment-methods">
+                      <button class="payment-method" id="tarjeta" data-payment="tarjeta">
+                          <img class="method-icon" src="IMAGE/credit-card.webp" alt="Tarjeta de crédito" />
+                          <span>Tarjeta</span>
+                      </button>
+
+                      <button class="payment-method" id="yape" data-payment="yape">
+                          <img class="method-icon" src="IMAGE/yape.webp" alt="Yape" />
+                          <span>Yape</span>
+                      </button>
+
+                      <button class="payment-method" id="paypal" data-payment="paypal">
+                          <img class="method-icon" src="IMAGE/paypal.webp" alt="PayPal" />
+                          <span>PayPal</span>
+                      </button>
+
+                      <button class="payment-method" id="pagoefectivo" data-payment="pagoefectivo">
+                          <img class="method-icon" src="IMAGE/pagoefectivo.webp" alt="PagoEfectivo" />
+                          <span>PagoEfectivo</span>
+                      </button>
+                  </div>
+
+                  <form id="payment-form">
+                      <div id="tarjeta-section" class="form-section">
+                          <div class="form-group">
+                              <label for="card-name">Nombre en la Tarjeta</label>
+                              <input type="text" id="card-name" placeholder="Tu nombre completo" required />
+                          </div>
+
+                          <div class="form-group">
+                              <label for="card-number">Número de Tarjeta</label>
+                              <input type="text" id="card-number" placeholder="1234 5678 9101 1121" required />
+                          </div>
+
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="expiry-date">Fecha de Expiración</label>
+                                  <input type="text" id="expiry-date" placeholder="MM/YY" required />
+                              </div>
+                              <div class="form-group">
+                                  <label for="cvv">CVV</label>
+                                  <input type="text" id="cvv" placeholder="123" required />
+                              </div>
+                          </div>
+                      </div>
+
+                      <div id="yape-section" class="form-section oculto">
+                          <div class="qr-container">
+                              <img src="IMAGE/yape-qr.webp" alt="Código QR de Yape" class="qr-code" />
+                              <div class="yape-info">
+                                  <p class="yape-number">+51 931 540 241</p>
+                                  <p class="yape-instruction">Escanea el código QR para pagar</p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div id="paypal-section" class="form-section oculto">
+                          <div class="form-group">
+                              <label for="paypal-email">Correo Electrónico</label>
+                              <input type="email" id="paypal-email" placeholder="tu@email.com" required />
+                          </div>
+                      </div>
+
+                      <div id="pagoefectivo-section" class="form-section oculto">
+                          <div class="pago-efectivo-info">
+                              <h3>Pago en Efectivo</h3>
+                              <p>Genera tu código y paga en cualquier agente autorizado</p>
+                              <button type="button" class="generate-code-btn">Generar Código de Pago</button>
+                          </div>
+                      </div>
+
+                      <div class="form-footer">
+                          <div class="total-amount">
+                              <label for="total">Total a Pagar</label>
+                              <input type="text" id="total" value="S/. 0.00" readonly />
+                          </div>
+                          <button type="submit" class="submit-button">Pagar Ahora</button>
+                      </div>
+                  </form>
+              </div>
+
+              <div class="cart-summary">
+                  <h2>Carrito de Compras</h2>
+                  <div class="cart">
+                      <a href="cursos.html" class="continue-shopping">← Continuar comprando</a>
+                      <p class="cart-count">Tienes <span id="item-count">0</span> artículos en tu carrito</p>
+                      <ul id="cart-items" class="cart-items"></ul>
+                  </div>
+              </div>
+          </section>
+      </main>
+    </div>
+    <script src="../../JS/JS-Login-In/carrito.js"></script>
+</body>
+</html>
+

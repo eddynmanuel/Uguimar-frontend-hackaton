@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGuimar - Becas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/becasj.css">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="/Principal">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
+            <form id="search-form" class="barra-busqueda">
+
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="contenido-principal">
+            <h1>Becas UGuimar</h1>
+            <section class="info-becas">
+                <h2>Información sobre Becas</h2>
+                <p>Easycode ofrece becas para estudiantes destacados. Completa tu solicitud subiendo los documentos necesarios y cumpliendo con los requisitos académicos y financieros.</p>
+            </section>
+        
+            <section class="requisitos-beca">
+                <h2>Requisitos para la Beca</h2>
+                <div class="cursos-requeridos">
+                    <h3>Cursos a Aprobar</h3>
+                    <ul>
+                        <li>
+                            <span>Introducción a la Programación</span>
+                            <button class="btn-iniciar-curso" data-curso="curso1">Iniciar Curso</button>
+                        </li>
+                        <li>
+                            <span>Fundamentos de Desarrollo Web</span>
+                            <button class="btn-iniciar-curso" data-curso="curso2">Iniciar Curso</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="examen-admision">
+                    <h3>Examen de Admisión</h3>
+                    <p>Debes aprobar el examen con una calificación mínima de 80%.</p>
+                    <button class="btn-iniciar-examen disabled" id="btn-iniciar-examen" disabled>Iniciar Examen</button>
+                </div>
+            </section>
+        
+            <section class="documentos-beca">
+                <h2>Documentos para la Beca</h2>
+                <form id="form-documentos-beca">
+                    <div class="campo-documento">
+                        <label for="dni">DNI o Documento de Identidad</label>
+                        <input type="file" id="dni" name="dni" accept=".pdf,.jpg,.png" required>
+                    </div>
+                    <div class="campo-documento">
+                        <label for="expediente">Expediente Académico</label>
+                        <input type="file" id="expediente" name="expediente" accept=".pdf" required>
+                    </div>
+                    <div class="campo-documento">
+                        <label for="justificacion-financiera">Justificación Financiera</label>
+                        <input type="file" id="justificacion-financiera" name="justificacion-financiera" accept=".pdf" required>
+                    </div>
+                    <button type="submit" class="btn-subir-documentos">Subir Documentos</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="pie-pagina">
+            <p>© 2024 Easycode. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+    <script src="../../JS/JS-Login-In/becasj.js"></script>
+</body>
+</html>

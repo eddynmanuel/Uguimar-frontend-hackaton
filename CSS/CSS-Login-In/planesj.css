@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Primary Colors */
+  --primary-color: #1E90FF;
+  --secondary-color: #3D5A80;
+  --accent-color: #E0FBFC;
+  
+  /* Neutral Colors */
+  --text-color: #333333;
+  --bg-color: #F0F4F8;
+  --card-bg: #FFFFFF;
+  
+  /* Additional Colors */
+  --dark-blue: #112D4E;
+  --light-blue: #DBE2EF;
+  --gray-blue: #98C1D9;
+  
+  /* Grayscale */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+  
+  /* Component Colors */
+  --header-bg: var(--dark-blue);
+  --footer-bg: var(--dark-blue);
+  --button-text: #FFFFFF;
+  
+  /* Shadows and Effects */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+
+  /* New gradient backgrounds */
+  --gradient-light: linear-gradient(135deg, #F0F4F8, #DBE2EF);
+  --gradient-medium: linear-gradient(135deg, #DBE2EF, #98C1D9);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.encabezado-principal {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: var(--dark-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+.logo-container {
+  width: 240px;
+  height: 40px;
+  border: 2px solid #00FF00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  margin: 0;
+}
+
+.logo a {
+  display: block;
+  width: 200px; /* Cambia el ancho del área del logo */
+  height: 40px; /* Cambia la altura del área del logo */
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.barra-busqueda input {
+  max-width: none;
+  border: 2px solid var(--gray-300);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  width: 300px;
+}
+
+.barra-busqueda input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+}
+
+.acciones-usuario {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.boton-icono {
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.boton-icono:hover {
+  color: var(--light-blue);
+}
+
+#contador-carrito {
+  position: absolute;
+  top: -9px;
+  right: -9px;
+  background-color: var(--accent-color);
+  color: var(--dark-blue);
+  font-size: 0.8rem;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+.menu-perfil {
+  position: relative;
+}
+
+.menu-perfil img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-perfil img:hover {
+  transform: scale(1.1);
+}
+
+.menu-desplegable {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  width: 200px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.menu-desplegable.active {
+  display: block;
+}
+
+.menu-desplegable a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.menu-desplegable p {
+  color: var(--text-color);
+}
+
+.menu-desplegable a:hover {
+  color: var(--primary-color);
+}
+
+.cerrar-sesion {
+  color: #e74c3c !important;
+  font-weight: 700;
+  padding-top: 5px;
+}
+
+.cerrar-sesion:hover {
+  color: #c0392b;
+}
+
+.navegacion-principal ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.navegacion-principal a {
+  color: var(--bg-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: block;
+  font-weight: 600;
+}
+
+.navegacion-principal a:hover {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+}
+  
+/* Main Content Styles */
+.contenido-principal {
+  padding: 4rem; /* Aumenta el padding para dar más espacio alrededor del contenido */
+  background-color: var(--background-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Centra el contenido en la pantalla */
+  width: 90%; /* Cambié max-width por width, de esta forma el contenedor se adapta mejor */
+  max-width: 1400px; /* Aumenté el máximo de ancho para que se expanda más */
+}
+
+.contenido-principal h1 {
+  font-size: 3rem;
+  text-align: left;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.contenido-principal h2 {
+  font-size: 2.2rem;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+.contenido-principal h3 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
+}
+
+.plan-actual {
+  background-color: var(--light-color);
+  border-radius: 12px;
+  padding: 2.5rem;
+  margin-bottom: 3rem; /* Aumento el margen inferior */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plan-actual ul {
+  list-style-type: none;
+  margin-bottom: 1rem;
+  padding-left: 20px;
+}
+
+.plan-actual li {
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.plan-actual i {
+  color: var(--primary-color);
+  margin-right: 0.8rem;
+}
+
+.btn-gestionar {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  border: none;
+  padding: 1rem 2rem; /* Aumento el padding */
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1.2rem; /* Aumento el tamaño de la fuente */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.btn-gestionar:hover {
+  background-color: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.compara-planes {
+  margin-top: 2.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Contenedor de planes */
+.planes-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* Estilos generales para los planes */
+.plan {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+}
+
+/* Colores más suaves personalizados para cada tipo de plan */
+.plan-basico {
+  background-color: #e3f4e3; /* Verde pastel más suave */
+}
+
+.plan-avanzado-duo {
+  background-color: #fef7c3; /* Amarillo claro pastel */
+}
+
+.plan-avanzado-4 {
+  background-color: #fbd0d1; /* Rojo suave pastel */
+}
+
+/* Estilo al pasar el cursor sobre un plan */
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Plan Premium con diseño especial */
+.plan-premium {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--primary-color);
+}
+
+.plan-premium::before {
+  content: "Recomendado";
+  position: absolute;
+  top: 20px;
+  right: -50px;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  padding: 5px 50px;
+  transform: rotate(45deg);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Estilos de texto dentro de los planes */
+.plan h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.plan-descripcion {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.plan-precio {
+  color: var(--dark-blue);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+/* Características de los planes */
+.plan-caracteristicas {
+  list-style-type: none;
+  padding: 0;
+}
+
+.plan-caracteristicas li {
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+}
+
+.plan-caracteristicas li::before {
+  content: "✓";
+  color: var(--success-color);
+  margin-right: 0.8rem;
+}
+
+.plan ul {
+  list-style-type: none;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.plan li {
+  margin-bottom: 0.8rem;
+}
+
+.plan .fa-check {
+  color: var(--primary-color);
+}
+
+.plan .fa-times {
+  color: var(--secondary-color);
+}
+
+/* Botones de acción */
+.btn-elegir, .btn-actual, .btn-contactar {
+  background-image: var(--button-gradient);
+  color: var(--text-light);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  font-size: 1.2rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-elegir:hover, .btn-actual:hover, .btn-contactar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 103, 0, 0.5);
+}
+
+/* Footer */
+.pie-pagina {
+  width: 100%;
+  margin: 0;
+  padding: 2rem 1rem;
+  background-color: var(--secondary-color);
+  color: var(--bg-color);
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .encabezado-principal {
+    flex-wrap: wrap;
+  }
+
+  .barra-busqueda {
+    order: 1;
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .navegacion-principal {
+    display: none;
+  }
+
+  .navegacion-principal.active {
+    display: block;
+  }
+
+  .navegacion-principal ul {
+    flex-direction: column;
+  }
+
+  .navegacion-principal li {
+    margin-bottom: 0.5rem;
+  }
+
+  #menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  #menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+  }
+
+  .planes-container {
+    flex-direction: column;
+  }
+
+  .plan {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.plan {
+  animation: fadeIn 0.5s ease-out;
+}

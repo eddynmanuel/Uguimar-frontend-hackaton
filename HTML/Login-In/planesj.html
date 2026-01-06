@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGuimar - Mi Plan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/planesj.css">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="/Principal">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
+            <form id="search-form" class="barra-busqueda">
+
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main class="contenido-principal">
+            <h1>Mi Suscripción</h1>
+            
+            <section class="plan-actual">
+                <h2>Tu Plan Actual: Avanzado Duo</h2>
+                <p>Acceso completo a todos los cursos y características</p>
+                <ul>
+                    <li><i class="fas fa-check"></i> Acceso ilimitado a todos los cursos</li>
+                    <li><i class="fas fa-check"></i> Certificados de finalización</li>
+                    <li><i class="fas fa-check"></i> Proyectos prácticos y evaluaciones</li>
+                    <li><i class="fas fa-check"></i> Soporte prioritario 24/7</li>
+                    <li><i class="fas fa-check"></i> Acceso a webinars exclusivos</li>
+                </ul>
+                <button class="btn-gestionar">Gestionar Suscripción</button>
+            </section>
+
+            <section class="compara-planes">
+                <h2>Compara Planes</h2>
+                <div class="planes-container">
+                    <div class="plan" data-plan="Básico" data-precio="200">
+                        <h3>Básico</h3>
+                        <p class="plan-descripcion">Para 1 Estudiante </p>
+                        <p class="plan-precio">S/200/Anual</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Acceso a cursos básicos</li>
+                            <li><i class="fas fa-check"></i> Foro de comunidad</li>
+                            <li><i class="fas fa-check"></i> Certificados</li>
+                            <li><i class="fas fa-check"></i> Proyectos prácticos</li>
+                        </ul>
+                        <button id="btn-elegir-basico" class="btn-elegir">Elegir Plan</button>
+                    </div>
+                    <div class="plan plan-premium" data-plan="Avanzado duo" data-precio="350">
+                        <h3>Avanzado duo</h3>
+                        <p class="plan-descripcion">Para 2 Estudiantes</p>
+                        <p class="plan-precio">S/350/Anual</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Acceso ilimitado a cursos</li>
+                            <li><i class="fas fa-check"></i> Certificados de finalización</li>
+                            <li><i class="fas fa-check"></i> Proyectos prácticos</li>
+                            <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                        </ul>
+                        <button id="btn-avanzado-duo" class="btn-elegir">Elegir Plan</button>
+                    </div>
+                    <div class="plan" data-plan="Avanzado 4" data-precio="500">
+                        <h3>Avanzado 4</h3>
+                        <p class="plan-descripcion">Para 4 Estudiantes</p>
+                        <p class="plan-precio">S/500/Anual</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Todo del Plan Premium</li>
+                            <li><i class="fas fa-check"></i> Cursos personalizados</li>
+                            <li><i class="fas fa-check"></i> Análisis de progreso del equipo</li>
+                            <li><i class="fas fa-check"></i> Integración LMS</li>
+                        </ul>
+                        <button id="btn-elegir-avanzado4" class="btn-elegir">Elegir Plan</button>
+                    </div>
+                     
+                </div>
+            </section>
+        </main>
+
+        <footer class="pie-pagina">
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="../../JS/JS-Login-In/planesj.js"></script>
+</body>
+</html>

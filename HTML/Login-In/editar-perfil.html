@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil - UGuimar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/perfil.css">
+</head>
+<body>
+    <header class="encabezado-principal">
+        <button id="menu-toggle" aria-label="Abrir menú">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <h1 class="logo"><a href="inicioj.html">🌐 UGuimar</a></h1>
+        <div class="barra-busqueda">
+            <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
+        </div>
+        <div class="acciones-usuario">
+            <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+            <div class="menu-perfil">
+                <i class="fas fa-user-circle" id="profile-toggle"></i>
+                <div class="menu-desplegable" id="profile-dropdown">
+                    <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                    <p class="tipo-plan">UGuimar Free</p>
+                    <ul>
+                        <li><a href="perfil.html">Ver mi perfil</a></li>
+                        <li><a href="#">Obtén 1 mes gratis</a></li>
+                        <li><a href="#">Mi Suscripción</a></li>
+                        <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navegacion-principal" id="main-nav">
+        <ul>
+            <li><a href="inicioj.html">🏠 Inicio</a></li>
+            <li><a href="planesj.html">📋 Mi Plan</a></li>
+            <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
+            <li><a href="becasj.html">🎓 Beca</a></li>
+            <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+        </ul>
+    </nav>
+
+    <div class="profile-container">
+        <header class="profile-header">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <h1 class="profile-name">Editar Perfil</h1>
+        </header>
+        <main class="profile-content">
+            <form id="profile-edit-form" class="course-card">
+                <div class="course-details">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido" required class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Teléfono:</label>
+                        <input type="tel" id="telefono" name="telefono" class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico:</label>
+                        <input type="email" id="correo" name="correo" required class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasena">Nueva contraseña:</label>
+                        <input type="password" id="contrasena" name="contrasena" class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmar-contrasena">Confirmar nueva contraseña:</label>
+                        <input type="password" id="confirmar-contrasena" name="confirmar-contrasena" class="exam-btn">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+                        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" class="exam-btn">
+                    </div>
+                    <button type="submit" class="complete-profile-btn">Guardar cambios</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="../../JS/JS-Login-In/perfil.js"></script>
+    <script src="../../JS/JS-Login-In/editar-perfil.js"></script>
+</body>
+</html>

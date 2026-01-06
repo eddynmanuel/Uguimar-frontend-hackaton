@@ -1,0 +1,735 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Primary Colors */
+  --primary-color: #1E90FF;
+  --secondary-color: #3D5A80;
+  --accent-color: #E0FBFC;
+  
+  /* Neutral Colors */
+  --text-color: #333333;
+  --bg-color: #F0F4F8;
+  --card-bg: #FFFFFF;
+  
+  /* Additional Colors */
+  --dark-blue: #112D4E;
+  --light-blue: #DBE2EF;
+  --gray-blue: #98C1D9;
+  
+  /* Grayscale */
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+  
+  /* Component Colors */
+  --header-bg: var(--dark-blue);
+  --footer-bg: var(--dark-blue);
+  --button-text: #FFFFFF;
+  
+  /* Shadows and Effects */
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+
+  /* New gradient backgrounds */
+  --gradient-light: linear-gradient(135deg, #F0F4F8, #DBE2EF);
+  --gradient-medium: linear-gradient(135deg, #DBE2EF, #98C1D9);
+}
+
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+.container {
+  width: 100%;
+  max-width: 100%; /* Cambiar de 1200px a 100% */
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor-app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Styles */
+.encabezado-principal {
+  width: 100%;
+  flex: 1;
+  flex-wrap: nowrap;
+  padding: 0.5rem 1rem;
+  background: var(--dark-blue);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+}
+
+.logo {
+  flex-shrink: 0;
+  margin-right: 1rem;
+  color: var(--bg-color);
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding-left: 150px;
+}
+
+.logo i {
+  margin-right: 0.8rem;
+}
+
+.barra-busqueda input {
+  max-width: none;
+  border: 2px solid var(--input-border-color);
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  background-color: var(--card-bg);
+  color: var(--text-light);
+  font-size: 1rem;
+  width: 700px;
+}
+
+.barra-busqueda input:focus {
+  flex-shrink: 0;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(255, 103, 0, 0.2);
+}
+
+.acciones-usuario {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.boton-icono {
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px;
+}
+
+.boton-icono:hover {
+  color: var(--accent-color);
+}
+
+#contador-carrito {
+  position: absolute;
+  top: -9px;
+  right: 6px;
+  background-color: var(--gray-600);
+  color: var(--background-color);
+  font-size: 0.8rem;
+  padding: 3px 6px;
+  border-radius: 50%;
+}
+
+.menu-perfil {
+  position: relative;
+  padding-right: 100px;
+}
+
+.menu-perfil img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-perfil img:hover {
+  transform: scale(1.1);
+}
+
+.menu-desplegable {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--card-bg);
+  padding: 1rem;
+  width: 200px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-desplegable.active {
+  display: block;
+}
+
+.menu-desplegable a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  display: block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.menu-desplegable p {
+  color: var(--text-color);
+}
+
+.menu-desplegable a:hover {
+  color: var(--input-border-color);
+}
+
+.cerrar-sesion {
+  color: #e74c3c !important;
+  font-weight: 700;
+  padding-top: 5px;
+}
+
+.cerrar-sesion:hover {
+  color: #f52710;
+}
+
+.navegacion-principal ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.navegacion-principal a {
+  color: var(--bg-color);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: block;
+  font-weight: 600;
+}
+
+.navegacion-principal a:hover {
+  background-color: var(--light-blue);
+  color: var(--text-light);
+}
+
+/* Información del curso */
+.course-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-block: 80px;
+    margin: 0;
+    color: var(--text-color);
+    background-color: var(--light-blue);
+}
+
+.course-info .content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.course-info .rating-level {
+    display: flex;
+    gap: 80px;
+    padding-block: 5px;
+}
+
+.course-info h1 {
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.course-profile-img {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+.course-info .description {
+    margin: 10px 0;
+    color: var(--text-color);
+}
+
+.start-button {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed);
+}
+
+.start-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.profesor-img {
+    width: 700px;
+    height: auto;
+    align-self: flex-start;
+}
+
+/* Diseño del curso */
+.course-layout {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin: 0;
+}
+
+.right-column {
+    width: 100%;
+    margin-right: 50px;
+}
+
+.left-column {
+    padding-left: 200px;
+}
+
+.left-column ul {
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+.right-column ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+}
+
+.left-column hr {
+    border: none;
+    height: 2px;
+    background-color: var(--gray-300);
+    margin: 20px 5px;
+    width: 80%;
+    align-self: center;
+}
+
+.profile-icon {
+    width: 80px;
+    height: 70px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 2px solid var(--gray-300);
+}
+
+.check-icon {
+    color: var(--primary-color);
+    font-size: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.info-title, .info-paragraph {
+    width: 50%;
+    line-height: 1.4;
+    margin: 10px 0;
+}
+
+.info-paragraph {
+    text-align: justify;
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.module-title {
+    font-size: 1.2em;
+    flex: 1;
+    margin-right: 20px;
+    color: var(--primary-color);
+}
+
+.module-progress {
+    width: 150px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: var(--gray-200);
+    margin-right: 20px;
+    appearance: none;
+}
+
+.module-progress::-webkit-progress-bar {
+    background-color: var(--gray-200);
+    border-radius: 10px;
+}
+
+.module-progress::-webkit-progress-value {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+.module-progress::-moz-progress-bar {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+.start-button2 {
+    background-color: var(--primary-color);
+    color: var(--button-text);
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.start-button2:hover {
+    background-color: var(--secondary-color);
+}
+
+.course-progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.course-progress h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+#course-progress-bar {
+    width: 60%;
+    height: 20px;
+    border-radius: 10px;
+    background-color: var(--gray-200);
+    appearance: none;
+}
+
+#course-progress-bar::-webkit-progress-bar {
+    background-color: var(--gray-200);
+    border-radius: 10px;
+}
+
+#course-progress-bar::-webkit-progress-value {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+#course-progress-bar::-moz-progress-bar {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+}
+
+/* Para pantallas medianas (tabletas y similares) */
+@media (max-width: 768px) {
+    .project-container, .tutorial-container, .group-container {
+        justify-content: center; /* Centra los elementos cuando no hay suficiente espacio */
+    }
+
+    .project-card, .tutorial-card, .group-card {
+        width: 45%; /* Los contenedores ocupan un 45% en pantallas medianas */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .project-container, .tutorial-container, .group-container {
+        justify-content: center; /* Alinea los contenedores al centro */
+    }
+
+    .project-card, .tutorial-card, .group-card {
+        width: 90%; /* Los contenedores ocupan el 90% del ancho en móviles */
+    }
+
+    .community h2 {
+        font-size: 1.5rem; /* Reduce el tamaño del título en móviles */
+    }
+
+    .community p {
+        font-size: 1rem; /* Reduce el tamaño del texto en móviles */
+    }
+
+    .community-section {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+/* Media Queries para Responsividad */
+@media screen and (max-width: 1200px) {
+    .navbar ul {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .course-info {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .course-info h1 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .profesor-img {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .start-button {
+        margin-top: 20px;
+    }
+
+    .left-column {
+        padding-left: 10px;
+    }
+
+    .right-column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none; /* Menú oculto en dispositivos pequeños */
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 10px;
+        align-items: center;
+    }
+
+    .course-info {
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .course-info h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .start-button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .profesor-img {
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+    }
+
+    .module-title {
+        font-size: 1.1em;
+    }
+
+    .left-column ul li {
+        font-size: 14px;
+    }
+
+    .check-icon {
+        font-size: 18px;
+    }
+
+    @media (max-width: 992px) {
+        .ofert-1 {
+            flex: 1 1 45%;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .ofert-1 {
+            flex: 1 1 100%;
+        }
+    }
+
+    .plans {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan-card {
+        margin-bottom: 20px;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .course-info h1 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .navbar {
+        display: block;
+        text-align: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+
+    .start-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    .profesor-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .left-column ul li {
+        font-size: 16px;
+    }
+}
+
+/* Para pantallas medianas (tabletas y similares) */
+@media (max-width: 768px) {
+    .course-layout {
+        flex-direction: column; /* Cambia la disposición de las columnas a vertical */
+        padding: 10px;
+    }
+
+    .left-column, .right-column {
+        width: 100%;
+        padding-left: 0;
+        margin-right: 0;
+    }
+
+    .profile-icon {
+        width: 60px; /* Ajusta el tamaño de la imagen en pantallas más pequeñas */
+        height: 60px;
+    }
+
+    .info-title, .info-paragraph {
+        width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+    }
+
+    .module-header {
+        flex-direction: column; /* Los elementos dentro del encabezado se alinean verticalmente */
+        align-items: flex-start; /* Alinea los elementos a la izquierda */
+    }
+
+    .module-title {
+        font-size: 1.1em; /* Ajusta el tamaño del título */
+        margin-bottom: 10px; /* Ajusta el margen inferior */
+    }
+
+    .module-progress {
+        width: 100%; /* La barra de progreso ocupa todo el ancho disponible */
+        margin-bottom: 10px; /* Ajusta el margen inferior */
+    }
+
+    #course-progress-bar {
+        width: 100%; /* Hace que la barra de progreso ocupe todo el ancho disponible */
+    }
+
+    .start-button2 {
+        width: 100%; /* Hace que el botón ocupe todo el ancho */
+    }
+}
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .course-layout {
+        padding: 10px;
+    }
+
+    .left-column, .right-column {
+        width: 100%; /* Asegura que las columnas ocupen todo el ancho */
+        padding-left: 0;
+        margin-right: 0;
+    }
+
+    .profile-icon {
+        width: 50px; /* Ajusta el tamaño de la imagen para móviles */
+        height: 50px;
+    }
+
+    .info-title, .info-paragraph {
+        width: 100%; /* Asegura que el contenido ocupe todo el ancho disponible */
+    }
+
+    .module-title {
+        font-size: 1.1em; /* Ajusta el tamaño del título */
+    }
+
+    .module-progress {
+        width: 100%; /* La barra de progreso ocupa todo el ancho disponible */
+        margin-bottom: 10px; /* Ajusta el margen inferior */
+    }
+
+    .start-button2 {
+        width: 100%; /* Hace que el botón ocupe todo el ancho */
+    }
+
+    .course-progress h2 {
+        font-size: 1.5em; /* Ajusta el tamaño del título en móviles */
+    }
+
+    #course-progress-bar {
+        width: 100%; /* Hace que la barra de progreso ocupe todo el ancho disponible */
+    }
+}

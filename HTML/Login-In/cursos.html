@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso de JavaScript</title>
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/cursos.css">
+    <link rel="icon" href="images/marbot.jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo"><a href="inicioj.html"></a>UGuimar</h1>
+            <form id="search-form" class="barra-busqueda">
+                <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html">🏠 Inicio</a></li>
+                    <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
+                    <li><a href="becasj.html">🎓 Beca</a></li>
+                    <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+    <section class="course-info">
+        <div class="content">
+            <!-- Título con ícono del curso -->
+            <h1>
+                <img src="../../RECURSOS/Recursos - Login-In/javascrip.webp" alt="Icono del Curso" class="course-profile-img">
+                Curso de JavaScript
+            </h1>
+            <div class="rating-level">
+                <p>Valoración: ⭐⭐⭐⭐⭐</p>
+                <p>Nivel: Basico</p>
+            </div>
+            <p class="description">
+                Aprende JavaScript desde los fundamentos hasta las técnicas más avanzadas. Este curso te permitirá desarrollar aplicaciones dinámicas y aprenderás a utilizar este poderoso lenguaje de programación.
+            </p>
+            <button class="start-button">Empezar ahora</button>
+        </div>
+        <!-- Imagen del profesor a cargo alineada a la derecha -->
+        <img src="../../RECURSOS/Recursos - Login-In/profesor.avif" alt="Profesor a cargo" class="profesor-img">
+    </section>
+    
+    <div class="course-progress">
+        <h2>Progreso del curso</h2>
+        <progress id="course-progress-bar" value="40" max="100"></progress>
+    </div>
+
+    <section class="course-layout">
+        <div class="left-column">
+            <h4>Para este curso vas a necesitar</h4>
+            <ul>
+                <li>
+                    <h3>
+                        <img src="../../RECURSOS/Recursos - Login-In/teoria.webp" alt="Horas Teóricas" class="profile-icon">
+                        Horas teóricas: 15 horas                        
+                    </h3>
+                </li>                
+                <li>
+                    <h3>
+                        <img src="../../RECURSOS/Recursos - Login-In/practica.avif" alt="Horas Prácticas" class="profile-icon">
+                        Horas prácticas: 20 horas   
+                    </h3>   
+                </li>
+                <hr>
+                <h2>Software para este curso</h2>
+                <li>
+                    <p><span class="check-icon">✔</span>Sistema operativo Windows 10</p>
+                    <p><span class="check-icon">✔</span>Visual Studio Code </p>
+                </li>
+            <hr>
+            <h2 class="info-title">Más información del curso</h2>
+            <p class="info-paragraph">El curso incluye acceso a material exclusivo, ejercicios prácticos,proyectos colaborativos y tutoriales adicionales.</p>
+        </div>
+        
+        <div class="right-column">
+  <h2>Módulos del Curso</h2>
+  <ul id="modules-list">
+    <!-- Los módulos se cargarán dinámicamente aquí -->
+  </ul>
+</div>
+    </section>
+</div>
+<script src="../../JS/JS-Login-In/cursos.js"></script>
+</body>
+</html>
+

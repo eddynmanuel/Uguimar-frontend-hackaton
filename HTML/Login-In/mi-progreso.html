@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGuimar - Mi Progreso</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/mi-progreso.css">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="/Principal">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
+            <form id="search-form" class="barra-busqueda">
+
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="contenido-principal">
+            <h1>Mi Progreso</h1>
+            <section class="resumen-progreso">
+                <h2>Resumen de Progreso</h2>
+                <div class="estadisticas">
+                    <div class="estadistica">
+                        <h3>Cursos Completados</h3>
+                        <p class="numero">3</p>
+                    </div>
+                    <div class="estadistica">
+                        <h3>Horas de Estudio</h3>
+                        <p class="numero">24</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cursos-en-progreso">
+                <h2>Cursos en Progreso</h2>
+                <div class="lista-cursos">
+                    <div class="curso">
+                        <h3>Introducción a Python</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 75%;">75%</div>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso">
+                        <h3>JavaScript Avanzado</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 30%;">30%</div>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="logros">
+                <h2>Logros Desbloqueados</h2>
+                <div class="lista-logros">
+                    <div class="logro">
+                        <div class="logro-icono">
+                            <i class="fas fa-medal" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Primer Curso Completado</h4>
+                            <p>¡Felicitaciones por completar tu primer curso!</p>
+                        </div>
+                    </div>
+                    <div class="logro">
+                        <div class="logro-icono">
+                            <i class="fas fa-fire" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Racha de 7 días</h4>
+                            <p>¡Mantén tu racha diaria de aprendizaje!</p>
+                        </div>
+                    </div>
+                    <div class="logro">
+                        <div class="logro-icono">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>10 horas de estudio</h4>
+                            <p>Has acumulado 10 horas de aprendizaje.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>            
+        </main>
+
+        <footer class="pie-pagina">
+            <p>© 2024 Easycode. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="../../JS/JS-Login-In/mi-progreso.js"></script>
+</body>
+</html>

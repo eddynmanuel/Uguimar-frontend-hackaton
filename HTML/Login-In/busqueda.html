@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGuimar - Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/busqueda.css">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo"><a href="inicioj.html">🌐</a> UGuimar</h1>
+            <form id="search-form" class="barra-busqueda">
+                <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
+            </form>
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.jpg" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <nav class="navegacion-principal">
+            <ul>
+                <li><a href="inicioj.html">🏠 Inicio</a></li>
+                <li><a href="planesj.html">📋 Mi Plan</a></li>
+                <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
+                <li><a href="becasj.html">🎓 Beca</a></li>
+                <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+            </ul>
+        </nav>
+
+        <main class="contenido-principal">
+            <h1 id="total-resultados"></h1>
+            
+            <nav class="navegacion-resultados">
+                <ul>
+                    <li class="activo" data-tipo="destacado">DESTACADO <span id="total-destacado"></span></li>
+                    <li data-tipo="escuelas">ESCUELAS <span id="total-escuelas"></span></li>
+                    <li data-tipo="cursos">CURSOS <span id="total-cursos"></span></li>
+                    <li data-tipo="clases">CLASES <span id="total-clases"></span></li>
+                    <li data-tipo="rutas">RUTAS <span id="total-rutas"></span></li>
+                </ul>
+            </nav>
+
+            <section id="resultados-escuelas">
+                <h2>Escuelas</h2>
+                <div id="lista-escuelas"></div>
+            </section>
+
+            <section id="resultados-cursos">
+                <h2>Cursos</h2>
+                <div id="lista-cursos"></div>
+            </section>
+        </main>
+
+        <footer class="pie-pagina">
+            <p>© 2024 Easycode. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="../../JS/JS-Login-In/busqueda.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGuimar - Inicio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/iniciojj.css">
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="/Principal">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
+            <form id="search-form" class="barra-busqueda">
+
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </header>
+                
+        <section class="contenido-principal">
+            <section class="seccion-escuelas">
+                <h2>Descubre las escuelas</h2>
+                <div id="lista-escuelas" class="grid-escuelas">
+                    <!-- Las escuelas se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+
+            <section class="seccion-cursos-destacados">
+                <h2>Cursos destacados</h2>
+                <div id="lista-cursos" class="grid-cursos-destacados">
+                    <!-- Los cursos destacados se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+
+            <section class="seccion-cursos-recomendados">
+                <h2>Cursos recomendados para ti</h2>
+                <div id="lista-cursos-recomendados" class="grid-cursos-destacados">
+                    <!-- Los cursos recomendados se cargarán aquí dinámicamente -->
+                </div>
+            </section>
+
+            <!-- Other sections -->
+        </section>
+        <footer class="pie-pagina">
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script src="../../JS/JS-Login-In/inicioj.js"></script>
+</body>
+</html>
+

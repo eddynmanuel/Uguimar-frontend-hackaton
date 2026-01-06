@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generación de Certificados</title>
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/certificados.css">
+</head>
+<body>
+    <header>
+        <h1>Generación de Certificados</h1>
+    </header>
+    <main>
+        <!-- Formulario para generar certificados -->
+        <section id="certificate-form">
+            <h2>Crear Certificado</h2>
+            <form id="generateCertificateForm">
+                <label for="studentName">Nombre del Estudiante:</label>
+                <input type="text" id="studentName" placeholder="Ingrese el nombre del estudiante" required>
+                
+                <label for="courseName">Curso:</label>
+                <select id="courseName" required>
+                    <!-- Opciones de cursos se cargarán dinámicamente -->
+                </select>
+                
+                <label for="completionDate">Fecha de Inicio:</label>
+                <input type="date" id="completionDate" required>
+
+                <label for="completionDate">Fecha de Finalización:</label>
+                <input type="date" id="completionDate" required>
+                
+                <button type="submit">Generar Certificado</button>
+            </form>
+        </section>
+
+        <!-- Vista previa del certificado -->
+        <section id="certificate-preview">
+            <h2>Vista Previa</h2>
+            <div id="previewContainer">
+                <p>La vista previa del certificado se mostrará aquí.</p>
+            </div>
+        </section>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../../JS/JS-Login-In/certificados.js"></script>    
+</body>
+</html>

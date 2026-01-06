@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ver Perfil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/perfil.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+</head>
+<body>
+    <div class="contenedor-app">
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo"><a href="inicioj.html"></a>UGuimar</h1>
+            <form id="search-form" class="barra-busqueda">
+                <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
+            </form>
+
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html">🏠 Inicio</a></li>
+                    <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
+                    <li><a href="becasj.html">🎓 Beca</a></li>
+                    <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+                </ul>
+            </nav>
+            
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="#">Obtén 1 mes gratis</a></li>
+                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+        <!-- CONTENIDO -->
+        <div class="container">
+            <aside class="sidebar">
+                <div class="profile-header">
+                    <img src="https://i.pravatar.cc/150?img=32" alt="Foto de perfil" class="profile-image">
+                    <h2>Mi Cuenta</h2>
+                </div>
+                <nav class="sidebar-nav">
+                    <button class="nav-btn active" data-section="perfil">Perfil</button>
+                     <button class="nav-btn" data-section="cerrar-sesion">Cerrar Sesión</button>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <section id="perfil" class="section-profile active">
+                    <h2>Tu Perfil</h2>
+                    <form id="profile-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido">Apellido:</label>
+                                <input type="text" id="apellido" name="apellido" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" id="direccion" name="direccion" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nueva_contrasena">Nueva contraseña:</label>
+                            <input type="password" id="nueva_contrasena" name="nueva_contrasena">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmar_contrasena">Confirmar nueva contraseña:</label>
+                            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena">
+                        </div>
+                        <button type="submit" class="btn-primary">Guardar cambios</button>
+                    </form>
+                </section>
+                
+                <section id="cursos" class="section-profile">
+                    <h2 class="heading-secondary">Tus Cursos</h2>
+                    <ul class="cart-items">
+                        <li class="cart-item">
+                            <img src="IMAGE/cursos-logos/JavaScript.webp" alt="Curso de Javascript" class="course-image" />
+                            <span>Curso de Javascript</span>
+                            <span>S/.100.00</span>
+                            <button class="remove-item" data-id="1">Eliminar</button>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="progreso" class="section-profile">
+                    <h2 class="heading-secondary">Tu rutas y Progreso</h2>
+                    <div class="progress-container">
+                        <div class="img-titulo">
+                            <img class="imgRuta" src="IMAGE/cursos-logos/cisco.png" alt="Logo de Cisco" />
+                            <h4>HTML</h4>
+                        </div>
+                        <div class="progress-bar"><span data-width="90%"></span></div>
+                    </div>
+                    <a href="rutas.html" class="btn btn--full margin-right-sm">Añadir Rutas</a>
+                    
+                    <h3>Certificados</h3>
+                    <ul class="certificate-list">
+                        <li>
+                            <a href="https://www.ecci.edu.co/wp-content/uploads/2022/02/Fundamentos-de-Programacion-Web-version-1.0-EDITORIAL-ECCI.pdf">Certificado HTML.pdf</a>
+                        </li>
+                        <li>
+                            <a href="https://dialnet.unirioja.es/descarga/libro/933116.pdf">Certificado CSS.pdf</a>
+                        </li>
+                        <li>
+                            <a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">Certificado JavaScript.pdf</a>
+                        </li>
+                        <li>
+                            <a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">Certificado React.Js.pdf</a>
+                        </li>
+                    </ul>
+                </section>
+                
+                <section id="pagos" class="section-profile">
+                    <h2 class="heading-secondary">Tus Pagos</h2>
+                    <ul class="pagos-items">
+                        <li class="pago-item">
+                            <span>001</span>
+                            <span class="titulo">Curso de Javascript</span>
+                            <span>S/.100.00</span>
+                            <span>Yape</span>
+                            <span>10/10/2024</span>
+                        </li>
+                    </ul>
+                    
+                    <h2 class="heading-secondary">Mi Suscripción</h2>
+                    <section class="subscription">
+                        <div class="subscription-details">
+                            <p class="detail">
+                                <strong>Suscripción actual:</strong> Suscripcion Avanzado Duo
+                            </p>
+                            <p class="detail">
+                                <strong>Periodo:</strong> 10/10/2024 &rarr; 10/10/2025
+                            </p>
+                            <p class="detail">
+                                <strong>Beneficiario:</strong> Juan Carlos Perez
+                            </p>
+                        </div>
+                    </section>
+        
+                    <h2 class="heading-secondary">Beneficiarios</h2>
+                    <section class="beneficiaries">
+                        <div class="beneficiary">
+                            <p class="name">Nombre: Maria Lopez</p>
+                            <p class="email">Correo: <a href="mailto:maria.lopez@example.com">maria.lopez@example.com</a></p>
+                            <p class="date">Inicio del beneficio: 01/10/2023</p>
+                            <p class="date">Fin del beneficio: 01/10/2024</p>
+                        </div>
+                        
+                        <div class="beneficiary">
+                            <p class="name">Nombre: Carlos Garcia</p>
+                            <p class="email">Correo: <a href="mailto:carlos.garcia@example.com">carlos.garcia@example.com</a></p>
+                            <p class="date">Inicio del beneficio: 15/09/2023</p>
+                            <p class="date">Fin del beneficio: 15/09/2024</p>
+                        </div>
+                    </section>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../../JS/JS-Login-In/perfil.js"></script>
+</body>
+</html>
