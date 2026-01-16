@@ -1,3 +1,10 @@
+// Datos simulados de recursos de cursos
+const RECURSOS_CURSOS = {
+    1: { recursoUrl: 'https://drive.google.com/recursos-curso-1' },
+    2: { recursoUrl: 'https://drive.google.com/recursos-curso-2' },
+    3: { recursoUrl: 'https://drive.google.com/recursos-curso-3' }
+};
+
 // Función para cargar el video, el título del curso y los recursos desde la URL
 function loadCourseDataFromUrl() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -29,26 +36,21 @@ function loadCourseDataFromUrl() {
     }
 
     if (cursoId) {
-        fetchCursoRecursos(cursoId);
+        loadCursoRecursos(cursoId);
     }
 }
 
-// Función para obtener los recursos del curso
-function fetchCursoRecursos(cursoId) {
-    fetch(`/api/curso-recurso/${cursoId}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.recursoUrl) {
-                const btnRecursos = document.getElementById('btn-recursos');
-                btnRecursos.onclick = function() {
-                    window.open(data.recursoUrl, '_blank');
-                };
-                btnRecursos.disabled = false;
-            } else {
-                console.error('No se encontró la URL del recurso');
-            }
-        })
-        .catch(error => console.error('Error fetching curso recursos:', error));
+// Función para obtener los recursos del curso (simulado)
+function loadCursoRecursos(cursoId) {
+    const data = RECURSOS_CURSOS[cursoId] || { recursoUrl: 'https://drive.google.com/recursos-generales' };
+    
+    const btnRecursos = document.getElementById('btn-recursos');
+    if (btnRecursos && data.recursoUrl) {
+        btnRecursos.onclick = function() {
+            window.open(data.recursoUrl, '_blank');
+        };
+        btnRecursos.disabled = false;
+    }
 }
 
 // Variables para progreso y clase actual
@@ -140,9 +142,7 @@ if (btnRecursos) {
         const urlParams = new URLSearchParams(window.location.search);
         const cursoId = urlParams.get('cursoId');
         if (cursoId) {
-            fetchCursoRecursos(cursoId);
-        } else {
-            console.error('No se encontró el ID del curso');
+            loadCursoRecursos(cursoId);
         }
     });
 }
@@ -151,20 +151,10 @@ if (btnRecursos) {
 window.addEventListener('DOMContentLoaded', () => {
     loadCourseDataFromUrl();
     updateUserName();
-});
-
-// Inicializar el botón de recursos como deshabilitado
-document.addEventListener('DOMContentLoaded', function() {
+    
+    // Inicializar el botón de recursos como deshabilitado
     const btnRecursos = document.getElementById('btn-recursos');
     if (btnRecursos) {
         btnRecursos.disabled = true;
     }
 });
-
-
-
-
-
-
-
-

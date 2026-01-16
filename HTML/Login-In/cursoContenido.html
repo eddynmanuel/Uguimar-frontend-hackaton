@@ -8,11 +8,13 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/contenido.css" />
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/plantilla.css" />
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    
+
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                 <span></span>
             </button>
             <h1 class="logo">
-                <a href="/Principal">
+                <a href="../Principal/Principal.html">
                     <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
                 </a>
             </h1>
@@ -40,11 +42,13 @@
                     <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
                 </ul>
             </nav>
-            
+
             <div class="acciones-usuario">
-                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
+                        id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp"
+                        alt="Foto de perfil" id="profile-toggle">
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
@@ -58,13 +62,15 @@
                 </div>
             </div>
         </header>
-        
+
         <main class="main-datail">
             <section class="container detail-contect">
                 <div class="left-panel">
                     <div class="video-player">
-                        <iframe id="video-player" width="100%" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
+                        <iframe id="video-player" width="100%" height="315" src="" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+
                         <div class="course-title" style="margin-top: 30px;">
                             <h3 id="curso-titulo">Título del Curso</h3>
                         </div>
@@ -72,31 +78,33 @@
                         <div class="tabs">
                             <a href="#" id="btn-recursos" class="active">RECURSOS</a>
                         </div>
-    
+
                         <a href="examen-01.html" class="btn-exam">Dar Examen</a>
                     </div>
-    
+
                 </div>
 
 
-            <div class="right-panel">
-                <!-- Sección de preguntas con comentarios -->
-                <input type="text" class="input-question" placeholder="Escribe tu aporte o pregunta">
-                <div class="filter-detail">
-                    <button class="active">Más Votados</button>
-                    <button>Nuevos</button>
-                    <button>Sin Responder</button>
-                </div>
+                <div class="right-panel">
+                    <!-- Sección de preguntas con comentarios -->
+                    <input type="text" class="input-question" placeholder="Escribe tu aporte o pregunta">
+                    <div class="filter-detail">
+                        <button class="active">Más Votados</button>
+                        <button>Nuevos</button>
+                        <button>Sin Responder</button>
+                    </div>
 
-                <div class="questions">
+                    <div class="questions">
                         <!-- Puedes añadir más preguntas aquí -->
                     </div>
-                    
+
                     <div class="questions">
                         <!-- Pregunta 1 -->
                         <div class="question">
-                            <p><strong>Maria Alcantara:</strong> ¿Cuál es el entorno recomendado para trabajar con Node.js?</p>
-                            <p><strong>Respuesta:</strong> El entorno recomendado es Windows 10 o superior con Node.js y Visual Studio Code instalados.</p>
+                            <p><strong>Maria Alcantara:</strong> ¿Cuál es el entorno recomendado para trabajar con
+                                Node.js?</p>
+                            <p><strong>Respuesta:</strong> El entorno recomendado es Windows 10 o superior con Node.js y
+                                Visual Studio Code instalados.</p>
                             <div class="reaction-buttons">
                                 <button class="reaction-btn" onclick="addReaction('like', 1)">👍</button>
                                 <span class="reaction-count" id="like-count-1">0</span>
@@ -104,11 +112,13 @@
                                 <span class="reaction-count" id="love-count-1">0</span>
                             </div>
                         </div>
-                        
+
                         <!-- Pregunta 2 -->
                         <div class="question">
                             <p><strong>Jose Ramirez:</strong> ¿Cómo puedo instalar Node.js en mi computadora?</p>
-                            <p><strong>Respuesta:</strong> Puedes descargar Node.js desde su sitio oficial. Asegúrate de elegir la versión adecuada para tu sistema operativo y sigue las instrucciones de instalación.</p>
+                            <p><strong>Respuesta:</strong> Puedes descargar Node.js desde su sitio oficial. Asegúrate de
+                                elegir la versión adecuada para tu sistema operativo y sigue las instrucciones de
+                                instalación.</p>
                             <div class="reaction-buttons">
                                 <button class="reaction-btn" onclick="addReaction('like', 2)">👍</button>
                                 <span class="reaction-count" id="like-count-2">0</span>
@@ -116,11 +126,12 @@
                                 <span class="reaction-count" id="love-count-2">0</span>
                             </div>
                         </div>
-                    
+
                         <!-- Pregunta 3 -->
                         <div class="question">
                             <p><strong>Adriana Campos:</strong> ¿Qué es npm y para qué se utiliza?</p>
-                            <p><strong>Respuesta:</strong> npm es el gestor de paquetes de Node.js, y se utiliza para instalar, actualizar y gestionar dependencias de proyectos.</p>
+                            <p><strong>Respuesta:</strong> npm es el gestor de paquetes de Node.js, y se utiliza para
+                                instalar, actualizar y gestionar dependencias de proyectos.</p>
                             <div class="reaction-buttons">
                                 <button class="reaction-btn" onclick="addReaction('like', 3)">👍</button>
                                 <span class="reaction-count" id="like-count-3">0</span>
@@ -128,11 +139,13 @@
                                 <span class="reaction-count" id="love-count-3">0</span>
                             </div>
                         </div>
-                    
+
                         <!-- Pregunta 4 -->
                         <div class="question">
                             <p><strong>Carlos Silva:</strong> ¿Cómo se crean servidores en Node.js?</p>
-                            <p><strong>Respuesta:</strong> Se pueden crear servidores utilizando el módulo 'http' de Node.js, que permite escuchar solicitudes en un puerto específico y enviar respuestas.</p>
+                            <p><strong>Respuesta:</strong> Se pueden crear servidores utilizando el módulo 'http' de
+                                Node.js, que permite escuchar solicitudes en un puerto específico y enviar respuestas.
+                            </p>
                             <div class="reaction-buttons">
                                 <button class="reaction-btn" onclick="addReaction('like', 4)">👍</button>
                                 <span class="reaction-count" id="like-count-4">0</span>
@@ -140,11 +153,12 @@
                                 <span class="reaction-count" id="love-count-4">0</span>
                             </div>
                         </div>
-                    
+
                         <!-- Pregunta 5 -->
                         <div class="question">
                             <p><strong>Luisa Gómez:</strong> ¿Es necesario saber JavaScript para aprender Node.js?</p>
-                            <p><strong>Respuesta:</strong> Sí, es fundamental tener una buena base en JavaScript, ya que Node.js se basa en este lenguaje.</p>
+                            <p><strong>Respuesta:</strong> Sí, es fundamental tener una buena base en JavaScript, ya que
+                                Node.js se basa en este lenguaje.</p>
                             <div class="reaction-buttons">
                                 <button class="reaction-btn" onclick="addReaction('like', 5)">👍</button>
                                 <span class="reaction-count" id="like-count-5">0</span>
@@ -153,18 +167,14 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
                 </div>
-            </div>
-        </section>
+    </div>
+    </div>
+    </div>
+    </section>
     </main>
     </div>
     <script src="../../JS/JS-Login-In/contenido.js"></script>
 </body>
 
 </html>
-
-
-
-

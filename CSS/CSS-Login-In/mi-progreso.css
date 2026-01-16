@@ -5,17 +5,17 @@
   --primary-color: #1E90FF;
   --secondary-color: #3D5A80;
   --accent-color: #E0FBFC;
-  
+
   /* Neutral Colors */
   --text-color: #333333;
   --bg-color: #F0F4F8;
   --card-bg: #FFFFFF;
-  
+
   /* Additional Colors */
   --dark-blue: #112D4E;
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
-  
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -26,12 +26,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Component Colors */
   --header-bg: var(--dark-blue);
   --footer-bg: var(--dark-blue);
   --button-text: #FFFFFF;
-  
+
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -57,12 +57,14 @@ body {
   line-height: 1.6;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Previene scroll horizontal */
+  overflow-x: hidden;
+  /* Previene scroll horizontal */
 }
 
 .container {
   width: 100%;
-  max-width: 100%; /* Cambiar de 1200px a 100% */
+  max-width: 100%;
+  /* Cambiar de 1200px a 100% */
   margin: 0;
   padding: 0;
 }
@@ -78,15 +80,16 @@ body {
 /* Header Styles */
 .encabezado-principal {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   background: var(--dark-blue);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 2000;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -104,8 +107,10 @@ body {
 
 .logo a {
   display: block;
-  width: 200px; /* Cambia el ancho del área del logo */
-  height: 40px; /* Cambia la altura del área del logo */
+  width: 200px;
+  /* Cambia el ancho del área del logo */
+  height: 40px;
+  /* Cambia la altura del área del logo */
 }
 
 .logo img {
@@ -244,6 +249,12 @@ body {
   color: var(--text-light);
 }
 
+.navegacion-principal a.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+}
+
 /* Main Content Styles */
 .contenido-principal {
   padding-left: 190px;
@@ -255,7 +266,8 @@ body {
   font-size: 2.5rem;
   text-align: center;
   margin-bottom: 2rem;
-  color: var(--primary-color);  /* Títulos en azul marino para mantener la armonía */
+  color: var(--primary-color);
+  /* Títulos en azul marino para mantener la armonía */
   margin-bottom: 1rem;
 }
 
@@ -264,75 +276,82 @@ body {
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 0.5rem;
   margin-bottom: 1.5rem;
-  color: var(--primary-color);  /* Títulos en azul marino para mantener la armonía */
+  color: var(--primary-color);
+  /* Títulos en azul marino para mantener la armonía */
   margin-bottom: 1rem;
 }
 
 .contenido-principal h3 {
   font-size: 1.8rem;
-  color: var(--secondary-color);  /* Tercer nivel de título en rojo coral */
-  
-}
-  /* Specific styles for mi progreso page */
-  .resumen-progreso, .cursos-en-progreso, .logros {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .resumen-progreso:hover, .cursos-en-progreso:hover, .logros:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
+  color: var(--secondary-color);
+  /* Tercer nivel de título en rojo coral */
 
-  .estadisticas {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  
-  .estadistica {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-    text-align: center;
-  }
-  
-  .estadistica:hover {
-    transform: translateY(-5px);
-  }
-  
-  .numero {
-    color: var(--dark-blue);
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .lista-cursos {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  .curso {
-    background-color: var(--background-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .curso:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  }
-  
+}
+
+/* Specific styles for mi progreso page */
+.resumen-progreso,
+.cursos-en-progreso,
+.logros {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.resumen-progreso:hover,
+.cursos-en-progreso:hover,
+.logros:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.estadisticas {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.estadistica {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.estadistica:hover {
+  transform: translateY(-5px);
+}
+
+.numero {
+  color: var(--dark-blue);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.lista-cursos {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.curso {
+  background-color: var(--background-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curso:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
 .barra-progreso {
   background-color: var(--primary-color);
   border-radius: 20px;
@@ -346,7 +365,7 @@ body {
   height: 100%;
   transition: width 0.3s ease;
 }
-  
+
 .btn-continuar {
   color: var(--card-bg);
   border: none;
@@ -361,59 +380,59 @@ body {
   font-size: 1rem;
   width: 100%;
 }
-  
+
 .btn-continuar:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(255, 103, 0, 0.5);
   background-color: var(--primary-color);
   transform: scale(1.05);
 }
-  
+
 .lista-logros {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
 }
-  
+
 .logro {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
-    display: flex;
-    align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
 }
-  
+
 .logro:hover {
-    transform: translateY(-5px);
+  transform: translateY(-5px);
 }
-  
+
 .logro-icono {
-    background-color: var(--accent-color);
-    color: var(--text-light);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    margin-right: 1rem;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-right: 1rem;
 }
-  
+
 .logro-info h4 {
-    color: var(--secondary-color);
-    margin-bottom: 0.25rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.25rem;
 }
-  
+
 .logro-info p {
-    font-size: 0.9rem;
-    color: var(--text-color);
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
-  
+
 /* Footer Styles */
 .pie-pagina {
   width: 100%;
@@ -424,40 +443,17 @@ body {
   text-align: center;
   margin-top: 2rem;
 }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .encabezado-principal {
-      flex-wrap: wrap;
-    }
-  
-    .barra-busqueda {
-      order: 1;
-      width: 100%;
-      margin: 1rem 0;
-    }
-  
-    .navegacion-principal {
-      display: none;
-    }
-  
-    .navegacion-principal.active {
-      display: block;
-    }
-  
-    .navegacion-principal ul {
-      flex-direction: column;
-    }
-  
-    .navegacion-principal li {
-      margin-bottom: 0.5rem;
-    }
-  
-/* Adjust the menu toggle for smaller screens */
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  #menu-toggle {
-    display: block;
+  .encabezado-principal {
+    flex-wrap: wrap;
+  }
+
+  .barra-busqueda {
     order: 1;
+    width: 100%;
+    margin: 1rem 0;
   }
 
   .navegacion-principal {
@@ -467,34 +463,64 @@ body {
   .navegacion-principal.active {
     display: block;
   }
-}
 
-@media (min-width: 769px) {
-  #menu-toggle {
-    display: none;
+  .navegacion-principal ul {
+    flex-direction: column;
   }
 
-  .navegacion-principal {
-    display: block !important;
+  .navegacion-principal li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Adjust the menu toggle for smaller screens */
+  @media (max-width: 768px) {
+    #menu-toggle {
+      display: block;
+      order: 1;
+    }
+
+    .navegacion-principal {
+      display: none;
+    }
+
+    .navegacion-principal.active {
+      display: block;
+    }
+  }
+
+  @media (min-width: 769px) {
+    #menu-toggle {
+      display: none;
+    }
+
+    .navegacion-principal {
+      display: block !important;
+    }
+  }
+
+  .estadisticas {
+    flex-direction: column;
+  }
+
+  .lista-cursos {
+    grid-template-columns: 1fr;
   }
 }
-  
-    .estadisticas {
-      flex-direction: column;
-    }
-  
-    .lista-cursos {
-      grid-template-columns: 1fr;
-    }
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Animations */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+
+  to {
+    opacity: 1;
   }
-  
-  
-  .resumen-progreso, .cursos-en-progreso, .logros {
-    animation: fadeIn 0.5s ease-out;
-  }
+}
+
+
+.resumen-progreso,
+.cursos-en-progreso,
+.logros {
+  animation: fadeIn 0.5s ease-out;
+}

@@ -1,84 +1,73 @@
+// Datos simulados de escuelas
+const ESCUELAS_DATA = [
+    'Data Science',
+    'Inteligencia Artificial',
+    'Ciberseguridad',
+    'Liderazgo y Gestión',
+    'Inglés',
+    'Desarrollo Web',
+    'Marketing Digital',
+    'Producto',
+    'Creación de Contenido',
+    'Finanzas',
+    'Startups',
+    'Diversidad e Inclusión'
+];
+
+// Datos simulados de cursos para búsqueda
+const CURSOS_DATA = [
+    { id: 1, nombre: 'Introducción a Python', videoUrl: 'https://youtube.com/watch?v=example1' },
+    { id: 2, nombre: 'Machine Learning Básico', videoUrl: 'https://youtube.com/watch?v=example2' },
+    { id: 3, nombre: 'HTML y CSS desde cero', videoUrl: 'https://youtube.com/watch?v=example3' },
+    { id: 4, nombre: 'JavaScript Moderno', videoUrl: 'https://youtube.com/watch?v=example4' },
+    { id: 5, nombre: 'React para principiantes', videoUrl: 'https://youtube.com/watch?v=example5' },
+    { id: 6, nombre: 'Node.js y Express', videoUrl: 'https://youtube.com/watch?v=example6' },
+    { id: 7, nombre: 'Bases de datos SQL', videoUrl: 'https://youtube.com/watch?v=example7' },
+    { id: 8, nombre: 'Fundamentos de Ciberseguridad', videoUrl: 'https://youtube.com/watch?v=example8' }
+];
+
 const searchInput = document.getElementById('search-input');
 const suggestionsContainer = document.createElement('div');
 suggestionsContainer.className = 'suggestions';
 searchInput.parentNode.appendChild(suggestionsContainer);
 
-searchInput.addEventListener('input', async (e) => {
+// Función para buscar cursos en datos simulados
+function searchCourses(query) {
+    const queryLower = query.toLowerCase();
+    return CURSOS_DATA.filter(curso =>
+        curso.nombre.toLowerCase().includes(queryLower)
+    ).map(curso => curso.nombre);
+}
+
+searchInput.addEventListener('input', (e) => {
     const query = e.target.value.trim();
     if (query.length === 0) {
         suggestionsContainer.innerHTML = '';
         return;
     }
 
-    try {
-        const response = await fetch(`/api/search-courses?q=${encodeURIComponent(query)}`);
-        const suggestions = await response.json();
+    // Usar datos simulados en lugar de fetch
+    const suggestions = searchCourses(query);
 
-        suggestionsContainer.innerHTML = '';
-        suggestions.forEach((suggestion) => {
-            const item = document.createElement('div');
-            item.className = 'suggestion-item';
-            item.textContent = suggestion;
+    suggestionsContainer.innerHTML = '';
+    suggestions.forEach((suggestion) => {
+        const item = document.createElement('div');
+        item.className = 'suggestion-item';
+        item.textContent = suggestion;
 
-            item.addEventListener('click', () => {
-                searchInput.value = suggestion;
-                suggestionsContainer.innerHTML = '';
-            });
-
-            suggestionsContainer.appendChild(item);
+        item.addEventListener('click', () => {
+            searchInput.value = suggestion;
+            suggestionsContainer.innerHTML = '';
         });
-    } catch (error) {
-        console.error('Error fetching suggestions:', error);
-    }
+
+        suggestionsContainer.appendChild(item);
+    });
 });
 
 // Cerrar las sugerencias al hacer clic fuera
 document.addEventListener('click', (e) => {
     if (!searchInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
         suggestionsContainer.innerHTML = '';
-    }
-});
-// Función para obtener sugerencias de cursos desde el servidor
-async function fetchCourseSuggestions(query) {
-    try {
-        // Realiza una solicitud a la API para obtener los cursos filtrados
-        const response = await fetch(`http://localhost:3000/api/cursos?query=${query}`);
-        const courses = await response.json();
-        
-        // Mostrar las sugerencias
-        const suggestionsContainer = document.getElementById('suggestions');
-        suggestionsContainer.innerHTML = ''; // Limpiar las sugerencias anteriores
-        
-        if (courses.length > 0) {
-            courses.forEach(course => {
-                const suggestionItem = document.createElement('div');
-                suggestionItem.classList.add('suggestion-item');
-                suggestionItem.textContent = course.nombre;
-                suggestionItem.onclick = function() {
-                    // Cuando se hace clic en una sugerencia, llenar el input con el nombre del curso
-                    document.getElementById('search-input').value = course.nombre;
-                    suggestionsContainer.style.display = 'none'; // Ocultar sugerencias
-                    // Llamar a la función para mostrar los detalles del curso si es necesario
-                    showCourseDetails(course.id);
-                };
-                suggestionsContainer.appendChild(suggestionItem);
-            });
-            suggestionsContainer.style.display = 'block'; // Mostrar el contenedor de sugerencias
-        } else {
-            suggestionsContainer.style.display = 'none'; // No mostrar si no hay resultados
-        }
-    } catch (error) {
-        console.error('Error al obtener sugerencias de cursos:', error);
-    }
-}
-
-// Función para manejar la entrada del usuario en el campo de búsqueda
-document.getElementById('search-input').addEventListener('input', function(event) {
-    const query = event.target.value;
-    if (query.length > 2) { // Solo hacer la búsqueda si el texto tiene más de 2 caracteres
-        fetchCourseSuggestions(query);
-    } else {
-        document.getElementById('suggestions').style.display = 'none'; // Ocultar sugerencias si el campo está vacío
     }
 });
 
@@ -97,7 +86,7 @@ function getIcon(nombreEscuela) {
         finanzas: 'fas fa-money-check-alt',
         startups: 'fas fa-rocket',
         diversidad: 'fas fa-users-cog',
-        default: 'fas fa-university', // Ícono predeterminado
+        default: 'fas fa-university',
     };
 
     for (const key in iconMap) {
@@ -105,57 +94,44 @@ function getIcon(nombreEscuela) {
             return iconMap[key];
         }
     }
-    return iconMap.default; // Ícono predeterminado
+    return iconMap.default;
 }
 
-// Función para generar dinámicamente las escuelas
-async function fetchAndRenderEscuelas() {
+// Función para generar dinámicamente las escuelas con datos simulados
+function renderEscuelas() {
     const courseGrid = document.querySelector('.course-grid');
 
-    try {
-        const response = await fetch('http://localhost:3000/api/escuelas');
-        const escuelas = await response.json();
+    ESCUELAS_DATA.forEach(nombre => {
+        const icon = getIcon(nombre);
 
-        escuelas.forEach(nombre => {
-            const icon = getIcon(nombre);
+        const card = document.createElement('div');
+        card.classList.add('course-card');
 
-            // Crear la estructura de la tarjeta
-            const card = document.createElement('div');
-            card.classList.add('course-card');
-            
-            // Hacer la tarjeta clickeable
-            card.style.cursor = 'pointer';
-            card.onclick = () => {
-                // Navegar a la página explorar con el nombre de la escuela como parámetro
-                window.location.href = `/HTML/Principal/explorar.html?school=${encodeURIComponent(nombre)}`;
-            };
-            
-            card.innerHTML = `
-                <div class="course-content">
-                    <div class="course-icon">
-                        <i class="${icon}"></i>
-                    </div>
-                    <div class="course-text">
-                        <h3>ESCUELA DE</h3>
-                        <p>${nombre}</p>
-                    </div>
+        card.style.cursor = 'pointer';
+        card.onclick = () => {
+            window.location.href = `explorar.html?school=${encodeURIComponent(nombre)}`;
+        };
+
+        card.innerHTML = `
+            <div class="course-content">
+                <div class="course-icon">
+                    <i class="${icon}"></i>
                 </div>
-            `;
+                <div class="course-text">
+                    <h3>ESCUELA DE</h3>
+                    <p>${nombre}</p>
+                </div>
+            </div>
+        `;
 
-            // Agregar la tarjeta al contenedor
-            courseGrid.appendChild(card);
-        });
-    } catch (error) {
-        console.error('Error al obtener las escuelas:', error);
-    }
+        courseGrid.appendChild(card);
+    });
 }
 
 // Ejecutar la función al cargar la página
-fetchAndRenderEscuelas();
+renderEscuelas();
 
-// Función para mostrar detalles del curso (esto es solo un ejemplo, puedes adaptarlo)
+// Función para mostrar detalles del curso
 function showCourseDetails(courseId) {
     console.log('Mostrar detalles del curso con ID:', courseId);
-    // Aquí podrías redirigir a una página de detalles o mostrar los detalles del curso en un modal
 }
-

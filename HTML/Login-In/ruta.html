@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/ruta.css">
 </head>
+
 <body>
     <div class="contenedor-app">
         <header class="encabezado-principal">
@@ -16,7 +18,7 @@
                 <span></span>
             </button>
             <h1 class="logo">
-                <a href="/Principal">
+                <a href="../Principal/Principal.html">
                     <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
                 </a>
             </h1>
@@ -32,11 +34,13 @@
                     <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
                 </ul>
             </nav>
-            
+
             <div class="acciones-usuario">
-                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
+                        id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp"
+                        alt="Foto de perfil" id="profile-toggle">
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
@@ -53,12 +57,12 @@
 
         <main class="contenido-principal">
             <a href="#" class="volver-link" id="volver-escuela">← Volver a la Escuela</a>
-            
+
             <div class="ruta-header">
                 <h1 id="ruta-titulo">Explora Nuevas Rutas</h1>
                 <p id="ruta-descripcion">Selecciona una de las rutas para empezar tu viaje de aprendizaje.</p>
             </div>
-    
+
             <div class="rutas-container">
                 <!-- Las rutas se cargarán dinámicamente aquí -->
             </div>
@@ -71,5 +75,5 @@
 
     <script src="../../JS/JS-Login-In/ruta.js"></script>
 </body>
-</html>
 
+</html>

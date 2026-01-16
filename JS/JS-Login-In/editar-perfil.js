@@ -1,17 +1,18 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('profile-edit-form');
     const passwordInput = document.getElementById('contrasena');
     const confirmPasswordInput = document.getElementById('confirmar-contrasena');
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
-    // Cargar datos del usuario (simulado)
+
+    // Cargar datos del usuario desde localStorage
     function loadUserData() {
-        // Aquí normalmente harías una llamada a una API para obtener los datos del usuario
+        const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
         const userData = {
-            nombre: 'Jose',
-            apellido: 'Orosco Gomez',
-            telefono: '123456789',
-            correo: 'jose@example.com',
-            fechaNacimiento: '1990-01-01'
+            nombre: localStorage.getItem('userName') || savedProfile.nombre || 'Jose',
+            apellido: localStorage.getItem('userLastName') || savedProfile.apellido || 'Orosco Gomez',
+            telefono: savedProfile.telefono || '123456789',
+            correo: localStorage.getItem('userEmail') || savedProfile.correo || 'jose@example.com',
+            fechaNacimiento: savedProfile.fecha_nacimiento || '1990-01-01'
         };
 
         document.getElementById('nombre').value = userData.nombre;
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     loadUserData();
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         if (passwordInput.value !== confirmPasswordInput.value) {
@@ -31,17 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Aquí normalmente enviarías los datos a una API
         const formData = new FormData(form);
         const userData = Object.fromEntries(formData.entries());
-        
-        // Simulación de envío de datos
+
+        // Guardar en localStorage
+        localStorage.setItem('userProfile', JSON.stringify(userData));
+        localStorage.setItem('userName', userData.nombre);
+        localStorage.setItem('userLastName', userData.apellido);
+        localStorage.setItem('userEmail', userData.correo);
+
         console.log('Datos del usuario actualizados:', userData);
         alert('Perfil actualizado con éxito');
     });
 
     // Validación de contraseña en tiempo real
-    confirmPasswordInput.addEventListener('input', function() {
+    confirmPasswordInput.addEventListener('input', function () {
         if (passwordInput.value !== confirmPasswordInput.value) {
             confirmPasswordInput.setCustomValidity('Las contraseñas no coinciden');
         } else {
@@ -49,36 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    function updateUserName() {
-        const userNameElement = document.getElementById('userName');
-        const userName = localStorage.getItem('userName');
-        if (userName) {
-            userNameElement.textContent = userName;
-        }
-    }
-
-    // Función para cerrar sesión
-    function cerrarSesion() {
-        // Limpiar datos de sesión del localStorage
-        localStorage.removeItem('userId');
-        localStorage.removeItem('userName');
-        localStorage.removeItem('userLastName');
-        localStorage.removeItem('userEmail');
-        localStorage.removeItem('userRole');
-
-        // Redirigir al usuario a la página de inicio de sesión
-        window.location.href = '/Principal';
-    }
-
-    // Agregar evento de clic al botón de cerrar sesión
-    if (cerrarSesionBtn) {
-        cerrarSesionBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            cerrarSesion();
-        });
-    }
-
-    // Función para actualizar el nombre de usuario en el menú
+    // Función para actualizar el nombre de usuario
     function updateUserName() {
         const userNameElement = document.getElementById('userName');
         const userName = localStorage.getItem('userName');
@@ -87,30 +63,43 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Llamar a la función para actualizar el nombre de usuario
+    // Función para cerrar sesión
+    function cerrarSesion() {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userLastName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userRole');
+        window.location.href = '../Principal/Principal.html';
+    }
+
+    // Agregar evento de clic al botón de cerrar sesión
+    if (cerrarSesionBtn) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            cerrarSesion();
+        });
+    }
+
     updateUserName();
 
-    // Call the function to update the user name
-    updateUserName();
-  
-    // Mantener la funcionalidad del menú y carrito del perfil original
+    // Mantener la funcionalidad del menú y carrito
     const menuToggle = document.getElementById('menu-toggle');
     const navegacionPrincipal = document.getElementById('main-nav');
     const profileToggle = document.getElementById('profile-toggle');
     const menuDesplegable = document.getElementById('profile-dropdown');
     const carritoToggle = document.getElementById('carrito-toggle');
-    const contadorCarrito = document.getElementById('contador-carrito');
 
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navegacionPrincipal.classList.toggle('active');
     });
 
-    profileToggle.addEventListener('click', function(e) {
+    profileToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         menuDesplegable.classList.toggle('active');
     });
 
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!menuDesplegable.contains(e.target) && e.target !== profileToggle) {
             menuDesplegable.classList.remove('active');
         }

@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const searchForm = document.getElementById('search-form');
     const searchInput = document.getElementById('busqueda-curso');
     const totalResultados = document.getElementById('total-resultados');
@@ -12,30 +12,32 @@ document.addEventListener('DOMContentLoaded', function() {
     const contadorCarrito = document.getElementById('contador-carrito');
     const carritoToggle = document.getElementById('carrito-toggle');
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
-    
+
     // Obtener el término de búsqueda de la URL y colocarlo en el input
     const urlParams = new URLSearchParams(window.location.search);
     const searchTerm = urlParams.get('q');
-    if (searchTerm) {
+    if (searchTerm && searchInput) {
         searchInput.value = decodeURIComponent(searchTerm);
+        realizarBusqueda(searchTerm);
+    } else if (searchTerm) {
         realizarBusqueda(searchTerm);
     }
 
-    searchForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const newSearchTerm = searchInput.value.trim();
-        if (newSearchTerm) {
-            // Actualizar la URL con el nuevo término de búsqueda
-            const newUrl = `${window.location.pathname}?q=${encodeURIComponent(newSearchTerm)}`;
-            window.history.pushState({}, '', newUrl);
-            realizarBusqueda(newSearchTerm);
-        }
-    });
+    if (searchForm) {
+        searchForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const newSearchTerm = searchInput.value.trim();
+            if (newSearchTerm) {
+                const newUrl = `${window.location.pathname}?q=${encodeURIComponent(newSearchTerm)}`;
+                window.history.pushState({}, '', newUrl);
+                realizarBusqueda(newSearchTerm);
+            }
+        });
+    }
 
     function realizarBusqueda(term) {
         console.log('Realizando búsqueda para:', term);
-        // Aquí se realizará la llamada a la base de datos
-        // Por ahora, llamamos a mostrarResultados con datos de ejemplo
+        // Datos simulados de resultados
         mostrarResultados({
             total: 10,
             totales: {
@@ -57,16 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function mostrarResultados(datos) {
-        // Actualizar el total de resultados
         totalResultados.textContent = `${datos.total || 0} Resultados encontrados`;
-        
-        // Actualizar totales en la navegación
         actualizarTotalesNavegacion(datos.totales || {});
-
-        // Mostrar escuelas
         mostrarEscuelas(datos.escuelas || []);
-
-        // Mostrar cursos
         mostrarCursos(datos.cursos || []);
     }
 
@@ -101,45 +96,53 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `).join('');
 
-        // Agregar event listeners a los botones de "Agregar al carrito"
         document.querySelectorAll('.btn-agregar').forEach(button => {
             button.addEventListener('click', agregarAlCarrito);
         });
     }
-// Add this at the end of the DOMContentLoaded event listener
-function updateUserName() {
-    const userNameElement = document.getElementById('userName');
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        userNameElement.textContent = userName;
+
+    // Función para actualizar el nombre de usuario
+    function updateUserName() {
+        const userNameElement = document.getElementById('userName');
+        const userName = localStorage.getItem('userName');
+        if (userName && userNameElement) {
+            userNameElement.textContent = userName;
+        }
     }
-  }
-  
-  // Call the function to update the user name
-  updateUserName();
-  
+
+    // Función para actualizar el avatar con la inicial del usuario
+    function updateProfileAvatar() {
+        const avatarElement = document.getElementById('profile-toggle');
+        const userName = localStorage.getItem('userName');
+        if (userName && avatarElement && avatarElement.classList.contains('avatar-inicial')) {
+            avatarElement.textContent = userName.charAt(0).toUpperCase();
+        }
+    }
+
+    updateUserName();
+    updateProfileAvatar();
+
     // Funcionalidad para la navegación de resultados
     navItems.forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function () {
             navItems.forEach(i => i.classList.remove('activo'));
             this.classList.add('activo');
-            // Aquí se puede agregar lógica para filtrar los resultados según el tipo seleccionado
         });
     });
 
     // Funcionalidad para el menú móvil
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navegacionPrincipal.classList.toggle('active');
     });
 
     // Funcionalidad para el menú desplegable del perfil
-    perfilToggle.addEventListener('click', function(e) {
+    perfilToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         menuDesplegable.classList.toggle('active');
     });
 
     // Cerrar el menú desplegable al hacer clic fuera de él
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!menuDesplegable.contains(e.target) && e.target !== perfilToggle) {
             menuDesplegable.classList.remove('active');
         }
@@ -151,63 +154,42 @@ function updateUserName() {
         const tipo = button.getAttribute('data-tipo');
         const precio = parseFloat(button.getAttribute('data-precio'));
         const titulo = button.getAttribute('data-titulo');
-        
+
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const itemEnCarrito = carrito.find(item => item.id === id && item.tipo === tipo);
-        
+
         if (itemEnCarrito) {
             itemEnCarrito.cantidad += 1;
         } else {
             carrito.push({ id, tipo, titulo, cantidad: 1, precio });
         }
-        
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        
 
-        
-        // Cambiar el texto del botón temporalmente
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        actualizarContadorCarrito();
+
         button.textContent = 'Agregado al carrito';
         setTimeout(() => {
             button.textContent = 'Agregar al carrito';
         }, 2000);
-
-        console.log('Carrito actualizado:', carrito); // Para depuración
     }
-
 
     // Función para cerrar sesión
     function cerrarSesion() {
-        // Limpiar datos de sesión del localStorage
         localStorage.removeItem('userId');
         localStorage.removeItem('userName');
         localStorage.removeItem('userLastName');
         localStorage.removeItem('userEmail');
         localStorage.removeItem('userRole');
-
-        // Redirigir al usuario a la página de inicio de sesión
-        window.location.href = '/Principal';
+        window.location.href = '../Principal/Principal.html';
     }
 
     // Agregar evento de clic al botón de cerrar sesión
     if (cerrarSesionBtn) {
-        cerrarSesionBtn.addEventListener('click', function(e) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
             e.preventDefault();
             cerrarSesion();
         });
     }
-
-    // Función para actualizar el nombre de usuario en el menú
-    function updateUserName() {
-        const userNameElement = document.getElementById('userName');
-        const userName = localStorage.getItem('userName');
-        if (userName && userNameElement) {
-            userNameElement.textContent = userName;
-        }
-    }
-
-    // Llamar a la función para actualizar el nombre de usuario
-    updateUserName();
-
 
     function actualizarContadorCarrito() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -219,14 +201,14 @@ function updateUserName() {
     actualizarContadorCarrito();
 
     // Redirigir a la página del carrito al hacer clic en el icono
-    carritoToggle.addEventListener('click', function() {
+    carritoToggle.addEventListener('click', function () {
         window.location.href = 'carrito.html';
     });
 
     // Cerrar el menú de navegación en móviles al hacer clic en un enlace
     const navLinks = navegacionPrincipal.querySelectorAll('a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             if (window.innerWidth <= 768) {
                 navegacionPrincipal.classList.remove('active');
             }
@@ -234,10 +216,9 @@ function updateUserName() {
     });
 
     // Ajustar la visualización del menú al cambiar el tamaño de la ventana
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             navegacionPrincipal.classList.remove('active');
         }
     });
-
 });

@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navButtons = document.querySelectorAll(".nav-btn");
   const sections = document.querySelectorAll(".section-profile");
-  const logoutButton = document.querySelector('.nav-btn[data-section="cerrar-sesion"]');
   const profileForm = document.getElementById('profile-form');
   const userNameElement = document.getElementById('user-name');
   const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
-  
+
   // Función para mostrar la sección correspondiente y ocultar las demás
   const changeSection = (sectionId) => {
     sections.forEach((section) => {
@@ -18,55 +17,45 @@ document.addEventListener("DOMContentLoaded", () => {
     const sectionId = button.getAttribute("data-section");
     if (sectionId === "cerrar-sesion") {
       button.addEventListener("click", () => {
-        localStorage.clear();
-        window.location.href = "../Principal/index.html"; // Redirige a la interfaz principal
+        cerrarSesion();
       });
     } else {
       button.addEventListener("click", () => {
-        // Cambiar el estado activo del botón
         navButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
-        // Cambiar la sección activa
         changeSection(sectionId);
       });
     }
   });
 
-
-
   // Función para cerrar sesión
   function cerrarSesion() {
-      // Limpiar datos de sesión del localStorage
-      localStorage.removeItem('userId');
-      localStorage.removeItem('userName');
-      localStorage.removeItem('userLastName');
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('userRole');
-
-      // Redirigir al usuario a la página de inicio de sesión
-      window.location.href = '/Principal';
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userLastName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userRole');
+    window.location.href = '../Principal/Principal.html';
   }
 
   // Agregar evento de clic al botón de cerrar sesión
   if (cerrarSesionBtn) {
-      cerrarSesionBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          cerrarSesion();
-      });
+    cerrarSesionBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      cerrarSesion();
+    });
   }
 
   // Función para actualizar el nombre de usuario en el menú
   function updateUserName() {
-      const userNameElement = document.getElementById('userName');
-      const userName = localStorage.getItem('userName');
-      if (userName && userNameElement) {
-          userNameElement.textContent = userName;
-      }
+    const userNameElementNav = document.getElementById('userName');
+    const userName = localStorage.getItem('userName');
+    if (userName && userNameElementNav) {
+      userNameElementNav.textContent = userName;
+    }
   }
 
-  // Llamar a la función para actualizar el nombre de usuario
   updateUserName();
-
 
   // Mostrar la primera sección al cargar la página
   const firstButton = navButtons[0];
@@ -76,19 +65,28 @@ document.addEventListener("DOMContentLoaded", () => {
     firstButton.classList.add("active");
   }
 
-  // Fetch user profile data
-  const fetchUserProfile = async () => {
-    try {
-      const userId = localStorage.getItem('userId');
-      const response = await fetch(`/api/profile/${userId}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch profile data');
-      }
-      const profileData = await response.json();
-      populateProfileForm(profileData);
-    } catch (error) {
-      console.error('Error fetching profile data:', error);
-    }
+  // Cargar datos del perfil desde localStorage (simulado)
+  const loadUserProfile = () => {
+    const userId = localStorage.getItem('userId');
+    const userName = localStorage.getItem('userName');
+    const userLastName = localStorage.getItem('userLastName');
+    const userEmail = localStorage.getItem('userEmail');
+
+    // Cargar datos adicionales guardados previamente
+    const savedProfile = JSON.parse(localStorage.getItem('userProfile')) || {};
+
+    const profileData = {
+      nombre: userName || '',
+      apellido: userLastName || '',
+      correo: userEmail || '',
+      telefono: savedProfile.telefono || '',
+      fecha_nacimiento: savedProfile.fecha_nacimiento || '',
+      genero: savedProfile.genero || '',
+      pais: savedProfile.pais || '',
+      ...savedProfile
+    };
+
+    populateProfileForm(profileData);
   };
 
   // Populate profile form with user data
@@ -99,49 +97,40 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = value;
       }
     }
-    userNameElement.textContent = `${data.nombre} ${data.apellido}`;
+    if (userNameElement && data.nombre && data.apellido) {
+      userNameElement.textContent = `${data.nombre} ${data.apellido}`;
+    }
   };
 
-  // Handle profile form submission
-  profileForm.addEventListener('submit', async (e) => {
+  // Handle profile form submission (save to localStorage)
+  profileForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(profileForm);
-    const userId = localStorage.getItem('userId');
     const data = Object.fromEntries(formData);
 
-    // Solo incluye la contraseña si se proporciona una nueva
-    if (!data.nueva_contrasena) {
-      delete data.nueva_contrasena;
-      delete data.confirmar_contrasena;
-    } else if (data.nueva_contrasena !== data.confirmar_contrasena) {
-      alert('Las contraseñas nuevas no coinciden');
-      return;
-    }
-
-    try {
-      const response = await fetch(`/api/profile/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to update profile');
+    // Validate passwords if provided
+    if (data.nueva_contrasena) {
+      if (data.nueva_contrasena !== data.confirmar_contrasena) {
+        alert('Las contraseñas nuevas no coinciden');
+        return;
       }
-
-      alert('Perfil actualizado con éxito');
-      fetchUserProfile(); // Refresh profile data
-    } catch (error) {
-      console.error('Error updating profile:', error);
-      alert(error.message || 'Error al actualizar el perfil');
     }
+    delete data.nueva_contrasena;
+    delete data.confirmar_contrasena;
+
+    // Save to localStorage
+    localStorage.setItem('userProfile', JSON.stringify(data));
+    localStorage.setItem('userName', data.nombre);
+    localStorage.setItem('userLastName', data.apellido);
+    localStorage.setItem('userEmail', data.correo);
+
+    alert('Perfil actualizado con éxito');
+    loadUserProfile();
+    updateUserName();
   });
 
-  // Initial profile data fetch
-  fetchUserProfile();
+  // Initial profile data load
+  loadUserProfile();
 
   // Elementos del DOM para la funcionalidad del encabezado
   const profileToggle = document.getElementById("profile-toggle");
@@ -150,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mostrar/Ocultar menú desplegable de perfil
   profileToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // Evita que se cierre al hacer clic en el perfil
+    e.stopPropagation();
     profileDropdown.classList.toggle("visible");
   });
 
@@ -169,6 +158,3 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "carrito.html";
   });
 });
-
-
-

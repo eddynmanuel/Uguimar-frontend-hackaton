@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
     const navegacionPrincipal = document.getElementById('main-nav');
     const profileToggle = document.getElementById('profile-toggle');
@@ -8,25 +8,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const contadorCarrito = document.getElementById('contador-carrito');
     const searchInput = document.getElementById('busqueda-curso');
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+
     // Función para toggle del menú de navegación
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navegacionPrincipal.classList.toggle('active');
     });
 
     // Función para toggle del menú de perfil
-    profileToggle.addEventListener('click', function(e) {
+    profileToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         menuDesplegable.classList.toggle('active');
     });
 
     // Cerrar el menú de perfil al hacer clic fuera de él
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!menuDesplegable.contains(e.target) && e.target !== profileToggle) {
             menuDesplegable.classList.remove('active');
         }
     });
 
-    // Función para cargar las rutas (simulado)
+    // Función para cargar las rutas (datos simulados)
     function cargarRutas() {
         const rutas = [
             { nombre: "Desarrollo Web Full Stack", escuela: "Desarrollo Web", progreso: 60 },
@@ -36,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ];
 
         rutasContainer.innerHTML = '';
-        rutas.forEach((ruta, index) => {
+        rutas.forEach(ruta => {
             const rutaElement = document.createElement('div');
             rutaElement.className = 'ruta-card';
             rutaElement.innerHTML = `
@@ -64,10 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 nombre: e.target.dataset.nombre,
                 precio: parseFloat(e.target.dataset.precio)
             };
-            
+
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             const cursoEnCarrito = carrito.find(item => item.id === curso.id);
-            
+
             if (cursoEnCarrito) {
                 alert('Este curso ya está en tu carrito');
             } else {
@@ -81,26 +82,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para cerrar sesión
     function cerrarSesion() {
-        // Limpiar datos de sesión del localStorage
         localStorage.removeItem('userId');
         localStorage.removeItem('userName');
         localStorage.removeItem('userLastName');
         localStorage.removeItem('userEmail');
         localStorage.removeItem('userRole');
-
-        // Redirigir al usuario a la página de inicio de sesión
-        window.location.href = '/Principal';
+        window.location.href = '../Principal/Principal.html';
     }
 
     // Agregar evento de clic al botón de cerrar sesión
     if (cerrarSesionBtn) {
-        cerrarSesionBtn.addEventListener('click', function(e) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
             e.preventDefault();
             cerrarSesion();
         });
     }
 
-    // Función para actualizar el nombre de usuario en el menú
+    // Función para actualizar el nombre de usuario
     function updateUserName() {
         const userNameElement = document.getElementById('userName');
         const userName = localStorage.getItem('userName');
@@ -109,22 +107,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Llamar a la función para actualizar el nombre de usuario
-    updateUserName();
-
-
-// Add this at the end of the DOMContentLoaded event listener
-function updateUserName() {
-    const userNameElement = document.getElementById('userName');
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        userNameElement.textContent = userName;
+    // Función para actualizar el avatar con la inicial del usuario
+    function updateProfileAvatar() {
+        const avatarElement = document.getElementById('profile-toggle');
+        const userName = localStorage.getItem('userName');
+        if (userName && avatarElement && avatarElement.classList.contains('avatar-inicial')) {
+            avatarElement.textContent = userName.charAt(0).toUpperCase();
+        }
     }
-  }
-  
-  // Call the function to update the user name
-  updateUserName();
-  
+
+    updateUserName();
+    updateProfileAvatar();
+
     // Función para actualizar el contador del carrito
     function actualizarContadorCarrito() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -138,13 +132,13 @@ function updateUserName() {
     actualizarContadorCarrito();
 
     // Redirigir a la página del carrito al hacer clic en el icono
-    carritoToggle.addEventListener('click', function() {
+    carritoToggle.addEventListener('click', function () {
         window.location.href = 'planesj.html';
     });
 
     // Funcionalidad de búsqueda
     if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
+        searchInput.addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 e.preventDefault();
                 const searchTerm = this.value.trim();
@@ -153,7 +147,5 @@ function updateUserName() {
                 }
             }
         });
-    } else {
-        console.error('No se encontró la entrada de búsqueda');
     }
 });

@@ -1,34 +1,28 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const carritoItems = document.getElementById('carrito-items');
     const totalCompra = document.getElementById('total-compra');
     const pagoForm = document.getElementById('pago-form');
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
-    // Cargar carrito desde localStorage
-    // Add this at the end of the DOMContentLoaded event listener
-
 
     // Función para cerrar sesión
     function cerrarSesion() {
-        // Limpiar datos de sesión del localStorage
         localStorage.removeItem('userId');
         localStorage.removeItem('userName');
         localStorage.removeItem('userLastName');
         localStorage.removeItem('userEmail');
         localStorage.removeItem('userRole');
-
-        // Redirigir al usuario a la página de inicio de sesión
-        window.location.href = '/Principal';
+        window.location.href = '../Principal/Principal.html';
     }
 
     // Agregar evento de clic al botón de cerrar sesión
     if (cerrarSesionBtn) {
-        cerrarSesionBtn.addEventListener('click', function(e) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
             e.preventDefault();
             cerrarSesion();
         });
     }
 
-    // Función para actualizar el nombre de usuario en el menú
+    // Función para actualizar el nombre de usuario
     function updateUserName() {
         const userNameElement = document.getElementById('userName');
         const userName = localStorage.getItem('userName');
@@ -37,20 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Llamar a la función para actualizar el nombre de usuario
     updateUserName();
 
-function updateUserName() {
-    const userNameElement = document.getElementById('userName');
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        userNameElement.textContent = userName;
-    }
-  }
-  
-  // Call the function to update the user name
-  updateUserName();
-  
     function cargarCarrito() {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         carritoItems.innerHTML = '';
@@ -70,7 +52,7 @@ function updateUserName() {
     }
 
     // Eliminar item del carrito
-    carritoItems.addEventListener('click', function(e) {
+    carritoItems.addEventListener('click', function (e) {
         if (e.target.classList.contains('btn-eliminar')) {
             const id = e.target.dataset.id;
             eliminarDelCarrito(id);
@@ -85,7 +67,7 @@ function updateUserName() {
     }
 
     // Procesar pago
-    pagoForm.addEventListener('submit', function(e) {
+    pagoForm.addEventListener('submit', function (e) {
         e.preventDefault();
         alert('Pago procesado con éxito. Gracias por tu compra!');
         localStorage.removeItem('carrito');

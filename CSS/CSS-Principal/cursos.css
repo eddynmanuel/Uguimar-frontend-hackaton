@@ -5,17 +5,17 @@
   --primary-color: #1E90FF;
   --secondary-color: #3D5A80;
   --accent-color: #E0FBFC;
-  
+
   /* Neutral Colors */
   --text-color: #333333;
   --bg-color: #F0F4F8;
   --card-bg: #FFFFFF;
-  
+
   /* Additional Colors */
   --dark-blue: #112D4E;
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
-  
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -26,12 +26,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Component Colors */
   --header-bg: var(--dark-blue);
   --footer-bg: var(--dark-blue);
   --button-text: #FFFFFF;
-  
+
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -41,7 +41,7 @@
   /* New gradient backgrounds */
   --gradient-light: linear-gradient(135deg, #F0F4F8, #DBE2EF);
   --gradient-medium: linear-gradient(135deg, #DBE2EF, #98C1D9);
-    
+
   /* Existing color variables remain unchanged */
   --neon-color: #4DFFF3;
 }
@@ -67,18 +67,40 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 0.5em;
   font-weight: 600;
   line-height: 1.2;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.75rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1.25rem; }
-h6 { font-size: 1rem; }
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
 
 /* Header Styles */
 header {
@@ -112,8 +134,10 @@ header {
 
 .logo a {
   display: block;
-  width: 200px; /* Cambia el ancho del área del logo */
-  height: 40px; /* Cambia la altura del área del logo */
+  width: 200px;
+  /* Cambia el ancho del área del logo */
+  height: 40px;
+  /* Cambia la altura del área del logo */
 }
 
 .logo img {
@@ -145,17 +169,21 @@ header {
 
 .join-btn {
   background-color: var(--accent-color);
-  color: var(--dark-blue); /* Changed to dark blue for better contrast */
+  color: var(--dark-blue);
+  /* Changed to dark blue for better contrast */
   padding: 0.5rem 1rem;
   border-radius: var(--border-radius);
   text-decoration: none;
-  font-weight: 600; /* Increased font weight for better visibility */
+  font-weight: 600;
+  /* Increased font weight for better visibility */
   transition: all var(--transition-speed);
 }
 
 .join-btn:hover {
-  background-color: #FFFFFF; /* Changed to white for better contrast on hover */
-  color: var(--primary-color); /* Changed text color on hover */
+  background-color: #FFFFFF;
+  /* Changed to white for better contrast on hover */
+  color: var(--primary-color);
+  /* Changed text color on hover */
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -200,29 +228,40 @@ header {
 
 /* Aquí empieza la modificación para el diseño con Flexbox */
 .content {
-  display: flex;  /* Utilizamos flexbox para alinear los elementos */
-  justify-content: space-between; /* Espacio entre la imagen y el texto */
-  align-items: center; /* Centra verticalmente los elementos */
+  display: flex;
+  /* Utilizamos flexbox para alinear los elementos */
+  justify-content: space-between;
+  /* Espacio entre la imagen y el texto */
+  align-items: center;
+  /* Centra verticalmente los elementos */
 }
 
 .image {
-  order: 1;  /* Mueve la imagen a la derecha */
-  margin-top: -100px; /* Ajusta el valor negativo según sea necesario */
-  margin-left: 100px; /* Ajusta el valor positivo para mover más a la derecha */
+  order: 1;
+  /* Mueve la imagen a la derecha */
+  margin-top: -100px;
+  /* Ajusta el valor negativo según sea necesario */
+  margin-left: 100px;
+  /* Ajusta el valor positivo para mover más a la derecha */
 }
 
 .text {
-  max-width: 600px;  /* Limita el ancho del texto para mejor lectura */
-  font-size: 1rem; /* Tamaño de texto ajustado */
-  line-height: 1.6; /* Espaciado de líneas para mejor legibilidad */
-  order: 1;  /* El texto aparece a la izquierda */
+  max-width: 600px;
+  /* Limita el ancho del texto para mejor lectura */
+  font-size: 1rem;
+  /* Tamaño de texto ajustado */
+  line-height: 1.6;
+  /* Espaciado de líneas para mejor legibilidad */
+  order: 1;
+  /* El texto aparece a la izquierda */
   text-align: justify;
   margin-right: 40px;
   margin-top: -60px;
 }
 
 .image img {
-  max-width: 300px;  /* Tamaño de imagen ajustado */
+  max-width: 300px;
+  /* Tamaño de imagen ajustado */
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -239,34 +278,44 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px; /* Espacio debajo del encabezado */
+  margin-bottom: 20px;
+  /* Espacio debajo del encabezado */
 }
 
 .header-tag {
   font-size: 1.5rem;
-  color: #112D4E; /* Color del texto */
+  color: #112D4E;
+  /* Color del texto */
   display: flex;
   align-items: center;
 }
 
 .header-tag i {
-  font-size: 2rem; /* Tamaño del icono */
-  color: #1E40AF; /* Color del icono */
-  margin-right: 10px; /* Espacio entre el icono y el texto */
+  font-size: 2rem;
+  /* Tamaño del icono */
+  color: #1E40AF;
+  /* Color del icono */
+  margin-right: 10px;
+  /* Espacio entre el icono y el texto */
 }
 
-.line-left, .line-right {
+.line-left,
+.line-right {
   flex: 1;
-  height: 2px; /* Grosor de las líneas */
-  background-color: #1E40AF; /* Color de las líneas */
+  height: 2px;
+  /* Grosor de las líneas */
+  background-color: #1E40AF;
+  /* Color de las líneas */
 }
 
 .line-left {
-  margin-right: 10px; /* Espacio entre la línea izquierda y el texto */
+  margin-right: 10px;
+  /* Espacio entre la línea izquierda y el texto */
 }
 
 .line-right {
-  margin-left: 10px; /* Espacio entre la línea derecha y el texto */
+  margin-left: 10px;
+  /* Espacio entre la línea derecha y el texto */
 }
 
 .path-header {
@@ -277,9 +326,12 @@ header {
 }
 
 .path-icon {
-  font-size: 2rem; /* Tamaño del icono */
-  color: #112D4E; /* Color del icono */
-  margin-right: 10px; /* Espacio entre el icono y el texto */
+  font-size: 2rem;
+  /* Tamaño del icono */
+  color: #112D4E;
+  /* Color del icono */
+  margin-right: 10px;
+  /* Espacio entre el icono y el texto */
 }
 
 .path-description {
@@ -301,12 +353,14 @@ header {
   padding: 1.5rem;
   transition: transform 0.2s ease;
   cursor: pointer;
-  border: 2px solid #1E40AF; /* Agrega un borde alrededor del cuadro */
+  border: 2px solid #1E40AF;
+  /* Agrega un borde alrededor del cuadro */
 }
 
 .course-card:hover {
   transform: translateY(-5px);
-  border-color: #FF8A00; /* Cambia el color del borde al pasar el mouse */
+  border-color: #FF8A00;
+  /* Cambia el color del borde al pasar el mouse */
 }
 
 .course-icon {
@@ -315,6 +369,79 @@ header {
   border-radius: 50%;
   margin-bottom: 1rem;
   background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.course-icon i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+/* Colores específicos para cada icono */
+.course-icon.windows i {
+  color: #0078D6;
+}
+
+.course-icon.linux i {
+  color: #FCC624;
+}
+
+.course-icon.macos i {
+  color: #555555;
+}
+
+.course-icon.terminal i {
+  color: #4D4D4D;
+}
+
+.course-icon.git i {
+  color: #F05032;
+}
+
+.course-icon.frontend i {
+  color: #E34F26;
+}
+
+.course-icon.frontend-practical i {
+  color: #1572B6;
+}
+
+.course-icon.javascript i {
+  color: #F7DF1E;
+}
+
+.course-icon.python i {
+  color: #3776AB;
+}
+
+.course-icon.pandas i {
+  color: #150458;
+}
+
+.course-icon.numpy i {
+  color: #013243;
+}
+
+.course-icon.matplotlib i {
+  color: #11557c;
+}
+
+.course-icon.sklearn i {
+  color: #F89939;
+}
+
+.course-icon.tensorflow i {
+  color: #FF6F00;
+}
+
+.course-icon.data-viz i {
+  color: #E97627;
+}
+
+.course-icon.big-data i {
+  color: #66CCFF;
 }
 
 .course-content h3 {

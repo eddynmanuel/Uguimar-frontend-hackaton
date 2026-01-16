@@ -5,17 +5,17 @@
   --primary-color: #1E90FF;
   --secondary-color: #3D5A80;
   --accent-color: #E0FBFC;
-  
+
   /* Neutral Colors */
   --text-color: #333333;
   --bg-color: #F0F4F8;
   --card-bg: #FFFFFF;
-  
+
   /* Additional Colors */
   --dark-blue: #112D4E;
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
-  
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -26,12 +26,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Component Colors */
   --header-bg: var(--dark-blue);
   --footer-bg: var(--dark-blue);
   --button-text: #FFFFFF;
-  
+
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -77,15 +77,16 @@ body {
 /* Header Styles */
 .encabezado-principal {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   background: var(--dark-blue);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 2000;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -103,8 +104,10 @@ body {
 
 .logo a {
   display: block;
-  width: 200px; /* Cambia el ancho del área del logo */
-  height: 40px; /* Cambia la altura del área del logo */
+  width: 200px;
+  /* Cambia el ancho del área del logo */
+  height: 40px;
+  /* Cambia la altura del área del logo */
 }
 
 .logo img {
@@ -165,6 +168,30 @@ body {
   position: relative;
 }
 
+/* Avatar con inicial del usuario */
+.avatar-inicial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-inicial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+/* Mantener estilos de img por compatibilidad */
 .menu-perfil img {
   width: 40px;
   height: 40px;
@@ -240,6 +267,12 @@ body {
   color: var(--dark-blue);
 }
 
+.navegacion-principal a.active {
+  background-color: var(--primary-color);
+  color: white;
+  box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
+}
+
 /* Contenido principal */
 .contenido-principal {
   background: linear-gradient(135deg, #112D4E, #1E90FF);
@@ -275,6 +308,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: var(--border-radius);
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .seccion-escuelas h2 {
@@ -284,10 +318,64 @@ body {
   text-align: center;
 }
 
+/* Contenedor del carrusel */
+.carrusel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Flechas de navegación */
+.carrusel-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.carrusel-flecha:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carrusel-flecha.izquierda {
+  left: -15px;
+}
+
+.carrusel-flecha.derecha {
+  right: -15px;
+}
+
 .grid-escuelas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
   gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 0.5rem;
+  /* Ocultar scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
+}
+
+.grid-escuelas::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
 }
 
 .escuela {
@@ -296,6 +384,9 @@ body {
   padding: 1.5rem;
   box-shadow: var(--box-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 220px;
+  max-width: 220px;
+  flex-shrink: 0;
 }
 
 .escuela:hover {
@@ -311,14 +402,49 @@ body {
 
 .escuela h3 {
   color: var(--secondary-color);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
 .escuela p {
   color: var(--text-color);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-bottom: 1rem;
+}
+
+/* Tarjeta Ver Más */
+.escuela-ver-mas {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 180px;
+  max-width: 180px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-align: center;
+}
+
+.escuela-ver-mas:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(30, 144, 255, 0.4);
+}
+
+.escuela-ver-mas i {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 0.75rem;
+}
+
+.escuela-ver-mas span {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 
@@ -336,21 +462,37 @@ body {
   color: var(--dark-blue);
 }
 
-.grid-cursos {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+.grid-cursos,
+.grid-cursos-destacados {
+  display: flex;
   gap: 1.5rem;
-  padding: 0 2rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 0.5rem;
+  /* Ocultar scrollbar */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE/Edge */
 }
 
-.tarjeta-curso {
+.grid-cursos::-webkit-scrollbar,
+.grid-cursos-destacados::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
+}
+
+.tarjeta-curso,
+.curso {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   cursor: pointer;
+  min-width: 250px;
+  max-width: 250px;
+  flex-shrink: 0;
 }
 
 .tarjeta-curso:hover {
@@ -453,7 +595,7 @@ body {
     width: 100%;
     margin: 0.5rem 0;
   }
-  
+
   .barra-busqueda input {
     width: 100%;
     font-size: 0.9rem;

@@ -33,7 +33,7 @@ input {
   transform: translate(-50%, -50%);
   left: 75%;
   width: 50%;
-  transition: 1s 0.7s ease-in-out;
+  transition: 1s ease-in-out;
   display: grid;
   grid-template-columns: 1fr;
   z-index: 5;
@@ -45,7 +45,7 @@ form {
   justify-content: center;
   flex-direction: column;
   padding: 0rem 5rem;
-  transition: all 0.2s 0.7s;
+  transition: all 0.5s ease-in-out;
   overflow: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -83,7 +83,7 @@ form.sign-in-form {
   text-align: center;
   line-height: 55px;
   color: #acacac;
-  transition: 0.5s;
+  transition: 0.3s ease-in-out;
   font-size: 1.1rem;
 }
 
@@ -114,11 +114,12 @@ form.sign-in-form {
   font-weight: 600;
   margin: 10px 0;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.3s ease-in-out;
 }
 
 .btn:hover {
   background-color: #4d84e2;
+  transform: scale(1.02);
 }
 
 .panels-container {
@@ -139,16 +140,15 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: url('../../RECURSOS/Recursos\ -\ Principal/login-logo.webp');
-  transition: 1.8s ease-in-out;
+  background-image: url('../../RECURSOS/Recursos - Principal/login-logo.webp');
+  transition: 1s ease-in-out;
   border-radius: 50%;
   z-index: 6;
 }
 
 .image {
   width: 100%;
-  transition: transform 1.1s ease-in-out;
-  transition-delay: 0.4s;
+  transition: transform 1s ease-in-out;
 }
 
 .panel {
@@ -171,21 +171,20 @@ form.sign-in-form {
 }
 
 .panel .content {
-  color: #5FE3D3; /* Updated to match the turquoise in the image */
-  transition: transform 0.9s ease-in-out;
-  transition-delay: 0.6s;
+  color: #5FE3D3;
+  transition: transform 1s ease-in-out;
 }
 
 .panel h3 {
-  color: #333; /* Updated to match the turquoise in the image */
+  color: #ffffff;
   font-weight: 600;
   line-height: 1;
   font-size: 1.5rem;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Added for better readability */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .panel p {
-  color: #333; /* Kept dark for readability */
+  color: #ffffff;
   font-size: 0.95rem;
   padding: 0.7rem 0;
 }
@@ -193,17 +192,17 @@ form.sign-in-form {
 .btn.transparent {
   margin: 0;
   background: none;
-  border: 2px solid #333; /* Updated to match the turquoise in the image */
-  color: #444; /* Text color updated to match */
+  border: 2px solid #fff;
+  color: #ffffff;
   width: 130px;
   height: 41px;
   font-weight: 600;
   font-size: 0.8rem;
-  transition: background-color 0.3s ease; /* Added for smooth hover effect */
+  transition: 0.3s ease-in-out;
 }
 
 .btn.transparent:hover {
-  background-color: rgba(95, 227, 211, 0.1); /* Slight background on hover */
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .right-panel .image,
@@ -211,7 +210,7 @@ form.sign-in-form {
   transform: translateX(800px);
 }
 
-/* ANIMATION */
+/* Animaciones */
 
 .container.sign-up-mode:before {
   transform: translate(100%, -50%);
@@ -250,7 +249,7 @@ form.sign-in-form {
   pointer-events: all;
 }
 
-/* Estilo para el campo de fecha */
+/* Campo de fecha */
 input[type="date"] {
   color: #aaa;
 }
@@ -266,4 +265,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   right: 0;
   top: 0;
   width: auto;
+}
+
+/* Cuarto de círculo decorativo */
+.container::after {
+  content: "";
+  position: absolute;
+  width: 1840px;
+  height: 1840px;
+  top: -800px;
+  left: -800px;
+  border-radius: 50%;
+  background-image: url('../../RECURSOS/Recursos - Principal/robot.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transition: 1s ease-in-out;
+}
+
+.container.sign-up-mode::after {
+  left: auto;
+  right: -800px;
+  top: -800px;
 }

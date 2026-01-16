@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
     const navegacionPrincipal = document.getElementById('main-nav');
     const profileToggle = document.getElementById('profile-toggle');
@@ -6,25 +6,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const carritoToggle = document.getElementById('carrito-toggle');
     const contadorCarrito = document.getElementById('contador-carrito');
     const botonesElegir = document.querySelectorAll('.btn-elegir');
-    
-    const searchForm = document.querySelector('form.barra-busqueda');
+    const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+
     const searchInput = document.getElementById('busqueda-curso');
 
-    console.log('Search form:', searchForm); // Debugging line
-
     // Función para toggle del menú de navegación
-    menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navegacionPrincipal.classList.toggle('active');
     });
 
     // Función para toggle del menú de perfil
-    profileToggle.addEventListener('click', function(e) {
+    profileToggle.addEventListener('click', function (e) {
         e.stopPropagation();
         menuDesplegable.classList.toggle('active');
     });
 
     // Cerrar el menú de perfil al hacer clic fuera de él
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!menuDesplegable.contains(e.target) && e.target !== profileToggle) {
             menuDesplegable.classList.remove('active');
         }
@@ -33,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Cerrar el menú de navegación en móviles al hacer clic en un enlace
     const navLinks = navegacionPrincipal.querySelectorAll('a');
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function () {
             if (window.innerWidth <= 768) {
                 navegacionPrincipal.classList.remove('active');
             }
@@ -41,11 +39,40 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Ajustar la visualización del menú al cambiar el tamaño de la ventana
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             navegacionPrincipal.classList.remove('active');
         }
     });
+
+    // Función para actualizar el nombre de usuario
+    function updateUserName() {
+        const userNameElement = document.getElementById('userName');
+        const userName = localStorage.getItem('userName');
+        if (userName && userNameElement) {
+            userNameElement.textContent = userName;
+        }
+    }
+
+    // Función para cerrar sesión
+    function cerrarSesion() {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userLastName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userRole');
+        window.location.href = '../Principal/Principal.html';
+    }
+
+    // Agregar evento de clic al botón de cerrar sesión
+    if (cerrarSesionBtn) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            cerrarSesion();
+        });
+    }
+
+    updateUserName();
 
     // Funcionalidad del carrito
     function actualizarContadorCarrito() {
@@ -56,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function agregarAlCarrito(plan, precio) {
         let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         const planExistente = carrito.find(item => item.nombre === plan);
-        
+
         if (!planExistente) {
             carrito.push({ id: Date.now().toString(), nombre: plan, precio: precio });
             localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -67,13 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    carritoToggle.addEventListener('click', function() {
+    carritoToggle.addEventListener('click', function () {
         window.location.href = 'carrito.html';
     });
 
     // Agregar planes al carrito
     botonesElegir.forEach(boton => {
-        boton.addEventListener('click', function() {
+        boton.addEventListener('click', function () {
             const plan = this.closest('.plan');
             const nombrePlan = plan.dataset.plan;
             const precioPlan = parseFloat(plan.dataset.precio);
@@ -84,28 +111,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar el contador del carrito
     actualizarContadorCarrito();
 
- 
-
     // Funcionalidad de búsqueda
-    if (searchInput) { searchInput.addEventListener('keypress', function(e) { if (e.key === 'Enter') 
-        { e.preventDefault(); const searchTerm = this.value.trim();
-             if (searchTerm)  { window.location.href = `busqueda.html?q=${encodeURIComponent(searchTerm)}`; } } }); } 
-            
-    else { console.error('No se encontró la entrada de búsqueda'); }
-
-
-    
-        document.getElementById('btn-elegir-basico').addEventListener('click', function() {
-            window.location.href = '../../HTML/Login-In/plan1.html';
+    if (searchInput) {
+        searchInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const searchTerm = this.value.trim();
+                if (searchTerm) {
+                    window.location.href = `busqueda.html?q=${encodeURIComponent(searchTerm)}`;
+                }
+            }
         });
-    
-        document.getElementById('btn-elegir-avanzado4').addEventListener('click', function() {
-            window.location.href = '../../HTML/Login-In/Plan2.html';
+    }
+
+    // Botones de planes
+    const btnBasico = document.getElementById('btn-elegir-basico');
+    const btnAvanzado4 = document.getElementById('btn-elegir-avanzado4');
+    const btnAvanzadoDuo = document.getElementById('btn-avanzado-duo');
+
+    if (btnBasico) {
+        btnBasico.addEventListener('click', function () {
+            window.location.href = 'plan1.html';
         });
+    }
 
-            document.getElementById('btn-avanzado-duo').addEventListener('click', function() {
-                window.location.href = '../../HTML/Login-In/Plan3.html';
-            });
+    if (btnAvanzado4) {
+        btnAvanzado4.addEventListener('click', function () {
+            window.location.href = 'Plan2.html';
+        });
+    }
 
-        
+    if (btnAvanzadoDuo) {
+        btnAvanzadoDuo.addEventListener('click', function () {
+            window.location.href = 'Plan3.html';
+        });
+    }
 });

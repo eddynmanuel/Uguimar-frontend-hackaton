@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const previewContainer = document.getElementById("previewContainer");
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
 
-    // Simulación de cursos almacenados (puedes adaptarlo para que se carguen desde tu sistema)
+    // Cursos simulados
     const courses = ["JavaScript Básico", "HTML Avanzado", "CSS para Principiantes", "Desarrollo Web Completo"];
 
     // Cargar cursos en el selector
@@ -19,10 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Generar vista previa y PDF del certificado
     const generateCertificate = (name, course, date) => {
-        const jsPDF = window.jspdf.jsPDF; // Asegúrate de incluir jsPDF en tu proyecto
+        const jsPDF = window.jspdf.jsPDF;
         const doc = new jsPDF();
 
-        // Contenido del certificado
         doc.setFont("times", "bold");
         doc.setFontSize(24);
         doc.text("Certificado de Reconocimiento", 105, 40, null, null, "center");
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         doc.text(`Por culminar satisfactoriamente el curso:`, 105, 100, null, null, "justified");
         doc.text(course, 105, 120, null, null, "center");
 
-        doc.setFont("times","normal");
+        doc.setFont("times", "normal");
         doc.text(`Fecha de Inicio: ${date}`, 105, 130, null, null, "center");
 
         doc.setFont("times", "normal");
@@ -42,10 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         doc.text("Firma del Instructor", 50, 200);
         doc.text("Firma del Administrador", 150, 200);
 
-        // Generar vista previa
         previewContainer.innerHTML = '<p>Vista previa generada. Descarga el certificado para verlo completo.</p>';
-
-        // Descargar el certificado como PDF
         doc.save(`Certificado_${name}.pdf`);
     };
 
@@ -63,55 +59,34 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Por favor, complete todos los campos.");
         }
     });
-// Add this at the end of the DOMContentLoaded event listener
-function updateUserName() {
-    const userNameElement = document.getElementById('userName');
-    const userName = localStorage.getItem('userName');
-    if (userName) {
-        userNameElement.textContent = userName;
+
+    // Función para actualizar el nombre de usuario
+    function updateUserName() {
+        const userNameElement = document.getElementById('userName');
+        const userName = localStorage.getItem('userName');
+        if (userName && userNameElement) {
+            userNameElement.textContent = userName;
+        }
     }
-  }
-  
- 
 
-  // Función para cerrar sesión
-  function cerrarSesion() {
-      // Limpiar datos de sesión del localStorage
-      localStorage.removeItem('userId');
-      localStorage.removeItem('userName');
-      localStorage.removeItem('userLastName');
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('userRole');
+    // Función para cerrar sesión
+    function cerrarSesion() {
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
+        localStorage.removeItem('userLastName');
+        localStorage.removeItem('userEmail');
+        localStorage.removeItem('userRole');
+        window.location.href = '../Principal/Principal.html';
+    }
 
-      // Redirigir al usuario a la página de inicio de sesión
-      window.location.href = '/Principal';
-  }
+    // Agregar evento de clic al botón de cerrar sesión
+    if (cerrarSesionBtn) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            cerrarSesion();
+        });
+    }
 
-  // Agregar evento de clic al botón de cerrar sesión
-  if (cerrarSesionBtn) {
-      cerrarSesionBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          cerrarSesion();
-      });
-  }
-
-  // Función para actualizar el nombre de usuario en el menú
-  function updateUserName() {
-      const userNameElement = document.getElementById('userName');
-      const userName = localStorage.getItem('userName');
-      if (userName && userNameElement) {
-          userNameElement.textContent = userName;
-      }
-  }
-
-  // Llamar a la función para actualizar el nombre de usuario
-  updateUserName();
-
-
-
-  // Call the function to update the user name
-  updateUserName();
-  
-    // Cargar cursos al inicio
+    updateUserName();
     loadCourses();
 });

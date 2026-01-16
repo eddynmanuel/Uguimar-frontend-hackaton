@@ -10,88 +10,68 @@ sign_in_btn.addEventListener("click", () => {
     container.classList.remove("sign-up-mode");
 });
 
-// Registro de usuario
-document.getElementById('register-form').addEventListener('submit', async (e) => {
+// Registro de usuario (simulado con localStorage)
+document.getElementById('register-form').addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    try {
-        const formData = new FormData(e.target);
-        const userData = Object.fromEntries(formData.entries());
 
-        // Validación básica del lado del cliente
-        if (!userData.nombre || !userData.apellido || !userData.fecha_nacimiento || 
-            !userData.telefono || !userData.correo || !userData.contrasena) {
-            alert('Por favor, complete todos los campos obligatorios');
-            return;
-        }
+    const formData = new FormData(e.target);
+    const userData = Object.fromEntries(formData.entries());
 
-        const response = await fetch('http://localhost:3000/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(userData),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert('Registro exitoso');
-            // Limpiar el formulario
-            e.target.reset();
-            // Cambiar a la vista de inicio de sesión
-            container.classList.remove("sign-up-mode");
-        } else {
-            mostrarError(`Error: ${data.error}`);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        mostrarError('Error al procesar la solicitud. Por favor, intente nuevamente.');
+    // Validación básica del lado del cliente
+    if (!userData.nombre || !userData.apellido || !userData.fecha_nacimiento ||
+        !userData.telefono || !userData.correo || !userData.contrasena) {
+        alert('Por favor, complete todos los campos obligatorios');
+        return;
     }
+
+    // Simular registro guardando en localStorage
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    // Verificar si el correo ya existe
+    if (usuarios.find(u => u.correo === userData.correo)) {
+        mostrarError('Este correo electrónico ya está registrado');
+        return;
+    }
+
+    // Generar un ID único
+    userData.id = Date.now().toString();
+    userData.rol = 'estudiante';
+
+    usuarios.push(userData);
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+
+    alert('Registro exitoso');
+    e.target.reset();
+    container.classList.remove("sign-up-mode");
 });
 
-// Inicio de sesión
-document.getElementById('login-form').addEventListener('submit', async (e) => {
+// Inicio de sesión (simulado con localStorage)
+document.getElementById('login-form').addEventListener('submit', (e) => {
     e.preventDefault();
 
-    try {
-        const loginData = {
-            email: document.getElementById('login-email').value,
-            contrasena: document.getElementById('login-password').value
-        };
+    const loginData = {
+        email: document.getElementById('login-email').value,
+        contrasena: document.getElementById('login-password').value
+    };
 
-        const response = await fetch('http://localhost:3000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(loginData)
-        });
+    // Buscar usuario en localStorage
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+    const usuario = usuarios.find(u =>
+        u.correo === loginData.email && u.contrasena === loginData.contrasena
+    );
 
-        const data = await response.json();
+    if (usuario) {
+        // Guardar información del usuario en localStorage
+        localStorage.setItem('userId', usuario.id);
+        localStorage.setItem('userName', usuario.nombre);
+        localStorage.setItem('userLastName', usuario.apellido);
+        localStorage.setItem('userEmail', usuario.correo);
+        localStorage.setItem('userRole', usuario.rol);
 
-        if (response.ok && data.success) {
-            // Guardar información del usuario en localStorage
-            localStorage.setItem('userId', data.id);
-            localStorage.setItem('userName', data.nombre);
-            localStorage.setItem('userLastName', data.apellido);
-            localStorage.setItem('userEmail', data.email);
-            localStorage.setItem('userRole', data.rol);
-
-            alert(`Bienvenido, ${data.nombre} ${data.apellido}!`);
-            window.location.href = '/HTML/Login-In/inicioj.html';
-        } else {
-            if (response.status === 401) {
-                mostrarError('Credenciales inválidas. Por favor, verifique su email y contraseña.');
-            } else if (response.status === 403) {
-                mostrarError('Acceso denegado. No tiene permisos de estudiante.');
-            } else {
-                mostrarError(data.error || 'Error al iniciar sesión');
-            }
-        }
-    } catch (error) {
-        console.error('Error:', error);
-        mostrarError('Error al procesar la solicitud. Por favor, intente nuevamente.');
+        alert(`Bienvenido, ${usuario.nombre} ${usuario.apellido}!`);
+        window.location.href = '../Login-In/inicioj.html';
+    } else {
+        mostrarError('Credenciales inválidas. Por favor, verifique su email y contraseña.');
     }
 });
 
@@ -99,7 +79,7 @@ function mostrarError(mensaje) {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = mensaje;
-    
+
     const form = document.querySelector('.sign-in-form');
     form.insertBefore(errorDiv, form.firstChild);
 
