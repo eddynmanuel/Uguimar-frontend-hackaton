@@ -1,102 +1,200 @@
+// Datos de las escuelas con IDs numéricos que coinciden con ruta.js
+const ESCUELAS = [
+    {
+        id: 1,
+        nombre: 'Escuela de Desarrollo Web',
+        descripcion: 'Domina HTML, CSS, JavaScript y los frameworks más populares para crear aplicaciones web modernas.',
+        icono: 'fa-code',
+        rutas: 6,
+        cursos: 45
+    },
+    {
+        id: 2,
+        nombre: 'Escuela de Data Science',
+        descripcion: 'Aprende Python, estadística, machine learning y análisis de datos.',
+        icono: 'fa-chart-bar',
+        rutas: 5,
+        cursos: 38
+    },
+    {
+        id: 3,
+        nombre: 'Escuela de Inteligencia Artificial',
+        descripcion: 'Explora el mundo de la IA, deep learning y redes neuronales.',
+        icono: 'fa-robot',
+        rutas: 5,
+        cursos: 32
+    },
+    {
+        id: 4,
+        nombre: 'Escuela de Ciberseguridad',
+        descripcion: 'Protege sistemas y datos con técnicas de ethical hacking y seguridad.',
+        icono: 'fa-shield-alt',
+        rutas: 5,
+        cursos: 28
+    },
+    {
+        id: 5,
+        nombre: 'Escuela de Marketing Digital',
+        descripcion: 'Domina SEO, SEM, redes sociales y estrategias de crecimiento digital.',
+        icono: 'fa-bullhorn',
+        rutas: 6,
+        cursos: 35
+    },
+    {
+        id: 6,
+        nombre: 'Escuela de Desarrollo Móvil',
+        descripcion: 'Crea aplicaciones nativas e híbridas para iOS y Android.',
+        icono: 'fa-mobile-alt',
+        rutas: 4,
+        cursos: 28
+    },
+    {
+        id: 7,
+        nombre: 'Escuela de Cloud Computing',
+        descripcion: 'AWS, Azure, Google Cloud y arquitectura de servicios en la nube.',
+        icono: 'fa-cloud',
+        rutas: 5,
+        cursos: 30
+    },
+    {
+        id: 8,
+        nombre: 'Escuela de DevOps',
+        descripcion: 'CI/CD, Docker, Kubernetes y automatización de infraestructura.',
+        icono: 'fa-cogs',
+        rutas: 4,
+        cursos: 25
+    },
+    {
+        id: 9,
+        nombre: 'Escuela de Diseño UX/UI',
+        descripcion: 'Diseño de interfaces, experiencia de usuario y prototipado.',
+        icono: 'fa-palette',
+        rutas: 4,
+        cursos: 22
+    },
+    {
+        id: 10,
+        nombre: 'Escuela de Blockchain',
+        descripcion: 'Criptomonedas, smart contracts y desarrollo Web3.',
+        icono: 'fa-link',
+        rutas: 3,
+        cursos: 18
+    }
+];
+
 document.addEventListener('DOMContentLoaded', function () {
+    // Elementos del DOM
     const menuToggle = document.getElementById('menu-toggle');
     const navegacionPrincipal = document.getElementById('main-nav');
     const profileToggle = document.getElementById('profile-toggle');
     const menuDesplegable = document.getElementById('profile-dropdown');
-    const searchForm = document.getElementById('search-form');
-    const inputBusqueda = document.getElementById('busqueda-curso');
-    const escuelaTitulo = document.getElementById('escuela-titulo');
-    const escuelaDescripcion = document.getElementById('escuela-descripcion');
-    const listaRutas = document.getElementById('lista-rutas');
     const contadorCarrito = document.getElementById('contador-carrito');
     const carritoToggle = document.getElementById('carrito-toggle');
     const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+    const listaEscuelas = document.getElementById('lista-escuelas');
 
-    // Get the school ID from the URL (simulated)
-    const escuelaId = '1';
+    // Cargar escuelas
+    cargarEscuelas();
 
-    function cargarEscuelaYRutas() {
-        // Datos simulados
-        const escuela = {
-            name: 'Escuela de Programación Easycode',
-            description: 'Una escuela de programación de vanguardia que te prepara para la industria tecnológica.'
-        };
-        escuelaTitulo.textContent = escuela.name;
-        escuelaDescripcion.textContent = escuela.description;
-        document.title = `Easycode - ${escuela.name}`;
+    // Actualizar nombre de usuario
+    actualizarNombreUsuario();
 
-        // Rutas simuladas
-        const rutas = [
-            { id: 1, name: 'Ruta de Frontend', description: 'Aprende a construir interfaces web.' },
-            { id: 2, name: 'Ruta de Backend', description: 'Desarrolla aplicaciones de servidor y bases de datos.' },
-            { id: 3, name: 'Ruta Full Stack', description: 'Conviértete en un desarrollador completo.' }
-        ];
-
-        listaRutas.innerHTML = '';
-        rutas.forEach(ruta => {
-            const rutaElement = document.createElement('div');
-            rutaElement.className = 'ruta';
-            rutaElement.innerHTML = `
-                <h3>${ruta.name}</h3>
-                <p>${ruta.description}</p>
-                <a href="cursos.html?id=${ruta.id}" class="btn-explorar">Ver Ruta</a>
-            `;
-            listaRutas.appendChild(rutaElement);
+    // Toggle menú móvil
+    if (menuToggle) {
+        menuToggle.addEventListener('click', function () {
+            navegacionPrincipal.classList.toggle('active');
         });
     }
 
-    if (escuelaId) {
-        cargarEscuelaYRutas();
-    } else {
-        escuelaTitulo.textContent = 'Escuela no encontrada';
-        listaRutas.innerHTML = '<p>No se pudo encontrar la escuela especificada.</p>';
+    // Toggle menú perfil
+    if (profileToggle) {
+        profileToggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            menuDesplegable.classList.toggle('active');
+        });
     }
 
-    // Función para actualizar el nombre de usuario
-    function updateUserName() {
-        const userNameElement = document.getElementById('userName');
-        const userName = localStorage.getItem('userName');
-        if (userName && userNameElement) {
-            userNameElement.textContent = userName;
-        }
-    }
-
-    updateUserName();
-
-    // Function to toggle the navigation menu
-    menuToggle.addEventListener('click', function () {
-        navegacionPrincipal.classList.toggle('active');
-    });
-
-    // Function to toggle the profile menu
-    profileToggle.addEventListener('click', function (e) {
-        e.stopPropagation();
-        menuDesplegable.classList.toggle('active');
-    });
-
-    // Close the profile menu when clicking outside of it
+    // Cerrar menú al hacer clic fuera
     document.addEventListener('click', function (e) {
-        if (!menuDesplegable.contains(e.target) && e.target !== profileToggle) {
+        if (menuDesplegable && !menuDesplegable.contains(e.target) && e.target !== profileToggle) {
             menuDesplegable.classList.remove('active');
         }
     });
 
-    // Function to search courses and redirect to the results page
-    searchForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const searchTerm = inputBusqueda.value.trim();
-        if (searchTerm) {
-            window.location.href = `busqueda.html?q=${encodeURIComponent(searchTerm)}`;
-        }
-    });
+    // Contador carrito
+    actualizarContadorCarrito();
 
-    // Function to update the cart counter
-    function actualizarContadorCarrito() {
-        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-        contadorCarrito.textContent = carrito.length;
+    // Click en carrito
+    if (carritoToggle) {
+        carritoToggle.addEventListener('click', function () {
+            window.location.href = 'carrito.html';
+        });
     }
 
-    // Función para cerrar sesión
+    // Cerrar sesión
+    if (cerrarSesionBtn) {
+        cerrarSesionBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            cerrarSesion();
+        });
+    }
+
+    // Funciones
+    function cargarEscuelas() {
+        if (!listaEscuelas) return;
+
+        listaEscuelas.innerHTML = '';
+
+        ESCUELAS.forEach(escuela => {
+            const tarjeta = document.createElement('div');
+            tarjeta.className = 'tarjeta-escuela';
+            tarjeta.innerHTML = `
+                <div class="icono-escuela">
+                    <i class="fas ${escuela.icono}"></i>
+                </div>
+                <h3>${escuela.nombre}</h3>
+                <p>${escuela.descripcion}</p>
+                <div class="info-escuela">
+                    <span><i class="fas fa-route"></i> ${escuela.rutas} Rutas</span>
+                    <span><i class="fas fa-book"></i> ${escuela.cursos} Cursos</span>
+                </div>
+                <a href="ruta.html?escuela_id=${escuela.id}" class="btn-explorar-escuela">
+                    Explorar Escuela
+                </a>
+            `;
+
+            // Hacer la tarjeta clickeable
+            tarjeta.addEventListener('click', function (e) {
+                if (e.target.tagName !== 'A') {
+                    window.location.href = `ruta.html?escuela_id=${escuela.id}`;
+                }
+            });
+
+            listaEscuelas.appendChild(tarjeta);
+        });
+    }
+
+    function actualizarNombreUsuario() {
+        const userNameElement = document.getElementById('userName');
+        const userName = localStorage.getItem('userName');
+        if (userName && userNameElement) {
+            userNameElement.textContent = userName;
+
+            // Actualizar avatar con inicial
+            const avatarElement = document.getElementById('profile-toggle');
+            if (avatarElement && avatarElement.classList.contains('avatar-inicial')) {
+                avatarElement.textContent = userName.charAt(0).toUpperCase();
+            }
+        }
+    }
+
+    function actualizarContadorCarrito() {
+        if (contadorCarrito) {
+            const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            contadorCarrito.textContent = carrito.length;
+        }
+    }
+
     function cerrarSesion() {
         localStorage.removeItem('userId');
         localStorage.removeItem('userName');
@@ -106,24 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.href = '../Principal/Principal.html';
     }
 
-    // Agregar evento de clic al botón de cerrar sesión
-    if (cerrarSesionBtn) {
-        cerrarSesionBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            cerrarSesion();
-        });
-    }
-
-    // Initialize the cart counter
-    actualizarContadorCarrito();
-
-    // Redirect to the cart page when clicking on the cart icon
-    carritoToggle.addEventListener('click', function () {
-        window.location.href = 'carrito.html';
-    });
-
-    // Close the navigation menu on mobile when clicking a link
-    const navLinks = navegacionPrincipal.querySelectorAll('a');
+    // Cerrar navegación en móvil al hacer clic en link
+    const navLinks = document.querySelectorAll('.navegacion-principal a');
     navLinks.forEach(link => {
         link.addEventListener('click', function () {
             if (window.innerWidth <= 768) {
@@ -132,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Adjust menu display on window resize
+    // Ajustar menú en resize
     window.addEventListener('resize', function () {
         if (window.innerWidth > 768) {
             navegacionPrincipal.classList.remove('active');

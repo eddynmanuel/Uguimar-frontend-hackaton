@@ -26,26 +26,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Datos simulados de cursos destacados
     const CURSOS_DESTACADOS = [
-        { id: 1, nombre: 'JavaScript Moderno', instructor: 'Juan Pérez', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 2, nombre: 'Python para Principiantes', instructor: 'María García', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 3, nombre: 'React.js Avanzado', instructor: 'Carlos López', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 4, nombre: 'Bases de Datos SQL', instructor: 'Ana Martínez', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 5, nombre: 'Vue.js desde Cero', instructor: 'Roberto Díaz', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 6, nombre: 'TypeScript Profesional', instructor: 'Elena Ruiz', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 7, nombre: 'Angular Completo', instructor: 'Fernando Torres', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 8, nombre: 'Docker y Kubernetes', instructor: 'Patricia Gómez', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' }
+        { id: 1, nombre: 'JavaScript Moderno', instructor: 'Juan Pérez', videoUrl: 'https://youtube.com/watch?v=W6NZfCO5SIk' },
+        { id: 2, nombre: 'Python para Principiantes', instructor: 'María García', videoUrl: 'https://youtube.com/watch?v=_uQrJ0TkZlc' },
+        { id: 3, nombre: 'React.js Avanzado', instructor: 'Carlos López', videoUrl: 'https://youtube.com/watch?v=SqcY0GlETPk' },
+        { id: 4, nombre: 'Bases de Datos SQL', instructor: 'Ana Martínez', videoUrl: 'https://youtube.com/watch?v=HXV3zeQKqGY' },
+        { id: 5, nombre: 'Vue.js desde Cero', instructor: 'Roberto Díaz', videoUrl: 'https://youtube.com/watch?v=FXpIoQ_rT_c' },
+        { id: 6, nombre: 'TypeScript Profesional', instructor: 'Elena Ruiz', videoUrl: 'https://youtube.com/watch?v=BwuLxPH8IDs' },
+        { id: 7, nombre: 'Angular Completo', instructor: 'Fernando Torres', videoUrl: 'https://youtube.com/watch?v=3qBXWUpoPHo' },
+        { id: 8, nombre: 'Docker y Kubernetes', instructor: 'Patricia Gómez', videoUrl: 'https://youtube.com/watch?v=fqMOX6JJhGo' }
     ];
 
     // Datos simulados de cursos recomendados
     const CURSOS_RECOMENDADOS = [
-        { id: 9, nombre: 'Node.js y Express', instructor: 'Pedro Ruiz', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 10, nombre: 'Machine Learning Básico', instructor: 'Laura Sánchez', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 11, nombre: 'CSS Avanzado', instructor: 'Miguel Torres', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 12, nombre: 'Git y GitHub', instructor: 'Sofía Vargas', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 13, nombre: 'AWS Cloud Practitioner', instructor: 'Daniel Herrera', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 14, nombre: 'Figma para Diseñadores', instructor: 'Camila Ortiz', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 15, nombre: 'Flutter y Dart', instructor: 'Andrés Castro', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' },
-        { id: 16, nombre: 'Ethical Hacking', instructor: 'Valeria Mendez', videoUrl: 'https://youtube.com/watch?v=dQw4w9WgXcQ' }
+        { id: 9, nombre: 'Node.js y Express', instructor: 'Pedro Ruiz', videoUrl: 'https://youtube.com/watch?v=Oe421EPjeBE' },
+        { id: 10, nombre: 'Machine Learning Básico', instructor: 'Laura Sánchez', videoUrl: 'https://youtube.com/watch?v=ukzFI9rgwfU' },
+        { id: 11, nombre: 'CSS Avanzado', instructor: 'Miguel Torres', videoUrl: 'https://youtube.com/watch?v=1Rs2ND1ryYc' },
+        { id: 12, nombre: 'Git y GitHub', instructor: 'Sofía Vargas', videoUrl: 'https://youtube.com/watch?v=RGOj5yH7evk' },
+        { id: 13, nombre: 'AWS Cloud Practitioner', instructor: 'Daniel Herrera', videoUrl: 'https://youtube.com/watch?v=SOTamWNgDKc' },
+        { id: 14, nombre: 'Figma para Diseñadores', instructor: 'Camila Ortiz', videoUrl: 'https://youtube.com/watch?v=FTFaQWZBqQ8' },
+        { id: 15, nombre: 'Flutter y Dart', instructor: 'Andrés Castro', videoUrl: 'https://youtube.com/watch?v=VPvVD8t02U8' },
+        { id: 16, nombre: 'Ethical Hacking', instructor: 'Valeria Mendez', videoUrl: 'https://youtube.com/watch?v=3Kq1MIfTWCE' }
     ];
 
     // Function to generate thumbnail URL from video URL
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `;
         cursoElement.addEventListener('click', () => {
-            window.location.href = `cursoContenido.html?videoUrl=${encodeURIComponent(curso.videoUrl)}`;
+            window.location.href = `contenido.html?videoUrl=${encodeURIComponent(curso.videoUrl)}`;
         });
         return cursoElement;
     }
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <span>Ver todas</span>
         `;
         verMasElement.addEventListener('click', () => {
-            window.location.href = 'escuelas.html';
+            window.location.href = 'escuela.html';
         });
         listaEscuelas.appendChild(verMasElement);
     }

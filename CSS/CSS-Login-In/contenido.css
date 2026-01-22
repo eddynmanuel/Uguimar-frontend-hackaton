@@ -5,17 +5,17 @@
   --primary-color: #1E90FF;
   --secondary-color: #3D5A80;
   --accent-color: #E0FBFC;
-  
+
   /* Neutral Colors */
   --text-color: #333333;
   --bg-color: #F0F4F8;
   --card-bg: #FFFFFF;
-  
+
   /* Additional Colors */
   --dark-blue: #112D4E;
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
-  
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -26,12 +26,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Component Colors */
   --header-bg: var(--dark-blue);
   --footer-bg: var(--dark-blue);
   --button-text: #FFFFFF;
-  
+
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -57,12 +57,14 @@ body {
   line-height: 1.6;
   width: 100%;
   min-height: 100vh;
-  overflow-x: hidden; /* Previene scroll horizontal */
+  overflow-x: hidden;
+  /* Previene scroll horizontal */
 }
 
 .container {
   width: 100%;
-  max-width: 100%; /* Cambiar de 1200px a 100% */
+  max-width: 100%;
+  /* Cambiar de 1200px a 100% */
   margin: 0;
   padding: 0;
 }
@@ -105,8 +107,10 @@ body {
 
 .logo a {
   display: block;
-  width: 200px; /* Cambia el ancho del área del logo */
-  height: 40px; /* Cambia la altura del área del logo */
+  width: 200px;
+  /* Cambia el ancho del área del logo */
+  height: 40px;
+  /* Cambia la altura del área del logo */
 }
 
 .logo img {
@@ -273,7 +277,8 @@ body {
 
 .video-container {
   position: relative;
-  padding-bottom: 56.25%; /* Ratio de 16:9 */
+  padding-bottom: 56.25%;
+  /* Ratio de 16:9 */
   height: 0;
   overflow: hidden;
   max-width: 100%;
@@ -298,12 +303,14 @@ body {
 }
 
 .nav-button {
-  flex: 1; /* Ocupa el mismo espacio ambos botones */
+  flex: 1;
+  /* Ocupa el mismo espacio ambos botones */
   padding: 15px;
   background-color: #3498db;
   color: white;
   border: none;
-  border-radius: 0 0 8px 8px; /* Borde redondeado solo abajo para simular continuidad con el video */
+  border-radius: 0 0 8px 8px;
+  /* Borde redondeado solo abajo para simular continuidad con el video */
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -316,7 +323,8 @@ body {
 
 .previous-class {
   background-color: #95a5a6;
-  border-right: 1px solid white; /* Separación visual entre botones */
+  border-right: 1px solid white;
+  /* Separación visual entre botones */
 }
 
 .previous-class:hover {
@@ -328,37 +336,61 @@ body {
 }
 
 .course-header {
-  display: flex; /* Organizar título e instructor en línea */
-  align-items: center; /* Alinear verticalmente al centro */
-  gap: 20px; /* Espaciado entre el título y el instructor */
-  margin-bottom: 20px; /* Separación del contenido inferior */
+  display: flex;
+  /* Organizar título e instructor en línea */
+  align-items: center;
+  /* Alinear verticalmente al centro */
+  gap: 20px;
+  /* Espaciado entre el título y el instructor */
+  margin-bottom: 20px;
+  /* Separación del contenido inferior */
 }
 
 .course-title {
-  font-size: 32px; /* Tamaño del título */
-  font-weight: bold; /* Negrita para destacar */
-  color: #112D4E; /* Azul oscuro para mejor contraste */
-  margin: 0; /* Eliminar márgenes para alineación precisa */
-  flex-grow: 1; /* Permite que el título ocupe el espacio restante */
-  text-align: left; /* Alinear a la izquierda */
+  font-size: 32px;
+  /* Tamaño del título */
+  font-weight: bold;
+  /* Negrita para destacar */
+  color: #112D4E;
+  /* Azul oscuro para mejor contraste */
+  margin: 0;
+  /* Eliminar márgenes para alineación precisa */
+  flex-grow: 1;
+  /* Permite que el título ocupe el espacio restante */
+  text-align: left;
+  /* Alinear a la izquierda */
+}
+
+.module-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin: 8px 0 16px 0;
+  text-align: left;
 }
 
 .instructor-info {
   display: flex;
   align-items: center;
-  margin-bottom: 15px; /* Separación menor */
-  gap: 10px; /* Espaciado más compacto entre el ícono y el texto */
+  margin-bottom: 15px;
+  /* Separación menor */
+  gap: 10px;
+  /* Espaciado más compacto entre el ícono y el texto */
 }
 
 .instructor-photo {
-  width: 50px; /* Tamaño reducido */
+  width: 50px;
+  /* Tamaño reducido */
   height: 50px;
-  border-radius: 50%; /* Redondear completamente */
-  border: 2px solid #FF8A00; /* Mantén el borde naranja */
+  border-radius: 50%;
+  /* Redondear completamente */
+  border: 2px solid #FF8A00;
+  /* Mantén el borde naranja */
 }
 
 .instructor {
-  font-size: 18px; /* Tamaño del texto ajustado para equilibrio */
+  font-size: 18px;
+  /* Tamaño del texto ajustado para equilibrio */
   font-weight: bold;
   color: #FF8A00;
   margin: 0;
@@ -533,7 +565,8 @@ body {
   margin-top: 20px;
 }
 
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
   padding: 12px 20px;
   margin-left: 10px;
   border: none;
@@ -605,6 +638,7 @@ body {
     height: 300px;
   }
 }
+
 /* Adjust the menu toggle for smaller screens */
 @media (max-width: 768px) {
   #menu-toggle {

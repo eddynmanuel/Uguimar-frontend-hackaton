@@ -8,12 +8,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/contenido.css" />
     <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    
+
 </head>
+
 <body>
     <div class="contenedor-app">
         <header class="encabezado-principal">
@@ -39,11 +42,13 @@
                     <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
                 </ul>
             </nav>
-            
+
             <div class="acciones-usuario">
-                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
+                        id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp"
+                        alt="Foto de perfil" id="profile-toggle">
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, Usuario!</p>
                         <p class="tipo-plan">UGuimar Free</p>
@@ -60,17 +65,17 @@
 
         <main class="container">
             <section class="video-section">
-                <h1 class="course-title">Curso de Introducción a Node.js</h1>
+                <h1 class="course-title" id="curso-titulo">Cargando curso...</h1>
+                <h2 class="module-title" id="modulo-titulo"></h2>
                 <div class="instructor-info">
-                    <img src="https://via.placeholder.com/80" alt="Foto de Ricardo Calle" class="instructor-photo">
-                    <p class="instructor">Ricardo Calle</p>
+                    <img src="https://via.placeholder.com/80" alt="Foto del instructor" class="instructor-photo"
+                        id="instructor-foto">
+                    <p class="instructor" id="instructor-nombre">Instructor</p>
                 </div>
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/iSp2qj6Ibj4" 
-                            title="YouTube video player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
+                    <iframe src="https://www.youtube.com/embed/iSp2qj6Ibj4" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
                     </iframe>
                 </div>
                 <div class="video-navigation">
@@ -78,32 +83,40 @@
                     <button class="nav-button next-class">Siguiente Clase</button>
                 </div>
             </section>
-            
+
             <section class="course-content">
                 <div class="course-details">
                     <div class="tabs">
                         <button class="tab-button active" data-tab="resources">Recursos</button>
                         <button class="tab-button" data-tab="transcription">Transcripción</button>
                     </div>
-                    
+
                     <div class="tab-content active" id="resources">
                         <h3>Archivos de la clase</h3>
                         <ul class="resource-list">
-                            <li><a href="https://www.ecci.edu.co/wp-content/uploads/2022/02/Fundamentos-de-Programacion-Web-version-1.0-EDITORIAL-ECCI.pdf">slides-curso-prework-windows-pptx.pdf</a></li>
-                            <li><a href="https://dialnet.unirioja.es/descarga/libro/933116.pdf">slides-curso-prework-windows-pptx2.pdf</a></li>
-                            <li><a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">slides-curso-prework-windows-pptx3.pdf</a></li>
-                            <li><a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">slides-curso-prework-windows-pptx4.pdf</a></li>
+                            <li><a
+                                    href="https://www.ecci.edu.co/wp-content/uploads/2022/02/Fundamentos-de-Programacion-Web-version-1.0-EDITORIAL-ECCI.pdf">slides-curso-prework-windows-pptx.pdf</a>
+                            </li>
+                            <li><a
+                                    href="https://dialnet.unirioja.es/descarga/libro/933116.pdf">slides-curso-prework-windows-pptx2.pdf</a>
+                            </li>
+                            <li><a
+                                    href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">slides-curso-prework-windows-pptx3.pdf</a>
+                            </li>
+                            <li><a
+                                    href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">slides-curso-prework-windows-pptx4.pdf</a>
+                            </li>
                         </ul>
                     </div>
-                    
+
                     <div class="tab-content" id="transcription">
                         <p>La transcripción de este video no está disponible en este momento.</p>
                     </div>
-                    
+
                     <button id="examButton" class="btn-exam">Dar Examen</button>
                 </div>
             </section>
-        
+
             <section class="qa-section">
                 <h2>Preguntas y Respuestas</h2>
                 <input type="text" id="questionInput" placeholder="Escribe tu aporte o pregunta" class="question-input">
@@ -112,11 +125,12 @@
                 </div>
             </section>
         </main>
-        
+
         <div id="examModal" class="modal">
             <div class="modal-content">
                 <h2>Examen del Curso</h2>
-                <p>¿Estás seguro de que quieres comenzar el examen? Una vez que comiences, no podrás pausar o reiniciar.</p>
+                <p>¿Estás seguro de que quieres comenzar el examen? Una vez que comiences, no podrás pausar o reiniciar.
+                </p>
                 <div class="modal-buttons">
                     <button id="startExam" class="btn-primary">Comenzar Examen</button>
                     <button id="cancelExam" class="btn-secondary">Cancelar</button>
@@ -124,6 +138,7 @@
             </div>
         </div>
     </div>
-<script src="../../JS/JS-Login-In/contenido.js"></script>
+    <script src="../../JS/JS-Login-In/contenido.js"></script>
 </body>
+
 </html>

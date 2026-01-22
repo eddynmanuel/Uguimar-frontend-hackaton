@@ -150,19 +150,18 @@ body {
   font-size: 1.5rem;
   cursor: pointer;
   position: relative;
-  padding-right: 20px;
 }
 
 .boton-icono:hover {
-  color: var(--accent-color);
+  color: var(--light-blue);
 }
 
 #contador-carrito {
   position: absolute;
   top: -9px;
-  right: 6px;
-  background-color: var(--gray-600);
-  color: var(--background-color);
+  right: -9px;
+  background-color: var(--accent-color);
+  color: var(--dark-blue);
   font-size: 0.8rem;
   padding: 3px 6px;
   border-radius: 50%;
@@ -170,7 +169,29 @@ body {
 
 .menu-perfil {
   position: relative;
-  padding-right: 100px;
+}
+
+/* Avatar con inicial del usuario */
+.avatar-inicial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-inicial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
 }
 
 .menu-perfil img {
@@ -227,9 +248,14 @@ body {
   color: #f52710;
 }
 
+.navegacion-principal {
+  flex: 1;
+}
+
 .navegacion-principal ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1rem;
   list-style: none;
 }
 
@@ -245,7 +271,7 @@ body {
 
 .navegacion-principal a:hover {
   background-color: var(--light-blue);
-  color: var(--text-light);
+  color: var(--dark-blue);
 }
 
 .navegacion-principal a.active {
@@ -449,31 +475,6 @@ body {
 
   .navegacion-principal li {
     margin-bottom: 0.5rem;
-  }
-
-  @media (max-width: 768px) {
-    #menu-toggle {
-      display: block;
-      order: 1;
-    }
-
-    .navegacion-principal {
-      display: none;
-    }
-
-    .navegacion-principal.active {
-      display: block;
-    }
-  }
-
-  @media (min-width: 769px) {
-    #menu-toggle {
-      display: none;
-    }
-
-    .navegacion-principal {
-      display: block !important;
-    }
   }
 
   .info-becas,

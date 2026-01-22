@@ -246,9 +246,14 @@ body {
   color: #c0392b;
 }
 
+.navegacion-principal {
+  flex: 1;
+}
+
 .navegacion-principal ul {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1rem;
   list-style: none;
 }
 

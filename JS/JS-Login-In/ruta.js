@@ -15,25 +15,41 @@ document.addEventListener('DOMContentLoaded', function () {
     // Datos simulados de rutas por escuela
     const RUTAS = {
         1: [
-            { id: 1, nombre: 'Frontend Developer', descripcion: 'Domina HTML, CSS, JavaScript y React' },
-            { id: 2, nombre: 'Backend Developer', descripcion: 'Node.js, Express y bases de datos' },
-            { id: 3, nombre: 'Full Stack Developer', descripcion: 'Desarrollo completo de aplicaciones web' }
+            { id: 1, nombre: 'Frontend Developer', descripcion: 'Domina HTML, CSS, JavaScript y React para crear interfaces modernas' },
+            { id: 2, nombre: 'Backend Developer', descripcion: 'Node.js, Express, APIs RESTful y bases de datos' },
+            { id: 3, nombre: 'Full Stack Developer', descripcion: 'Desarrollo completo de aplicaciones web de principio a fin' },
+            { id: 4, nombre: 'React Specialist', descripcion: 'Especialización en React, Redux y ecosistema moderno' },
+            { id: 5, nombre: 'Vue.js Developer', descripcion: 'Domina Vue.js, Vuex y Nuxt.js' },
+            { id: 6, nombre: 'Angular Expert', descripcion: 'Angular, TypeScript y aplicaciones empresariales' }
         ],
         2: [
-            { id: 4, nombre: 'Fundamentos de Data Science', descripcion: 'Python, estadística y visualización' },
-            { id: 5, nombre: 'Machine Learning', descripcion: 'Algoritmos de aprendizaje automático' }
+            { id: 7, nombre: 'Fundamentos de Data Science', descripcion: 'Python, estadística y visualización de datos' },
+            { id: 8, nombre: 'Machine Learning', descripcion: 'Algoritmos de aprendizaje automático y predicción' },
+            { id: 9, nombre: 'Análisis de Datos con Python', descripcion: 'Pandas, NumPy y análisis exploratorio' },
+            { id: 10, nombre: 'Visualización de Datos', descripcion: 'Matplotlib, Seaborn, Plotly y dashboards' },
+            { id: 11, nombre: 'Big Data Engineer', descripcion: 'Spark, Hadoop y procesamiento masivo de datos' }
         ],
         3: [
-            { id: 6, nombre: 'Deep Learning', descripcion: 'Redes neuronales con TensorFlow y PyTorch' },
-            { id: 7, nombre: 'NLP', descripcion: 'Procesamiento de lenguaje natural' }
+            { id: 12, nombre: 'Deep Learning', descripcion: 'Redes neuronales con TensorFlow y PyTorch' },
+            { id: 13, nombre: 'NLP Specialist', descripcion: 'Procesamiento de lenguaje natural y transformers' },
+            { id: 14, nombre: 'Computer Vision', descripcion: 'Visión por computadora y reconocimiento de imágenes' },
+            { id: 15, nombre: 'MLOps Engineer', descripcion: 'Despliegue y gestión de modelos en producción' },
+            { id: 16, nombre: 'AI for Business', descripcion: 'Aplicaciones prácticas de IA en negocios' }
         ],
         4: [
-            { id: 8, nombre: 'Seguridad Ofensiva', descripcion: 'Pentesting y hacking ético' },
-            { id: 9, nombre: 'Seguridad Defensiva', descripcion: 'Análisis de vulnerabilidades y respuesta a incidentes' }
+            { id: 17, nombre: 'Seguridad Ofensiva', descripcion: 'Pentesting, hacking ético y explotación' },
+            { id: 18, nombre: 'Seguridad Defensiva', descripcion: 'Análisis de vulnerabilidades y respuesta a incidentes' },
+            { id: 19, nombre: 'Análisis de Malware', descripcion: 'Ingeniería inversa y análisis de amenazas' },
+            { id: 20, nombre: 'Seguridad en la Nube', descripcion: 'AWS, Azure y GCP security best practices' },
+            { id: 21, nombre: 'OSINT Specialist', descripcion: 'Inteligencia de fuentes abiertas y reconocimiento' }
         ],
         5: [
-            { id: 10, nombre: 'SEO y SEM', descripcion: 'Posicionamiento en buscadores' },
-            { id: 11, nombre: 'Social Media Marketing', descripcion: 'Gestión de redes sociales' }
+            { id: 22, nombre: 'SEO y SEM', descripcion: 'Posicionamiento en buscadores y publicidad' },
+            { id: 23, nombre: 'Social Media Marketing', descripcion: 'Gestión de redes sociales y estrategia' },
+            { id: 24, nombre: 'Content Marketing', descripcion: 'Creación de contenido y copywriting' },
+            { id: 25, nombre: 'Email Marketing', descripcion: 'Automatización y campañas de email' },
+            { id: 26, nombre: 'Growth Hacking', descripcion: 'Estrategias de crecimiento rápido' },
+            { id: 27, nombre: 'Analytics y Métricas', descripcion: 'Google Analytics y análisis de datos' }
         ]
     };
 
@@ -190,8 +206,11 @@ document.addEventListener('DOMContentLoaded', function () {
         mostrarError('Escuela no encontrada', 'No se pudo encontrar la escuela especificada.');
     }
 
-    // Configurar el enlace "Volver a la Escuela"
+    // Configurar el enlace "Volver" para retroceder a la página anterior
     if (volverEscuela) {
-        volverEscuela.href = `inicioj.html`;
+        volverEscuela.addEventListener('click', function (e) {
+            e.preventDefault();
+            history.back();
+        });
     }
 });
