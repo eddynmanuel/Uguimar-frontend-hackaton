@@ -1,204 +1,1008 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ver Perfil</title>
+    <title>Mi Perfil - UGuimar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/perfil.css" />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"
-    ></script>
 </head>
+
 <body>
     <div class="contenedor-app">
+        <!-- HEADER -->
         <header class="encabezado-principal">
             <button id="menu-toggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <h1 class="logo"><a href="inicioj.html"></a>UGuimar</h1>
-            <form id="search-form" class="barra-busqueda">
-                <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
-            </form>
-
+            <h1 class="logo">
+                <a href="inicioj.html">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
             <nav class="navegacion-principal" id="main-nav">
                 <ul>
-                    <li><a href="inicioj.html">🏠 Inicio</a></li>
-                    <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
-                    <li><a href="becasj.html">🎓 Beca</a></li>
-                    <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
                 </ul>
             </nav>
-            
+
             <div class="acciones-usuario">
-                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
+                        id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
                         <ul>
-                            <li><a href="perfil.html">Ver mi perfil</a></li>
-                            <li><a href="#">Obtén 1 mes gratis</a></li>
-                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="perfil.html" class="active">Ver mi perfil</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
                             <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </header>
-    
-        <!-- CONTENIDO -->
-        <div class="container">
-            <aside class="sidebar">
-                <div class="profile-header">
-                    <img src="https://i.pravatar.cc/150?img=32" alt="Foto de perfil" class="profile-image">
-                    <h2>Mi Cuenta</h2>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="perfil-main">
+            <!-- SIDEBAR -->
+            <aside class="perfil-sidebar">
+                <div class="sidebar-perfil-header">
+                    <div class="perfil-avatar-container">
+                        <!-- Avatar: puede ser imagen o inicial -->
+                        <div class="avatar-wrapper" id="avatar-wrapper">
+                            <img src="" alt="Foto de perfil" class="perfil-avatar-img" id="perfil-avatar-img"
+                                style="display: none;">
+                            <div class="avatar-inicial-grande" id="perfil-avatar-inicial">U</div>
+                        </div>
+                        <button class="btn-cambiar-foto" id="btn-cambiar-foto" title="Cambiar foto de perfil">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <input type="file" id="input-foto-perfil" accept="image/*" hidden>
+                    </div>
+                    <h2 class="perfil-nombre" id="perfil-nombre-sidebar">Usuario</h2>
+                    <span class="perfil-plan-badge">
+                        <i class="fas fa-crown"></i> UGuimar Free
+                    </span>
+                    <p class="perfil-miembro-desde">Miembro desde Enero 2024</p>
                 </div>
-                <nav class="sidebar-nav">
-                    <button class="nav-btn active" data-section="perfil">Perfil</button>
-                     <button class="nav-btn" data-section="cerrar-sesion">Cerrar Sesión</button>
+
+                <nav class="sidebar-navegacion">
+                    <button class="sidebar-nav-btn active" data-section="informacion">
+                        <i class="fas fa-user"></i>
+                        <span>Información Personal</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="logros">
+                        <i class="fas fa-trophy"></i>
+                        <span>Logros y Badges</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="certificados">
+                        <i class="fas fa-certificate"></i>
+                        <span>Certificados</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="pagos">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Historial de Pagos</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="seguridad">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Seguridad</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="preferencias">
+                        <i class="fas fa-sliders-h"></i>
+                        <span>Preferencias</span>
+                    </button>
+                    <button class="sidebar-nav-btn" data-section="notificaciones">
+                        <i class="fas fa-bell"></i>
+                        <span>Notificaciones</span>
+                    </button>
+                    <div class="sidebar-separator"></div>
+                    <button class="sidebar-nav-btn btn-cerrar-sesion" data-section="cerrar-sesion">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Cerrar Sesión</span>
+                    </button>
                 </nav>
             </aside>
 
-            <main class="main-content">
-                <section id="perfil" class="section-profile active">
-                    <h2>Tu Perfil</h2>
-                    <form id="profile-form">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="nombre">Nombre:</label>
-                                <input type="text" id="nombre" name="nombre" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="apellido">Apellido:</label>
-                                <input type="text" id="apellido" name="apellido" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-                                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
-                            </div>
-                            <div class="form-group">
-                                <label for="telefono">Teléfono:</label>
-                                <input type="tel" id="telefono" name="telefono" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="direccion">Dirección:</label>
-                                <input type="text" id="direccion" name="direccion" required>
+            <!-- CONTENIDO DE SECCIONES -->
+            <div class="perfil-contenido">
+                <!-- SECCIÓN: INFORMACIÓN PERSONAL -->
+                <section id="informacion" class="perfil-seccion active">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-user"></i> Información Personal</h2>
+                        <p>Gestiona tu información personal y datos de contacto</p>
+                    </div>
+
+                    <!-- Estadísticas rápidas -->
+                    <div class="estadisticas-perfil">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-numero" id="stat-cursos">12</span>
+                                <span class="stat-label">Cursos Activos</span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="nueva_contrasena">Nueva contraseña:</label>
-                            <input type="password" id="nueva_contrasena" name="nueva_contrasena">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-numero" id="stat-horas">156</span>
+                                <span class="stat-label">Horas de Estudio</span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="confirmar_contrasena">Confirmar nueva contraseña:</label>
-                            <input type="password" id="confirmar_contrasena" name="confirmar_contrasena">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-award"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-numero" id="stat-certificados">5</span>
+                                <span class="stat-label">Certificados</span>
+                            </div>
                         </div>
-                        <button type="submit" class="btn-primary">Guardar cambios</button>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-fire"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-numero" id="stat-racha">28</span>
+                                <span class="stat-label">Días de Racha</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de perfil -->
+                    <form id="profile-form" class="perfil-formulario">
+                        <div class="form-seccion">
+                            <h3><i class="fas fa-id-card"></i> Datos Personales</h3>
+                            <div class="form-grid">
+                                <div class="form-grupo">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="apellido">Apellido</label>
+                                    <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="email">Correo Electrónico</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="telefono">Teléfono</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-phone"></i>
+                                        <input type="tel" id="telefono" name="telefono" placeholder="+51 999 999 999">
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-calendar"></i>
+                                        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="genero">Género</label>
+                                    <select id="genero" name="genero">
+                                        <option value="">Selecciona una opción</option>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="femenino">Femenino</option>
+                                        <option value="otro">Otro</option>
+                                        <option value="prefiero_no_decir">Prefiero no decir</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-seccion">
+                            <h3><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
+                            <div class="form-grid">
+                                <div class="form-grupo">
+                                    <label for="pais">País</label>
+                                    <select id="pais" name="pais">
+                                        <option value="">Selecciona un país</option>
+                                        <option value="peru">Perú</option>
+                                        <option value="argentina">Argentina</option>
+                                        <option value="chile">Chile</option>
+                                        <option value="colombia">Colombia</option>
+                                        <option value="mexico">México</option>
+                                        <option value="espana">España</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="ciudad">Ciudad</label>
+                                    <input type="text" id="ciudad" name="ciudad" placeholder="Tu ciudad">
+                                </div>
+                                <div class="form-grupo full-width">
+                                    <label for="direccion">Dirección</label>
+                                    <input type="text" id="direccion" name="direccion"
+                                        placeholder="Tu dirección completa">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-seccion">
+                            <h3><i class="fas fa-briefcase"></i> Información Profesional</h3>
+                            <div class="form-grid">
+                                <div class="form-grupo">
+                                    <label for="ocupacion">Ocupación</label>
+                                    <input type="text" id="ocupacion" name="ocupacion"
+                                        placeholder="Ej: Desarrollador Web">
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="empresa">Empresa / Institución</label>
+                                    <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa">
+                                </div>
+                                <div class="form-grupo full-width">
+                                    <label for="biografia">Biografía</label>
+                                    <textarea id="biografia" name="biografia" rows="3"
+                                        placeholder="Cuéntanos sobre ti..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-seccion">
+                            <h3><i class="fas fa-link"></i> Redes Sociales</h3>
+                            <div class="form-grid">
+                                <div class="form-grupo">
+                                    <label for="linkedin">LinkedIn</label>
+                                    <div class="input-icon">
+                                        <i class="fab fa-linkedin"></i>
+                                        <input type="url" id="linkedin" name="linkedin"
+                                            placeholder="https://linkedin.com/in/tuperfil">
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="github">GitHub</label>
+                                    <div class="input-icon">
+                                        <i class="fab fa-github"></i>
+                                        <input type="url" id="github" name="github"
+                                            placeholder="https://github.com/tuusuario">
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="portfolio">Portfolio / Web</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-globe"></i>
+                                        <input type="url" id="portfolio" name="portfolio"
+                                            placeholder="https://tuportfolio.com">
+                                    </div>
+                                </div>
+                                <div class="form-grupo">
+                                    <label for="twitter">Twitter / X</label>
+                                    <div class="input-icon">
+                                        <i class="fab fa-twitter"></i>
+                                        <input type="url" id="twitter" name="twitter"
+                                            placeholder="https://twitter.com/tuusuario">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-acciones">
+                            <button type="button" class="btn-secundario" id="btn-cancelar">
+                                <i class="fas fa-times"></i> Cancelar
+                            </button>
+                            <button type="submit" class="btn-primario">
+                                <i class="fas fa-save"></i> Guardar Cambios
+                            </button>
+                        </div>
                     </form>
                 </section>
-                
-                <section id="cursos" class="section-profile">
-                    <h2 class="heading-secondary">Tus Cursos</h2>
-                    <ul class="cart-items">
-                        <li class="cart-item">
-                            <img src="IMAGE/cursos-logos/JavaScript.webp" alt="Curso de Javascript" class="course-image" />
-                            <span>Curso de Javascript</span>
-                            <span>S/.100.00</span>
-                            <button class="remove-item" data-id="1">Eliminar</button>
-                        </li>
-                    </ul>
-                </section>
-                
-                <section id="progreso" class="section-profile">
-                    <h2 class="heading-secondary">Tu rutas y Progreso</h2>
-                    <div class="progress-container">
-                        <div class="img-titulo">
-                            <img class="imgRuta" src="IMAGE/cursos-logos/cisco.png" alt="Logo de Cisco" />
-                            <h4>HTML</h4>
-                        </div>
-                        <div class="progress-bar"><span data-width="90%"></span></div>
+
+                <!-- SECCIÓN: LOGROS Y BADGES -->
+                <section id="logros" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-trophy"></i> Logros y Badges</h2>
+                        <p>Tus logros obtenidos en la plataforma</p>
                     </div>
-                    <a href="rutas.html" class="btn btn--full margin-right-sm">Añadir Rutas</a>
-                    
-                    <h3>Certificados</h3>
-                    <ul class="certificate-list">
-                        <li>
-                            <a href="https://www.ecci.edu.co/wp-content/uploads/2022/02/Fundamentos-de-Programacion-Web-version-1.0-EDITORIAL-ECCI.pdf">Certificado HTML.pdf</a>
-                        </li>
-                        <li>
-                            <a href="https://dialnet.unirioja.es/descarga/libro/933116.pdf">Certificado CSS.pdf</a>
-                        </li>
-                        <li>
-                            <a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">Certificado JavaScript.pdf</a>
-                        </li>
-                        <li>
-                            <a href="https://rua.ua.es/dspace/bitstream/10045/25978/1/Desarrollo%20web.pdf">Certificado React.Js.pdf</a>
-                        </li>
-                    </ul>
+
+                    <!-- Nivel de usuario -->
+                    <div class="nivel-usuario-card">
+                        <div class="nivel-info">
+                            <div class="nivel-icono">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="nivel-detalles">
+                                <span class="nivel-titulo">Nivel 12 - Explorador Avanzado</span>
+                                <p class="nivel-descripcion">¡Sigue aprendiendo para alcanzar el siguiente nivel!</p>
+                            </div>
+                        </div>
+                        <div class="nivel-progreso">
+                            <div class="progreso-barra">
+                                <div class="progreso-fill" style="width: 65%;"></div>
+                            </div>
+                            <span class="progreso-texto">6,500 / 10,000 XP</span>
+                        </div>
+                    </div>
+
+                    <!-- Badges obtenidos -->
+                    <div class="badges-container">
+                        <h3>Badges Obtenidos</h3>
+                        <div class="badges-grid">
+                            <div class="badge-card obtenido">
+                                <div class="badge-icon"><i class="fas fa-rocket"></i></div>
+                                <span class="badge-nombre">Primer Paso</span>
+                                <span class="badge-descripcion">Completaste tu primer curso</span>
+                            </div>
+                            <div class="badge-card obtenido">
+                                <div class="badge-icon"><i class="fas fa-fire"></i></div>
+                                <span class="badge-nombre">En Llamas</span>
+                                <span class="badge-descripcion">7 días de racha continua</span>
+                            </div>
+                            <div class="badge-card obtenido">
+                                <div class="badge-icon"><i class="fas fa-brain"></i></div>
+                                <span class="badge-nombre">Cerebro Activo</span>
+                                <span class="badge-descripcion">100 horas de estudio</span>
+                            </div>
+                            <div class="badge-card obtenido">
+                                <div class="badge-icon"><i class="fas fa-code"></i></div>
+                                <span class="badge-nombre">Código Maestro</span>
+                                <span class="badge-descripcion">Completaste 5 cursos de programación</span>
+                            </div>
+                            <div class="badge-card obtenido">
+                                <div class="badge-icon"><i class="fas fa-medal"></i></div>
+                                <span class="badge-nombre">Top Estudiante</span>
+                                <span class="badge-descripcion">Obtuviste 100% en un examen</span>
+                            </div>
+                            <div class="badge-card bloqueado">
+                                <div class="badge-icon"><i class="fas fa-crown"></i></div>
+                                <span class="badge-nombre">Leyenda</span>
+                                <span class="badge-descripcion">Completa 50 cursos</span>
+                                <div class="badge-lock"><i class="fas fa-lock"></i></div>
+                            </div>
+                            <div class="badge-card bloqueado">
+                                <div class="badge-icon"><i class="fas fa-gem"></i></div>
+                                <span class="badge-nombre">Diamante</span>
+                                <span class="badge-descripcion">365 días de racha</span>
+                                <div class="badge-lock"><i class="fas fa-lock"></i></div>
+                            </div>
+                            <div class="badge-card bloqueado">
+                                <div class="badge-icon"><i class="fas fa-graduation-cap"></i></div>
+                                <span class="badge-nombre">Graduado</span>
+                                <span class="badge-descripcion">Completa una ruta completa</span>
+                                <div class="badge-lock"><i class="fas fa-lock"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Logros recientes -->
+                    <div class="logros-recientes">
+                        <h3>Logros Recientes</h3>
+                        <div class="logros-lista">
+                            <div class="logro-item">
+                                <div class="logro-icono"><i class="fas fa-check-circle"></i></div>
+                                <div class="logro-info">
+                                    <span class="logro-titulo">Curso Completado: JavaScript Avanzado</span>
+                                    <span class="logro-fecha">Hace 2 días</span>
+                                </div>
+                                <span class="logro-xp">+500 XP</span>
+                            </div>
+                            <div class="logro-item">
+                                <div class="logro-icono"><i class="fas fa-fire"></i></div>
+                                <div class="logro-info">
+                                    <span class="logro-titulo">Racha de 28 días consecutivos</span>
+                                    <span class="logro-fecha">Hoy</span>
+                                </div>
+                                <span class="logro-xp">+100 XP</span>
+                            </div>
+                            <div class="logro-item">
+                                <div class="logro-icono"><i class="fas fa-trophy"></i></div>
+                                <div class="logro-info">
+                                    <span class="logro-titulo">Badge desbloqueado: Código Maestro</span>
+                                    <span class="logro-fecha">Hace 3 días</span>
+                                </div>
+                                <span class="logro-xp">+250 XP</span>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-                
-                <section id="pagos" class="section-profile">
-                    <h2 class="heading-secondary">Tus Pagos</h2>
-                    <ul class="pagos-items">
-                        <li class="pago-item">
-                            <span>001</span>
-                            <span class="titulo">Curso de Javascript</span>
-                            <span>S/.100.00</span>
-                            <span>Yape</span>
-                            <span>10/10/2024</span>
-                        </li>
-                    </ul>
-                    
-                    <h2 class="heading-secondary">Mi Suscripción</h2>
-                    <section class="subscription">
-                        <div class="subscription-details">
-                            <p class="detail">
-                                <strong>Suscripción actual:</strong> Suscripcion Avanzado Duo
-                            </p>
-                            <p class="detail">
-                                <strong>Periodo:</strong> 10/10/2024 &rarr; 10/10/2025
-                            </p>
-                            <p class="detail">
-                                <strong>Beneficiario:</strong> Juan Carlos Perez
-                            </p>
+
+                <!-- SECCIÓN: CERTIFICADOS -->
+                <section id="certificados" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-certificate"></i> Mis Certificados</h2>
+                        <p>Todos tus certificados obtenidos en la plataforma</p>
+                    </div>
+
+                    <div class="certificados-grid">
+                        <div class="certificado-card">
+                            <div class="certificado-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="certificado-info">
+                                <h4>HTML5 y CSS3 Avanzado</h4>
+                                <p class="certificado-escuela"><i class="fas fa-school"></i> Escuela de Desarrollo Web
+                                </p>
+                                <p class="certificado-fecha"><i class="fas fa-calendar"></i> 15 de Enero, 2024</p>
+                                <p class="certificado-id"><i class="fas fa-fingerprint"></i> CERT-2024-001234</p>
+                            </div>
+                            <div class="certificado-acciones">
+                                <button class="btn-ver-certificado"><i class="fas fa-eye"></i> Ver</button>
+                                <button class="btn-descargar-certificado"><i class="fas fa-download"></i>
+                                    Descargar</button>
+                            </div>
                         </div>
-                    </section>
-        
-                    <h2 class="heading-secondary">Beneficiarios</h2>
-                    <section class="beneficiaries">
-                        <div class="beneficiary">
-                            <p class="name">Nombre: Maria Lopez</p>
-                            <p class="email">Correo: <a href="mailto:maria.lopez@example.com">maria.lopez@example.com</a></p>
-                            <p class="date">Inicio del beneficio: 01/10/2023</p>
-                            <p class="date">Fin del beneficio: 01/10/2024</p>
+
+                        <div class="certificado-card">
+                            <div class="certificado-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="certificado-info">
+                                <h4>JavaScript Profesional</h4>
+                                <p class="certificado-escuela"><i class="fas fa-school"></i> Escuela de Desarrollo Web
+                                </p>
+                                <p class="certificado-fecha"><i class="fas fa-calendar"></i> 28 de Diciembre, 2023</p>
+                                <p class="certificado-id"><i class="fas fa-fingerprint"></i> CERT-2023-008765</p>
+                            </div>
+                            <div class="certificado-acciones">
+                                <button class="btn-ver-certificado"><i class="fas fa-eye"></i> Ver</button>
+                                <button class="btn-descargar-certificado"><i class="fas fa-download"></i>
+                                    Descargar</button>
+                            </div>
                         </div>
-                        
-                        <div class="beneficiary">
-                            <p class="name">Nombre: Carlos Garcia</p>
-                            <p class="email">Correo: <a href="mailto:carlos.garcia@example.com">carlos.garcia@example.com</a></p>
-                            <p class="date">Inicio del beneficio: 15/09/2023</p>
-                            <p class="date">Fin del beneficio: 15/09/2024</p>
+
+                        <div class="certificado-card">
+                            <div class="certificado-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="certificado-info">
+                                <h4>React.js Fundamentos</h4>
+                                <p class="certificado-escuela"><i class="fas fa-school"></i> Escuela de JavaScript</p>
+                                <p class="certificado-fecha"><i class="fas fa-calendar"></i> 10 de Noviembre, 2023</p>
+                                <p class="certificado-id"><i class="fas fa-fingerprint"></i> CERT-2023-007654</p>
+                            </div>
+                            <div class="certificado-acciones">
+                                <button class="btn-ver-certificado"><i class="fas fa-eye"></i> Ver</button>
+                                <button class="btn-descargar-certificado"><i class="fas fa-download"></i>
+                                    Descargar</button>
+                            </div>
                         </div>
-                    </section>
+
+                        <div class="certificado-card">
+                            <div class="certificado-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="certificado-info">
+                                <h4>Python para Data Science</h4>
+                                <p class="certificado-escuela"><i class="fas fa-school"></i> Escuela de Data Science</p>
+                                <p class="certificado-fecha"><i class="fas fa-calendar"></i> 5 de Octubre, 2023</p>
+                                <p class="certificado-id"><i class="fas fa-fingerprint"></i> CERT-2023-006543</p>
+                            </div>
+                            <div class="certificado-acciones">
+                                <button class="btn-ver-certificado"><i class="fas fa-eye"></i> Ver</button>
+                                <button class="btn-descargar-certificado"><i class="fas fa-download"></i>
+                                    Descargar</button>
+                            </div>
+                        </div>
+
+                        <div class="certificado-card">
+                            <div class="certificado-preview">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="certificado-info">
+                                <h4>Marketing Digital</h4>
+                                <p class="certificado-escuela"><i class="fas fa-school"></i> Escuela de Marketing</p>
+                                <p class="certificado-fecha"><i class="fas fa-calendar"></i> 20 de Septiembre, 2023</p>
+                                <p class="certificado-id"><i class="fas fa-fingerprint"></i> CERT-2023-005432</p>
+                            </div>
+                            <div class="certificado-acciones">
+                                <button class="btn-ver-certificado"><i class="fas fa-eye"></i> Ver</button>
+                                <button class="btn-descargar-certificado"><i class="fas fa-download"></i>
+                                    Descargar</button>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-            </main>
+
+                <!-- SECCIÓN: HISTORIAL DE PAGOS -->
+                <section id="pagos" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-credit-card"></i> Historial de Pagos</h2>
+                        <p>Revisa todas tus transacciones y métodos de pago</p>
+                    </div>
+
+                    <!-- Suscripción actual -->
+                    <div class="suscripcion-card">
+                        <div class="suscripcion-info">
+                            <div class="suscripcion-icono">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="suscripcion-detalles">
+                                <span class="suscripcion-tipo">Plan Gratuito</span>
+                                <span class="suscripcion-estado activo">Activo</span>
+                            </div>
+                        </div>
+                        <div class="suscripcion-acciones">
+                            <button class="btn-upgrade">
+                                <i class="fas fa-arrow-up"></i> Mejorar Plan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Métodos de pago -->
+                    <div class="metodos-pago-seccion">
+                        <h3>Métodos de Pago Guardados</h3>
+                        <div class="metodos-pago-grid">
+                            <div class="metodo-pago-card">
+                                <div class="metodo-icono visa">
+                                    <i class="fab fa-cc-visa"></i>
+                                </div>
+                                <div class="metodo-info">
+                                    <span class="metodo-nombre">Visa terminada en 4532</span>
+                                    <span class="metodo-expira">Expira 12/26</span>
+                                </div>
+                                <span class="metodo-principal">Principal</span>
+                            </div>
+                            <button class="btn-agregar-metodo">
+                                <i class="fas fa-plus"></i> Agregar Método de Pago
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Historial de transacciones -->
+                    <div class="transacciones-seccion">
+                        <h3>Historial de Transacciones</h3>
+                        <div class="transacciones-tabla">
+                            <div class="transaccion-header">
+                                <span>ID</span>
+                                <span>Descripción</span>
+                                <span>Fecha</span>
+                                <span>Método</span>
+                                <span>Monto</span>
+                                <span>Estado</span>
+                            </div>
+                            <div class="transaccion-row">
+                                <span class="transaccion-id">#TRX-2024-001</span>
+                                <span class="transaccion-desc">Curso JavaScript Profesional</span>
+                                <span class="transaccion-fecha">15 Ene 2024</span>
+                                <span class="transaccion-metodo"><i class="fab fa-cc-visa"></i> Visa</span>
+                                <span class="transaccion-monto">S/. 89.99</span>
+                                <span class="transaccion-estado completado">Completado</span>
+                            </div>
+                            <div class="transaccion-row">
+                                <span class="transaccion-id">#TRX-2023-045</span>
+                                <span class="transaccion-desc">Curso React.js Avanzado</span>
+                                <span class="transaccion-fecha">28 Dic 2023</span>
+                                <span class="transaccion-metodo"><i class="fas fa-mobile-alt"></i> Yape</span>
+                                <span class="transaccion-monto">S/. 129.99</span>
+                                <span class="transaccion-estado completado">Completado</span>
+                            </div>
+                            <div class="transaccion-row">
+                                <span class="transaccion-id">#TRX-2023-032</span>
+                                <span class="transaccion-desc">Curso Python Data Science</span>
+                                <span class="transaccion-fecha">10 Nov 2023</span>
+                                <span class="transaccion-metodo"><i class="fab fa-paypal"></i> PayPal</span>
+                                <span class="transaccion-monto">S/. 149.99</span>
+                                <span class="transaccion-estado completado">Completado</span>
+                            </div>
+                            <div class="transaccion-row">
+                                <span class="transaccion-id">#TRX-2023-028</span>
+                                <span class="transaccion-desc">Curso Marketing Digital</span>
+                                <span class="transaccion-fecha">20 Sep 2023</span>
+                                <span class="transaccion-metodo"><i class="fab fa-cc-visa"></i> Visa</span>
+                                <span class="transaccion-monto">S/. 69.99</span>
+                                <span class="transaccion-estado completado">Completado</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: SEGURIDAD -->
+                <section id="seguridad" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-shield-alt"></i> Seguridad</h2>
+                        <p>Mantén tu cuenta segura con estas opciones</p>
+                    </div>
+
+                    <!-- Cambiar contraseña -->
+                    <div class="seguridad-card">
+                        <div class="seguridad-header">
+                            <i class="fas fa-key"></i>
+                            <div>
+                                <h3>Cambiar Contraseña</h3>
+                                <p>Última actualización: hace 3 meses</p>
+                            </div>
+                        </div>
+                        <form id="form-cambiar-password" class="form-seguridad">
+                            <div class="form-grupo">
+                                <label for="password_actual">Contraseña Actual</label>
+                                <div class="input-password">
+                                    <input type="password" id="password_actual" name="password_actual"
+                                        placeholder="••••••••">
+                                    <button type="button" class="btn-ver-password"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="password_nueva">Nueva Contraseña</label>
+                                <div class="input-password">
+                                    <input type="password" id="password_nueva" name="password_nueva"
+                                        placeholder="••••••••">
+                                    <button type="button" class="btn-ver-password"><i class="fas fa-eye"></i></button>
+                                </div>
+                                <div class="password-strength" id="password-strength">
+                                    <div class="strength-bar"></div>
+                                    <span class="strength-text">Fortaleza: --</span>
+                                </div>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="password_confirmar">Confirmar Nueva Contraseña</label>
+                                <div class="input-password">
+                                    <input type="password" id="password_confirmar" name="password_confirmar"
+                                        placeholder="••••••••">
+                                    <button type="button" class="btn-ver-password"><i class="fas fa-eye"></i></button>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primario">
+                                <i class="fas fa-save"></i> Actualizar Contraseña
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Autenticación de dos factores -->
+                    <div class="seguridad-card">
+                        <div class="seguridad-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>
+                                <h3>Autenticación de Dos Factores (2FA)</h3>
+                                <p>Añade una capa extra de seguridad</p>
+                            </div>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Verificación por SMS</span>
+                                <span class="toggle-desc">Recibe un código por mensaje de texto</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-sms">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">App de Autenticación</span>
+                                <span class="toggle-desc">Usa Google Authenticator o similar</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-app" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Sesiones activas -->
+                    <div class="seguridad-card">
+                        <div class="seguridad-header">
+                            <i class="fas fa-laptop"></i>
+                            <div>
+                                <h3>Sesiones Activas</h3>
+                                <p>Dispositivos donde has iniciado sesión</p>
+                            </div>
+                        </div>
+                        <div class="sesiones-lista">
+                            <div class="sesion-item actual">
+                                <div class="sesion-icono"><i class="fas fa-laptop"></i></div>
+                                <div class="sesion-info">
+                                    <span class="sesion-dispositivo">Windows PC - Chrome</span>
+                                    <span class="sesion-ubicacion">Lima, Perú • Este dispositivo</span>
+                                </div>
+                                <span class="sesion-badge">Actual</span>
+                            </div>
+                            <div class="sesion-item">
+                                <div class="sesion-icono"><i class="fas fa-mobile-alt"></i></div>
+                                <div class="sesion-info">
+                                    <span class="sesion-dispositivo">iPhone 14 - Safari</span>
+                                    <span class="sesion-ubicacion">Lima, Perú • Hace 2 días</span>
+                                </div>
+                                <button class="btn-cerrar-sesion-dispositivo">Cerrar</button>
+                            </div>
+                        </div>
+                        <button class="btn-cerrar-todas">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar todas las demás sesiones
+                        </button>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: PREFERENCIAS -->
+                <section id="preferencias" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-sliders-h"></i> Preferencias</h2>
+                        <p>Personaliza tu experiencia en la plataforma</p>
+                    </div>
+
+                    <!-- Tema -->
+                    <div class="preferencia-card">
+                        <div class="preferencia-header">
+                            <i class="fas fa-palette"></i>
+                            <div>
+                                <h3>Apariencia</h3>
+                                <p>Elige el tema de la interfaz</p>
+                            </div>
+                        </div>
+                        <div class="temas-selector">
+                            <label class="tema-opcion">
+                                <input type="radio" name="tema" value="claro" checked>
+                                <div class="tema-preview claro">
+                                    <i class="fas fa-sun"></i>
+                                    <span>Claro</span>
+                                </div>
+                            </label>
+                            <label class="tema-opcion">
+                                <input type="radio" name="tema" value="oscuro">
+                                <div class="tema-preview oscuro">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Oscuro</span>
+                                </div>
+                            </label>
+                            <label class="tema-opcion">
+                                <input type="radio" name="tema" value="sistema">
+                                <div class="tema-preview sistema">
+                                    <i class="fas fa-desktop"></i>
+                                    <span>Sistema</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Idioma -->
+                    <div class="preferencia-card">
+                        <div class="preferencia-header">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <h3>Idioma</h3>
+                                <p>Selecciona tu idioma preferido</p>
+                            </div>
+                        </div>
+                        <select id="idioma-select" class="select-preferencia">
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="en">🇺🇸 English</option>
+                            <option value="pt">🇧🇷 Português</option>
+                        </select>
+                    </div>
+
+                    <!-- Intereses -->
+                    <div class="preferencia-card">
+                        <div class="preferencia-header">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h3>Áreas de Interés</h3>
+                                <p>Selecciona tus áreas de interés para recomendaciones personalizadas</p>
+                            </div>
+                        </div>
+                        <div class="intereses-grid">
+                            <label class="interes-chip selected">
+                                <input type="checkbox" checked> Desarrollo Web
+                            </label>
+                            <label class="interes-chip selected">
+                                <input type="checkbox" checked> JavaScript
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Python
+                            </label>
+                            <label class="interes-chip selected">
+                                <input type="checkbox" checked> React
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Data Science
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Machine Learning
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Diseño UX/UI
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Marketing Digital
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> DevOps
+                            </label>
+                            <label class="interes-chip">
+                                <input type="checkbox"> Ciberseguridad
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Reproducción de video -->
+                    <div class="preferencia-card">
+                        <div class="preferencia-header">
+                            <i class="fas fa-video"></i>
+                            <div>
+                                <h3>Reproducción de Video</h3>
+                                <p>Configura tus preferencias de video</p>
+                            </div>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Autoplay</span>
+                                <span class="toggle-desc">Reproducir siguiente lección automáticamente</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-autoplay" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Subtítulos por defecto</span>
+                                <span class="toggle-desc">Mostrar subtítulos en todos los videos</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="toggle-subtitulos">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="form-grupo">
+                            <label>Calidad de video por defecto</label>
+                            <select id="calidad-video" class="select-preferencia">
+                                <option value="auto">Automática</option>
+                                <option value="1080p">1080p</option>
+                                <option value="720p">720p</option>
+                                <option value="480p">480p</option>
+                                <option value="360p">360p</option>
+                            </select>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECCIÓN: NOTIFICACIONES -->
+                <section id="notificaciones" class="perfil-seccion">
+                    <div class="seccion-header">
+                        <h2><i class="fas fa-bell"></i> Notificaciones</h2>
+                        <p>Configura cómo quieres recibir notificaciones</p>
+                    </div>
+
+                    <div class="notificaciones-card">
+                        <div class="notificaciones-header">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Notificaciones por Email</h3>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Recordatorios de estudio</span>
+                                <span class="toggle-desc">Recibe recordatorios para mantener tu racha</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Nuevos cursos</span>
+                                <span class="toggle-desc">Entérate de nuevos cursos en tus áreas de interés</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Promociones y ofertas</span>
+                                <span class="toggle-desc">Recibe ofertas especiales y descuentos</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Newsletter semanal</span>
+                                <span class="toggle-desc">Resumen semanal de tu progreso y novedades</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="notificaciones-card">
+                        <div class="notificaciones-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Notificaciones Push</h3>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Recordatorios diarios</span>
+                                <span class="toggle-desc">Recordatorio para continuar aprendiendo</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Logros y badges</span>
+                                <span class="toggle-desc">Notificaciones cuando desbloquees logros</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        <div class="toggle-opcion">
+                            <div class="toggle-info">
+                                <span class="toggle-titulo">Comentarios y respuestas</span>
+                                <span class="toggle-desc">Cuando alguien responda a tus comentarios</span>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="notificaciones-card">
+                        <div class="notificaciones-header">
+                            <i class="fas fa-clock"></i>
+                            <h3>Frecuencia de Recordatorios</h3>
+                        </div>
+                        <div class="form-grupo">
+                            <label>Mejor hora para recordatorios</label>
+                            <select class="select-preferencia">
+                                <option value="09:00">09:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="18:00" selected>06:00 PM</option>
+                                <option value="20:00">08:00 PM</option>
+                            </select>
+                        </div>
+                        <div class="form-grupo">
+                            <label>Días de la semana</label>
+                            <div class="dias-selector">
+                                <label class="dia-checkbox"><input type="checkbox" checked><span>Lun</span></label>
+                                <label class="dia-checkbox"><input type="checkbox" checked><span>Mar</span></label>
+                                <label class="dia-checkbox"><input type="checkbox" checked><span>Mié</span></label>
+                                <label class="dia-checkbox"><input type="checkbox" checked><span>Jue</span></label>
+                                <label class="dia-checkbox"><input type="checkbox" checked><span>Vie</span></label>
+                                <label class="dia-checkbox"><input type="checkbox"><span>Sáb</span></label>
+                                <label class="dia-checkbox"><input type="checkbox"><span>Dom</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="pie-pagina">
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- Modal de éxito -->
+    <div id="modal-exito" class="modal">
+        <div class="modal-contenido">
+            <div class="modal-icono success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>¡Cambios Guardados!</h3>
+            <p>Tus cambios han sido guardados exitosamente.</p>
+            <button class="btn-primario" onclick="cerrarModal()">Aceptar</button>
         </div>
     </div>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
     <script src="../../JS/JS-Login-In/perfil.js"></script>
 </body>
+
 </html>

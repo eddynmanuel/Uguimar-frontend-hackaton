@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obtén 1 Mes Gratis - UGuimar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../CSS/CSS-Login-In/promo-mes-gratis.css">
+</head>
+
+<body>
+    <div class="contenedor-app">
+        <!-- HEADER -->
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="inicioj.html">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+
+            <div class="acciones-usuario">
+                <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
+                        id="contador-carrito">0</span></button>
+                <div class="menu-perfil">
+                    <div class="avatar-inicial" id="profile-toggle" aria-label="Menú de perfil">U</div>
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="promo-mes-gratis.html" class="active">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="contenido-principal">
+            <!-- HERO SECTION -->
+            <section class="hero-promo">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-gift"></i> PROMOCIÓN EXCLUSIVA
+                    </div>
+                    <h1>¡Obtén <span class="texto-destacado">1 Mes Gratis</span> de UGuimar Premium!</h1>
+                    <p>Desbloquea acceso ilimitado a todos nuestros cursos invitando amigos o completando desafíos de
+                        aprendizaje</p>
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <span class="stat-value" id="dias-restantes">15</span>
+                            <span class="stat-label">Días restantes</span>
+                        </div>
+                        <div class="hero-stat">
+                            <span class="stat-value" id="usuarios-participando">2,847</span>
+                            <span class="stat-label">Usuarios participando</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="promo-card-visual">
+                        <div class="card-icon"><i class="fas fa-crown"></i></div>
+                        <h3>UGuimar Premium</h3>
+                        <p>1 Mes Gratis</p>
+                        <div class="card-features">
+                            <span><i class="fas fa-check"></i> Cursos ilimitados</span>
+                            <span><i class="fas fa-check"></i> Certificados</span>
+                            <span><i class="fas fa-check"></i> Sin anuncios</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- OPCIONES PARA OBTENER MES GRATIS -->
+            <section class="opciones-promo">
+                <h2>Elige cómo obtener tu mes gratis</h2>
+                <div class="opciones-grid">
+                    <!-- OPCIÓN 1: REFERIDOS -->
+                    <div class="opcion-card principal">
+                        <div class="opcion-badge">MÁS POPULAR</div>
+                        <div class="opcion-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Invita a 3 Amigos</h3>
+                        <p>Comparte tu código de referido y cuando 3 amigos se registren, ¡obtienes tu mes gratis
+                            automáticamente!</p>
+                        <div class="progreso-referidos">
+                            <div class="progreso-info">
+                                <span>Progreso</span>
+                                <span id="referidos-count">1/3 amigos</span>
+                            </div>
+                            <div class="progreso-barra">
+                                <div class="progreso-fill" id="progreso-referidos" style="width: 33%;"></div>
+                            </div>
+                        </div>
+                        <div class="codigo-referido">
+                            <label>Tu código de referido:</label>
+                            <div class="codigo-box">
+                                <span id="mi-codigo">UGUIMAR-ABC123</span>
+                                <button class="btn-copiar" id="btn-copiar-codigo" title="Copiar código">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="compartir-botones">
+                            <button class="btn-compartir whatsapp" id="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </button>
+                            <button class="btn-compartir email" id="btn-email">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                            <button class="btn-compartir link" id="btn-copiar-link">
+                                <i class="fas fa-link"></i> Copiar Link
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- OPCIÓN 2: DESAFÍO DE APRENDIZAJE -->
+                    <div class="opcion-card">
+                        <div class="opcion-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Completa el Desafío</h3>
+                        <p>Completa 5 cursos en 30 días y desbloquea automáticamente tu mes Premium gratis.</p>
+                        <div class="desafio-progreso">
+                            <div class="progreso-info">
+                                <span>Cursos completados</span>
+                                <span id="cursos-count">2/5</span>
+                            </div>
+                            <div class="progreso-barra">
+                                <div class="progreso-fill" style="width: 40%;"></div>
+                            </div>
+                            <div class="tiempo-restante">
+                                <i class="fas fa-clock"></i>
+                                <span>22 días restantes</span>
+                            </div>
+                        </div>
+                        <button class="btn-ver-cursos" id="btn-ver-cursos">
+                            <i class="fas fa-book"></i> Ver cursos disponibles
+                        </button>
+                    </div>
+
+                    <!-- OPCIÓN 3: RACHA DE ESTUDIO -->
+                    <div class="opcion-card">
+                        <div class="opcion-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Racha de 30 Días</h3>
+                        <p>Mantén una racha de estudio de 30 días consecutivos y gana tu mes Premium.</p>
+                        <div class="racha-progreso">
+                            <div class="racha-visual">
+                                <div class="racha-dias">
+                                    <span class="dia-numero" id="dias-racha">18</span>
+                                    <span class="dia-texto">días de racha</span>
+                                </div>
+                                <div class="racha-calendario">
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia completado"><i class="fas fa-check"></i></div>
+                                    <div class="dia actual"><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <div class="progreso-info">
+                                <span>Progreso</span>
+                                <span>18/30 días</span>
+                            </div>
+                            <div class="progreso-barra">
+                                <div class="progreso-fill" style="width: 60%;"></div>
+                            </div>
+                        </div>
+                        <button class="btn-estudiar" id="btn-estudiar-hoy">
+                            <i class="fas fa-play"></i> Estudiar hoy
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LISTA DE REFERIDOS -->
+            <section class="mis-referidos">
+                <h2><i class="fas fa-users"></i> Mis Amigos Invitados</h2>
+                <div class="referidos-lista">
+                    <div class="referido-item completado">
+                        <div class="referido-avatar">M</div>
+                        <div class="referido-info">
+                            <span class="referido-nombre">María García</span>
+                            <span class="referido-fecha">Se unió hace 5 días</span>
+                        </div>
+                        <div class="referido-estado completado">
+                            <i class="fas fa-check-circle"></i> Registrado
+                        </div>
+                    </div>
+                    <div class="referido-item pendiente">
+                        <div class="referido-avatar"><i class="fas fa-user-plus"></i></div>
+                        <div class="referido-info">
+                            <span class="referido-nombre">Esperando invitación...</span>
+                            <span class="referido-fecha">Comparte tu código</span>
+                        </div>
+                        <div class="referido-estado pendiente">
+                            <i class="fas fa-hourglass-half"></i> Pendiente
+                        </div>
+                    </div>
+                    <div class="referido-item pendiente">
+                        <div class="referido-avatar"><i class="fas fa-user-plus"></i></div>
+                        <div class="referido-info">
+                            <span class="referido-nombre">Esperando invitación...</span>
+                            <span class="referido-fecha">Comparte tu código</span>
+                        </div>
+                        <div class="referido-estado pendiente">
+                            <i class="fas fa-hourglass-half"></i> Pendiente
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BENEFICIOS PREMIUM -->
+            <section class="beneficios-premium">
+                <h2>¿Qué incluye UGuimar Premium?</h2>
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-infinity"></i></div>
+                        <h4>Acceso Ilimitado</h4>
+                        <p>Accede a todos los cursos sin restricciones</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-certificate"></i></div>
+                        <h4>Certificados</h4>
+                        <p>Obtén certificados verificables al completar cursos</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-download"></i></div>
+                        <h4>Descargas Offline</h4>
+                        <p>Descarga cursos para verlos sin internet</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-ban"></i></div>
+                        <h4>Sin Anuncios</h4>
+                        <p>Experiencia de aprendizaje sin interrupciones</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-headset"></i></div>
+                        <h4>Soporte Prioritario</h4>
+                        <p>Atención personalizada 24/7</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <div class="beneficio-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h4>Proyectos Exclusivos</h4>
+                        <p>Acceso a proyectos prácticos avanzados</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section class="faq-section">
+                <h2>Preguntas Frecuentes</h2>
+                <div class="faq-lista">
+                    <div class="faq-item">
+                        <button class="faq-pregunta">
+                            <span>¿Cómo funciona el programa de referidos?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-respuesta">
+                            <p>Comparte tu código único con amigos. Cuando 3 personas se registren usando tu código,
+                                automáticamente recibirás 1 mes de UGuimar Premium gratis. ¡Tus amigos también recibirán
+                                7 días gratis!</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-pregunta">
+                            <span>¿Puedo combinar las opciones?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-respuesta">
+                            <p>¡Sí! Puedes participar en todas las opciones simultáneamente. Si completas múltiples
+                                desafíos, los meses gratis se acumulan.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-pregunta">
+                            <span>¿Qué pasa si pierdo mi racha?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-respuesta">
+                            <p>Si pierdes tu racha, puedes usar un "Escudo de Racha" para protegerla un día. Tienes 1
+                                escudo gratis por mes. También puedes ganar más escudos completando logros.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-pregunta">
+                            <span>¿Cuándo recibo mi mes gratis?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-respuesta">
+                            <p>Una vez que completes cualquiera de los desafíos, el mes Premium se activa
+                                automáticamente en tu cuenta. Recibirás una notificación y un correo de confirmación.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="pie-pagina">
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <!-- MODAL DE ÉXITO -->
+    <div id="modal-exito" class="modal">
+        <div class="modal-contenido">
+            <div class="modal-icono success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 id="modal-titulo">¡Código Copiado!</h3>
+            <p id="modal-mensaje">Tu código de referido ha sido copiado al portapapeles.</p>
+            <button class="btn-primario" onclick="cerrarModal()">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- MODAL COMPARTIR -->
+    <div id="modal-compartir" class="modal">
+        <div class="modal-contenido compartir">
+            <button class="modal-cerrar" onclick="cerrarModalCompartir()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3><i class="fas fa-share-alt"></i> Compartir Invitación</h3>
+            <p>Comparte este mensaje con tus amigos:</p>
+            <div class="mensaje-compartir">
+                <textarea id="mensaje-referido"
+                    readonly>¡Hola! 👋 Te invito a unirte a UGuimar, la mejor plataforma de aprendizaje. Usa mi código UGUIMAR-ABC123 y obtén 7 días gratis. Regístrate aquí: https://uguimar.com/registro?ref=UGUIMAR-ABC123</textarea>
+                <button class="btn-copiar-mensaje" id="btn-copiar-mensaje">
+                    <i class="fas fa-copy"></i> Copiar mensaje
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/JS-Login-In/promo-mes-gratis.js"></script>
+</body>
+
+</html>

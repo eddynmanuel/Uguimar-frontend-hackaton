@@ -24,28 +24,28 @@ document.addEventListener('DOMContentLoaded', function () {
         { id: 10, nombre: 'DevOps', descripcion: 'Automatización y despliegue continuo', icono: 'fa-cogs' }
     ];
 
-    // Datos simulados de cursos destacados
+    // Datos simulados de cursos destacados (algunos gratuitos, algunos de paga)
     const CURSOS_DESTACADOS = [
-        { id: 1, nombre: 'JavaScript Moderno', instructor: 'Juan Pérez', videoUrl: 'https://youtube.com/watch?v=W6NZfCO5SIk' },
-        { id: 2, nombre: 'Python para Principiantes', instructor: 'María García', videoUrl: 'https://youtube.com/watch?v=_uQrJ0TkZlc' },
-        { id: 3, nombre: 'React.js Avanzado', instructor: 'Carlos López', videoUrl: 'https://youtube.com/watch?v=SqcY0GlETPk' },
-        { id: 4, nombre: 'Bases de Datos SQL', instructor: 'Ana Martínez', videoUrl: 'https://youtube.com/watch?v=HXV3zeQKqGY' },
-        { id: 5, nombre: 'Vue.js desde Cero', instructor: 'Roberto Díaz', videoUrl: 'https://youtube.com/watch?v=FXpIoQ_rT_c' },
-        { id: 6, nombre: 'TypeScript Profesional', instructor: 'Elena Ruiz', videoUrl: 'https://youtube.com/watch?v=BwuLxPH8IDs' },
-        { id: 7, nombre: 'Angular Completo', instructor: 'Fernando Torres', videoUrl: 'https://youtube.com/watch?v=3qBXWUpoPHo' },
-        { id: 8, nombre: 'Docker y Kubernetes', instructor: 'Patricia Gómez', videoUrl: 'https://youtube.com/watch?v=fqMOX6JJhGo' }
+        { id: 1, nombre: 'JavaScript Moderno', instructor: 'Juan Pérez', videoUrl: 'https://youtube.com/watch?v=W6NZfCO5SIk', valoracion: 4.8, precio: null, gratuito: true },
+        { id: 2, nombre: 'Python para Principiantes', instructor: 'María García', videoUrl: 'https://youtube.com/watch?v=_uQrJ0TkZlc', valoracion: 4.7, precio: null, gratuito: true },
+        { id: 3, nombre: 'React.js Avanzado', instructor: 'Carlos López', videoUrl: 'https://youtube.com/watch?v=SqcY0GlETPk', valoracion: 4.9, precio: 49.99, gratuito: false },
+        { id: 4, nombre: 'Bases de Datos SQL', instructor: 'Ana Martínez', videoUrl: 'https://youtube.com/watch?v=HXV3zeQKqGY', valoracion: 4.6, precio: null, gratuito: true },
+        { id: 5, nombre: 'Vue.js desde Cero', instructor: 'Roberto Díaz', videoUrl: 'https://youtube.com/watch?v=FXpIoQ_rT_c', valoracion: 4.5, precio: 39.99, gratuito: false },
+        { id: 6, nombre: 'TypeScript Profesional', instructor: 'Elena Ruiz', videoUrl: 'https://youtube.com/watch?v=BwuLxPH8IDs', valoracion: 4.8, precio: 59.99, gratuito: false },
+        { id: 7, nombre: 'Angular Completo', instructor: 'Fernando Torres', videoUrl: 'https://youtube.com/watch?v=3qBXWUpoPHo', valoracion: 4.7, precio: 69.99, gratuito: false },
+        { id: 8, nombre: 'Docker y Kubernetes', instructor: 'Patricia Gómez', videoUrl: 'https://youtube.com/watch?v=fqMOX6JJhGo', valoracion: 4.9, precio: 79.99, gratuito: false }
     ];
 
-    // Datos simulados de cursos recomendados
+    // Datos simulados de cursos recomendados (algunos gratuitos, algunos de paga)
     const CURSOS_RECOMENDADOS = [
-        { id: 9, nombre: 'Node.js y Express', instructor: 'Pedro Ruiz', videoUrl: 'https://youtube.com/watch?v=Oe421EPjeBE' },
-        { id: 10, nombre: 'Machine Learning Básico', instructor: 'Laura Sánchez', videoUrl: 'https://youtube.com/watch?v=ukzFI9rgwfU' },
-        { id: 11, nombre: 'CSS Avanzado', instructor: 'Miguel Torres', videoUrl: 'https://youtube.com/watch?v=1Rs2ND1ryYc' },
-        { id: 12, nombre: 'Git y GitHub', instructor: 'Sofía Vargas', videoUrl: 'https://youtube.com/watch?v=RGOj5yH7evk' },
-        { id: 13, nombre: 'AWS Cloud Practitioner', instructor: 'Daniel Herrera', videoUrl: 'https://youtube.com/watch?v=SOTamWNgDKc' },
-        { id: 14, nombre: 'Figma para Diseñadores', instructor: 'Camila Ortiz', videoUrl: 'https://youtube.com/watch?v=FTFaQWZBqQ8' },
-        { id: 15, nombre: 'Flutter y Dart', instructor: 'Andrés Castro', videoUrl: 'https://youtube.com/watch?v=VPvVD8t02U8' },
-        { id: 16, nombre: 'Ethical Hacking', instructor: 'Valeria Mendez', videoUrl: 'https://youtube.com/watch?v=3Kq1MIfTWCE' }
+        { id: 9, nombre: 'Node.js y Express', instructor: 'Pedro Ruiz', videoUrl: 'https://youtube.com/watch?v=Oe421EPjeBE', valoracion: 4.6, precio: 44.99, gratuito: false },
+        { id: 10, nombre: 'Machine Learning Básico', instructor: 'Laura Sánchez', videoUrl: 'https://youtube.com/watch?v=ukzFI9rgwfU', valoracion: 4.8, precio: 89.99, gratuito: false },
+        { id: 11, nombre: 'CSS Avanzado', instructor: 'Miguel Torres', videoUrl: 'https://youtube.com/watch?v=1Rs2ND1ryYc', valoracion: 4.5, precio: null, gratuito: true },
+        { id: 12, nombre: 'Git y GitHub', instructor: 'Sofía Vargas', videoUrl: 'https://youtube.com/watch?v=RGOj5yH7evk', valoracion: 4.7, precio: null, gratuito: true },
+        { id: 13, nombre: 'AWS Cloud Practitioner', instructor: 'Daniel Herrera', videoUrl: 'https://youtube.com/watch?v=SOTamWNgDKc', valoracion: 4.9, precio: 99.99, gratuito: false },
+        { id: 14, nombre: 'Figma para Diseñadores', instructor: 'Camila Ortiz', videoUrl: 'https://youtube.com/watch?v=FTFaQWZBqQ8', valoracion: 4.6, precio: 34.99, gratuito: false },
+        { id: 15, nombre: 'Flutter y Dart', instructor: 'Andrés Castro', videoUrl: 'https://youtube.com/watch?v=VPvVD8t02U8', valoracion: 4.7, precio: 54.99, gratuito: false },
+        { id: 16, nombre: 'Ethical Hacking', instructor: 'Valeria Mendez', videoUrl: 'https://youtube.com/watch?v=3Kq1MIfTWCE', valoracion: 4.8, precio: 74.99, gratuito: false }
     ];
 
     // Function to generate thumbnail URL from video URL
@@ -78,18 +78,57 @@ document.addEventListener('DOMContentLoaded', function () {
     function createCourseElement(curso) {
         const cursoElement = document.createElement('div');
         cursoElement.className = 'curso';
-        cursoElement.innerHTML = `
-            <img src="${generateThumbnailUrl(curso.videoUrl)}" alt="${curso.nombre}">
-            <h3>${curso.nombre}</h3>
-            <p>${curso.instructor}</p>
-            <div class="calificacion">
-                <i class="fas fa-star"></i>
-                <span>4.5</span>
-            </div>
-        `;
-        cursoElement.addEventListener('click', () => {
-            window.location.href = `contenido.html?videoUrl=${encodeURIComponent(curso.videoUrl)}`;
-        });
+
+        // Determinar si es curso de paga o gratuito
+        const esDePaga = !curso.gratuito && curso.precio;
+
+        if (esDePaga) {
+            // Curso de paga - con precio y botón agregar
+            cursoElement.innerHTML = `
+                <div class="curso-imagen-container">
+                    <img src="${generateThumbnailUrl(curso.videoUrl)}" alt="${curso.nombre}">
+                    <span class="curso-badge-paga"><i class="fas fa-crown"></i> Premium</span>
+                </div>
+                <div class="curso-info">
+                    <h3>${curso.nombre}</h3>
+                    <p class="curso-instructor"><i class="fas fa-user"></i> ${curso.instructor}</p>
+                    <div class="curso-meta">
+                        <div class="calificacion">
+                            <i class="fas fa-star"></i>
+                            <span>${curso.valoracion || 4.5}</span>
+                        </div>
+                        <span class="curso-precio">S/. ${curso.precio.toFixed(2)}</span>
+                    </div>
+                    <button class="btn-agregar-carrito" data-id="${curso.id}" data-nombre="${curso.nombre}" data-precio="${curso.precio}">
+                        <i class="fas fa-cart-plus"></i> Agregar al carrito
+                    </button>
+                </div>
+            `;
+        } else {
+            // Curso gratuito - estilo normal como antes
+            cursoElement.innerHTML = `
+                <img src="${generateThumbnailUrl(curso.videoUrl)}" alt="${curso.nombre}">
+                <h3>${curso.nombre}</h3>
+                <p>${curso.instructor}</p>
+                <div class="calificacion">
+                    <i class="fas fa-star"></i>
+                    <span>${curso.valoracion || 4.5}</span>
+                </div>
+            `;
+
+            // El curso gratuito es completamente clickeable
+            cursoElement.addEventListener('click', () => {
+                const params = new URLSearchParams({
+                    videoUrl: curso.videoUrl,
+                    cursoNombre: curso.nombre,
+                    instructor: curso.instructor,
+                    valoracion: curso.valoracion || 4.5,
+                    fromCurso: 'true'
+                });
+                window.location.href = `contenido.html?${params.toString()}`;
+            });
+        }
+
         return cursoElement;
     }
 
@@ -185,12 +224,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Function to update the profile avatar with user's initial
-    function updateProfileAvatar() {
-        const avatarElement = document.getElementById('profile-toggle');
-        const userName = localStorage.getItem('userName');
-        if (userName && avatarElement && avatarElement.classList.contains('avatar-inicial')) {
-            avatarElement.textContent = userName.charAt(0).toUpperCase();
+    // Function to load avatar from localStorage (image or initial)
+    function loadAvatarFromStorage() {
+        const savedAvatar = localStorage.getItem('userAvatar');
+        const userName = localStorage.getItem('userName') || 'Usuario';
+        const inicial = userName.charAt(0).toUpperCase();
+
+        const avatarImgHeader = document.getElementById('avatar-img-header');
+        const avatarInicialHeader = document.getElementById('avatar-inicial-header');
+        const userNameElement = document.getElementById('userName');
+
+        // Actualizar nombre en el dropdown
+        if (userNameElement) {
+            userNameElement.textContent = userName;
+        }
+
+        // Actualizar avatar
+        if (savedAvatar && avatarImgHeader && avatarInicialHeader) {
+            // Mostrar imagen
+            avatarImgHeader.src = savedAvatar;
+            avatarImgHeader.style.display = 'block';
+            avatarInicialHeader.style.display = 'none';
+        } else if (avatarInicialHeader) {
+            // Mostrar inicial
+            if (avatarImgHeader) {
+                avatarImgHeader.style.display = 'none';
+            }
+            avatarInicialHeader.style.display = 'flex';
+            avatarInicialHeader.textContent = inicial;
+        }
+
+        // Compatibilidad con estructura antigua (sin avatar-container-header)
+        const profileToggle = document.getElementById('profile-toggle');
+        if (profileToggle && profileToggle.classList.contains('avatar-inicial')) {
+            profileToggle.textContent = inicial;
         }
     }
 
@@ -335,26 +402,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to add to cart
     function agregarAlCarrito(e) {
-        if (e.target.classList.contains('btn-agregar-carrito')) {
+        const btn = e.target.closest('.btn-agregar-carrito');
+        if (btn) {
+            e.stopPropagation();
+
             const curso = {
-                id: e.target.dataset.id,
-                nombre: e.target.dataset.nombre,
-                precio: parseFloat(e.target.dataset.precio)
+                id: btn.dataset.id,
+                nombre: btn.dataset.nombre,
+                precio: parseFloat(btn.dataset.precio)
             };
 
             let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
             const cursoEnCarrito = carrito.find(item => item.id === curso.id);
 
             if (cursoEnCarrito) {
-                alert('Este curso ya está en tu carrito');
+                // Mostrar mensaje de que ya está en el carrito
+                btn.innerHTML = '<i class="fas fa-check"></i> Ya en carrito';
+                btn.style.background = 'linear-gradient(135deg, #FF9800, #F57C00)';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Agregar';
+                    btn.style.background = '';
+                }, 2000);
             } else {
                 carrito.push(curso);
                 localStorage.setItem('carrito', JSON.stringify(carrito));
                 actualizarContadorCarrito();
 
-                e.target.textContent = 'Agregado al carrito';
+                // Feedback visual de éxito
+                btn.innerHTML = '<i class="fas fa-check"></i> Agregado';
+                btn.classList.add('agregado');
+
+                // Animación del contador del carrito
+                contadorCarrito.style.transform = 'scale(1.5)';
                 setTimeout(() => {
-                    e.target.textContent = 'Agregar al carrito';
+                    contadorCarrito.style.transform = 'scale(1)';
+                }, 200);
+
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-cart-plus"></i> Agregar';
+                    btn.classList.remove('agregado');
                 }, 2000);
             }
         }
@@ -390,11 +476,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize
     actualizarContadorCarrito();
     updateUserName();
-    updateProfileAvatar();
+    loadAvatarFromStorage();
 
     // Redirect to the cart page when clicking on the cart icon
     carritoToggle.addEventListener('click', function () {
-        window.location.href = 'planesj.html';
+        window.location.href = 'carrito.html';
     });
 
     // Load all data with simulated data

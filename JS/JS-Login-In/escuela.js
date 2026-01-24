@@ -179,12 +179,34 @@ document.addEventListener('DOMContentLoaded', function () {
         const userName = localStorage.getItem('userName');
         if (userName && userNameElement) {
             userNameElement.textContent = userName;
+        }
 
-            // Actualizar avatar con inicial
-            const avatarElement = document.getElementById('profile-toggle');
-            if (avatarElement && avatarElement.classList.contains('avatar-inicial')) {
-                avatarElement.textContent = userName.charAt(0).toUpperCase();
-            }
+        // Cargar avatar desde localStorage
+        loadAvatarFromStorage();
+    }
+
+    function loadAvatarFromStorage() {
+        const savedAvatar = localStorage.getItem('userAvatar');
+        const userName = localStorage.getItem('userName') || 'Usuario';
+        const inicial = userName.charAt(0).toUpperCase();
+
+        const avatarImgHeader = document.getElementById('avatar-img-header');
+        const avatarInicialHeader = document.getElementById('avatar-inicial-header');
+
+        if (savedAvatar && avatarImgHeader && avatarInicialHeader) {
+            avatarImgHeader.src = savedAvatar;
+            avatarImgHeader.style.display = 'block';
+            avatarInicialHeader.style.display = 'none';
+        } else if (avatarInicialHeader) {
+            if (avatarImgHeader) avatarImgHeader.style.display = 'none';
+            avatarInicialHeader.style.display = 'flex';
+            avatarInicialHeader.textContent = inicial;
+        }
+
+        // Compatibilidad con estructura antigua
+        const avatarElement = document.getElementById('profile-toggle');
+        if (avatarElement && avatarElement.classList.contains('avatar-inicial')) {
+            avatarElement.textContent = inicial;
         }
     }
 

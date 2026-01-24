@@ -47,16 +47,19 @@
                 <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
                         id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp"
-                        alt="Foto de perfil" id="profile-toggle">
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
                     <div class="menu-desplegable" id="profile-dropdown">
-                        <p class="nombre-usuario">¡Hola, Usuario!</p>
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
                         <ul>
                             <li><a href="perfil.html">Ver mi perfil</a></li>
-                            <li><a href="#">Obtén 1 mes gratis</a></li>
-                            <li><a href="#">Mi Suscripción</a></li>
-                            <li><a href="../Principal/Principal.html" class="cerrar-sesion">Cerrar sesión</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </div>
@@ -79,7 +82,7 @@
                     </iframe>
                 </div>
                 <div class="video-navigation">
-                    <button class="nav-button previous-class">Curso Anterior</button>
+                    <button class="nav-button previous-class">Clase Anterior</button>
                     <button class="nav-button next-class">Siguiente Clase</button>
                 </div>
             </section>

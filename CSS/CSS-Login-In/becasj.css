@@ -16,6 +16,11 @@
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
 
+  /* Status Colors */
+  --success-color: #4CAF50;
+  --warning-color: #FF9800;
+  --error-color: #f44336;
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -35,12 +40,13 @@
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  --border-radius: 8px;
+  --border-radius: 12px;
   --transition-speed: 0.3s;
 
-  /* New gradient backgrounds */
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #1E90FF, #3D5A80);
+  --gradient-success: linear-gradient(135deg, #4CAF50, #45a049);
   --gradient-light: linear-gradient(135deg, #F0F4F8, #DBE2EF);
-  --gradient-medium: linear-gradient(135deg, #DBE2EF, #98C1D9);
 }
 
 /* Reset and Base Styles */
@@ -58,15 +64,6 @@ body {
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  /* Previene scroll horizontal */
-}
-
-.container {
-  width: 100%;
-  max-width: 100%;
-  /* Cambiar de 1200px a 100% */
-  margin: 0;
-  padding: 0;
 }
 
 .contenedor-app {
@@ -91,15 +88,6 @@ body {
   gap: 2rem;
 }
 
-.logo-container {
-  width: 240px;
-  height: 40px;
-  border: 2px solid #00FF00;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .logo {
   margin: 0;
 }
@@ -107,33 +95,13 @@ body {
 .logo a {
   display: block;
   width: 200px;
-  /* Cambia el ancho del área del logo */
   height: 40px;
-  /* Cambia la altura del área del logo */
 }
 
 .logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.barra-busqueda input {
-  max-width: none;
-  border: 2px solid var(--input-border-color);
-  border-radius: 20px;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-  background-color: var(--card-bg);
-  color: var(--text-light);
-  font-size: 1rem;
-  width: 700px;
-}
-
-.barra-busqueda input:focus {
-  flex-shrink: 0;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 2px rgba(255, 103, 0, 0.2);
 }
 
 .acciones-usuario {
@@ -171,7 +139,6 @@ body {
   position: relative;
 }
 
-/* Avatar con inicial del usuario */
 .avatar-inicial {
   width: 40px;
   height: 40px;
@@ -194,16 +161,37 @@ body {
   box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
 }
 
-.menu-perfil img {
+/* Contenedor de avatar para imagen o inicial */
+.avatar-container-header {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
 }
 
-.menu-perfil img:hover {
+.avatar-container-header:hover {
   transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+.avatar-img-header {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-container-header .avatar-inicial {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-desplegable {
@@ -214,8 +202,8 @@ body {
   background-color: var(--card-bg);
   padding: 1rem;
   width: 200px;
-  border-radius: 4px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .menu-desplegable.active {
@@ -230,22 +218,32 @@ body {
   transition: color 0.3s ease;
 }
 
-.menu-desplegable p {
+.menu-desplegable .nombre-usuario {
+  font-weight: 600;
   color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.menu-desplegable .tipo-plan {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.menu-desplegable ul {
+  list-style: none;
 }
 
 .menu-desplegable a:hover {
-  color: var(--input-border-color);
+  background: var(--bg-color);
+  color: var(--primary-color);
 }
 
 .cerrar-sesion {
   color: #e74c3c !important;
   font-weight: 700;
-  padding-top: 5px;
-}
-
-.cerrar-sesion:hover {
-  color: #f52710;
 }
 
 .navegacion-principal {
@@ -280,19 +278,15 @@ body {
   box-shadow: 0 2px 8px rgba(30, 144, 255, 0.3);
 }
 
-/* Main Content Styles */
+/* Main Content */
 .contenido-principal {
-  padding: 3rem 4rem;
+  padding: 2rem 4rem;
   flex-grow: 1;
-  background-color: var(--card-bg);
-  color: var(--text-color);
+  max-width: 1400px;
   margin: 0 auto;
-  max-width: 1200px;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+  width: 100%;
 }
 
-/* Títulos */
 .contenido-principal h1 {
   font-size: 2.5rem;
   text-align: center;
@@ -301,211 +295,865 @@ body {
 }
 
 .contenido-principal h2 {
-  font-size: 2rem;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--dark-blue);
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contenido-principal h2 i {
   color: var(--primary-color);
 }
 
-.contenido-principal h3 {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
-  margin-bottom: 1rem;
-}
-
-/* Texto */
-.contenido-principal p {
-  color: var(--text-color);
-  line-height: 1.8;
-  font-size: 1.1rem;
+.seccion-descripcion {
+  color: var(--gray-600);
   margin-bottom: 1.5rem;
 }
 
-/* Becas Sections */
-.info-becas,
-.requisitos-beca,
-.documentos-beca {
-  background-color: var(--card-bg);
+/* Progreso de Beca - Stepper */
+.progreso-beca {
+  margin-bottom: 2rem;
+  background: var(--card-bg);
+  padding: 2rem;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-  padding: 1.5rem;
+}
+
+.pasos-beca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.paso-numero {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.paso.activo .paso-numero {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+
+.paso.completado .paso-numero {
+  background: var(--gradient-success);
+  color: white;
+}
+
+.paso-texto {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  font-weight: 500;
+  text-align: center;
+}
+
+.paso.activo .paso-texto,
+.paso.completado .paso-texto {
+  color: var(--dark-blue);
+  font-weight: 600;
+}
+
+.paso-linea {
+  flex: 1;
+  height: 4px;
+  background: var(--gray-300);
+  margin: 0 1rem;
+  max-width: 100px;
+  border-radius: 2px;
+  transition: background 0.3s ease;
+}
+
+.paso-linea.completada {
+  background: var(--success-color);
+}
+
+/* Info Becas */
+.info-becas {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
   margin-bottom: 2rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: var(--box-shadow);
 }
 
-.info-becas:hover,
-.requisitos-beca:hover,
-.documentos-beca:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+.info-becas>p {
+  color: var(--gray-700);
+  margin-bottom: 1.5rem;
 }
 
-/* Cursos Requeridos */
-.cursos-requeridos {
-  padding: 0;
+.pasos-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
-.cursos-requeridos ul {
-  list-style: none;
-  padding: 0;
+.paso-info {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--gray-100);
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.paso-info:hover {
+  transform: translateY(-3px);
+}
+
+.paso-info-icono {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.paso-info-contenido h4 {
+  color: var(--dark-blue);
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.paso-info-contenido p {
+  color: var(--gray-600);
+  font-size: 0.85rem;
   margin: 0;
 }
 
-.cursos-requeridos li {
-  background-color: var(--card-bg);
-  border: 2px solid var(--primary-color);
+/* Sección de Cursos */
+.requisitos-beca {
+  background: var(--card-bg);
   border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+.progreso-cursos {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
   padding: 1rem;
+  background: var(--gray-100);
+  border-radius: 10px;
+}
+
+.progreso-cursos-barra {
+  flex: 1;
+  height: 12px;
+  background: var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progreso-cursos-fill {
+  height: 100%;
+  background: var(--gradient-success);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.progreso-cursos-texto {
+  font-weight: 600;
+  color: var(--dark-blue);
+  white-space: nowrap;
+}
+
+.lista-cursos-beca {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.curso-beca {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+}
+
+.curso-beca:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.curso-beca-imagen {
+  position: relative;
+  height: 140px;
+  overflow: hidden;
+}
+
+.curso-beca-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.curso-beca-estado {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gray-400);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.curso-beca-estado.en-progreso {
+  background: var(--warning-color);
+}
+
+.curso-beca-estado.completado {
+  background: var(--success-color);
+}
+
+.curso-beca-info {
+  padding: 1rem;
+  flex: 1;
+}
+
+.curso-beca-info h3 {
+  font-size: 1rem;
+  color: var(--dark-blue);
+  margin-bottom: 0.5rem;
+}
+
+.curso-beca-instructor,
+.curso-beca-duracion {
+  font-size: 0.85rem;
+  color: var(--gray-600);
+  margin-bottom: 0.3rem;
+}
+
+.curso-beca-instructor i,
+.curso-beca-duracion i {
+  width: 20px;
+  color: var(--primary-color);
+}
+
+.curso-beca-progreso {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.barra-progreso-curso {
+  flex: 1;
+  height: 8px;
+  background: var(--gray-200);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progreso-curso-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.btn-curso-beca {
+  margin: 1rem;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-curso-beca:hover:not(.disabled) {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
+}
+
+.btn-curso-beca.disabled {
+  background: var(--gray-400);
+  cursor: not-allowed;
+}
+
+.btn-curso-beca.completado {
+  background: var(--gradient-success);
+}
+
+/* Sección de Examen */
+.examen-beca {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+}
+
+.examen-contenido {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.examen-info {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.examen-icono {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--gray-300);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.examen-icono.desbloqueado {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 20px rgba(30, 144, 255, 0.4);
+}
+
+.examen-icono.aprobado {
+  background: var(--gradient-success);
+  color: white;
+}
+
+.examen-detalles h3 {
+  color: var(--dark-blue);
+  margin-bottom: 0.5rem;
+}
+
+.examen-detalles p {
+  color: var(--gray-600);
   margin-bottom: 1rem;
+}
+
+.examen-requisitos {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.examen-requisitos li {
+  color: var(--gray-700);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.examen-requisitos li i {
+  color: var(--primary-color);
+}
+
+.examen-estado {
+  display: none;
+}
+
+.btn-iniciar-examen {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--gray-400);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-iniciar-examen.habilitado {
+  background: var(--gradient-primary);
+  cursor: pointer;
+}
+
+.btn-iniciar-examen.habilitado:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(30, 144, 255, 0.4);
+}
+
+/* Sección de Documentos */
+.documentos-beca {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--box-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.documentos-beca.bloqueado {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.seccion-bloqueada-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  gap: 1rem;
+}
+
+.seccion-bloqueada-overlay i {
+  font-size: 3rem;
+  color: var(--gray-400);
+}
+
+.seccion-bloqueada-overlay p {
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.seccion-bloqueada-overlay.oculto {
+  display: none;
+}
+
+.documentos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.documento-card {
+  background: var(--gray-100);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 2px dashed var(--gray-300);
+  transition: all 0.3s ease;
+}
+
+.documento-card:hover {
+  border-color: var(--primary-color);
+  background: var(--accent-color);
+}
+
+.documento-card.cargado {
+  border-color: var(--success-color);
+  border-style: solid;
+  background: rgba(76, 175, 80, 0.1);
+}
+
+.documento-icono {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.documento-info h4 {
+  color: var(--dark-blue);
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+}
+
+.documento-info p {
+  color: var(--gray-600);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.documento-upload {
+  position: relative;
+}
+
+.documento-upload input[type="file"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.btn-upload {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-upload:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+.archivo-nombre {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.documento-preview {
+  margin-top: 1rem;
+}
+
+.documento-preview img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+}
+
+.documentos-actions {
+  text-align: center;
+}
+
+.btn-enviar-solicitud {
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 10px;
+  background: var(--gray-400);
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: not-allowed;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-enviar-solicitud.habilitado {
+  background: var(--gradient-success);
+  cursor: pointer;
+}
+
+.btn-enviar-solicitud.habilitado:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+/* Sección de Éxito */
+.beca-exito {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 3rem;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+}
+
+.beca-exito.oculto {
+  display: none;
+}
+
+.exito-contenido {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.exito-icono {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--gradient-success);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto 1.5rem;
+  animation: pulseSuccess 2s infinite;
+}
+
+@keyframes pulseSuccess {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.exito-contenido h2 {
+  color: var(--success-color);
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.exito-contenido p {
+  color: var(--gray-700);
+  margin-bottom: 1.5rem;
+}
+
+.exito-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.exito-info p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--gray-600);
+  margin: 0;
+}
+
+.exito-info i {
+  color: var(--primary-color);
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+}
+
+.modal.oculto {
+  display: none;
+}
+
+.modal-contenido {
+  background: var(--card-bg);
+  border-radius: var(--border-radius);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--gray-200);
 }
 
-.cursos-requeridos li:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--hover-shadow);
+.modal-header h2 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Botones */
-.btn-iniciar-curso,
-.btn-iniciar-examen,
-.btn-subir-documentos {
-  background-image: var(--gradient-medium);
-  color: var(--button-text);
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1rem;
+.modal-cerrar {
+  font-size: 2rem;
   cursor: pointer;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  color: var(--gray-500);
+  transition: color 0.3s ease;
 }
 
-.btn-iniciar-curso:hover,
-.btn-iniciar-examen:hover,
-.btn-subir-documentos:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(62, 156, 211, 0.5);
+.modal-cerrar:hover {
+  color: var(--error-color);
 }
 
-/* Documentos Section */
-.campo-documento {
+.modal-body {
+  padding: 2rem;
+}
+
+/* Modal de Resultado */
+.modal-resultado {
+  text-align: center;
+  padding: 3rem;
+  max-width: 500px;
+}
+
+.resultado-icono {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto 1.5rem;
+}
+
+.resultado-icono.aprobado {
+  background: var(--gradient-success);
+  color: white;
+}
+
+.resultado-icono.reprobado {
+  background: var(--error-color);
+  color: white;
+}
+
+.modal-resultado h2 {
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+.modal-resultado p {
+  color: var(--gray-700);
   margin-bottom: 2rem;
 }
 
-.campo-documento label {
-  display: block;
-  margin-bottom: 0.75rem;
-  font-weight: 500;
-  color: var(--dark-blue);
+.btn-cerrar-resultado {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.campo-documento input[type="file"] {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: var(--light-blue);
-  border: 1px solid var(--dark-blue);
-  border-radius: var(--border-radius);
+.btn-cerrar-resultado:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(30, 144, 255, 0.4);
 }
 
-/* Examen Admisión */
-.examen-admision {
-  background-color: var(--card-bg);
-  border-radius: var(--border-radius);
-  padding: 1.5rem;
-  box-shadow: var(--box-shadow);
-  color: var(--text-color);
+/* Utilidades */
+.oculto {
+  display: none !important;
 }
 
-.examen-admision h3 {
-  font-size: 1.3rem;
-  color: var(--secondary-color);
-}
-
-.examen-admision p {
-  margin-bottom: 1.5rem;
-}
-
-.btn-iniciar-examen.disabled {
-  background-color: var(--gray-400);
-  cursor: not-allowed;
-  box-shadow: none;
-}
-
-/* Footer Styles */
+/* Footer */
 .pie-pagina {
   width: 100%;
-  margin: 0;
   padding: 2rem 1rem;
   background-color: var(--secondary-color);
   color: var(--bg-color);
   text-align: center;
-  margin-top: 2rem;
+  margin-top: auto;
 }
 
-/* Responsive Design */
+/* Responsive */
+@media (max-width: 1024px) {
+  .lista-cursos-beca {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pasos-info {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 768px) {
   .encabezado-principal {
     flex-wrap: wrap;
     padding: 1rem;
   }
 
-  .barra-busqueda {
-    order: 1;
-    width: 100%;
-    margin: 1rem 0;
+  .navegacion-principal {
+    display: none;
   }
 
-  .acciones-usuario {
+  .navegacion-principal.active {
+    display: block;
     width: 100%;
-    justify-content: space-between;
   }
 
   .navegacion-principal ul {
     flex-direction: column;
   }
 
-  .navegacion-principal li {
-    margin-bottom: 0.5rem;
-  }
-
-  .info-becas,
-  .requisitos-beca,
-  .documentos-beca {
+  .contenido-principal {
     padding: 1.5rem;
   }
 
-  .cursos-requeridos li {
-    background-color: var(--card-bg);
-    border: 2px solid var(--secondary-color);
-    border-radius: 10px;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  .pasos-beca {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .paso-linea {
+    display: none;
+  }
+
+  .lista-cursos-beca {
+    grid-template-columns: 1fr;
+  }
+
+  .documentos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .examen-info {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
   }
 
-  .cursos-requeridos li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
-  }
-
-  .btn-iniciar-curso,
-  .btn-iniciar-examen {
-    margin-top: 0.5rem;
-  }
-
-  .info-becas h2,
-  .requisitos-beca h2,
-  .documentos-beca h2 {
-    font-size: 1.3rem;
+  .examen-requisitos {
+    justify-content: center;
   }
 }
 
@@ -523,24 +1171,18 @@ body {
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: translateY(20px);
   }
 
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
 .info-becas,
 .requisitos-beca,
+.examen-beca,
 .documentos-beca {
   animation: fadeIn 0.5s ease-out;
-}
-
-/* Accessibility Improvements */
-.btn-iniciar-curso:focus,
-.btn-iniciar-examen:focus,
-.btn-subir-documentos:focus,
-.campo-documento input[type="file"]:focus {
-  outline: 3px solid var(--secondary-color2);
-  outline-offset: 2px;
 }

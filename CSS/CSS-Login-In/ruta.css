@@ -77,15 +77,16 @@ body {
 /* Header Styles */
 .encabezado-principal {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   background: var(--dark-blue);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 2000;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -167,6 +168,62 @@ body {
   position: relative;
 }
 
+/* Avatar con inicial del usuario */
+.avatar-inicial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-inicial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+/* Contenedor de avatar para imagen o inicial */
+.avatar-container-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+}
+
+.avatar-container-header:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+.avatar-img-header {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-container-header .avatar-inicial {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .menu-perfil img {
   width: 40px;
   height: 40px;
@@ -203,11 +260,26 @@ body {
   transition: color 0.3s ease;
 }
 
-.menu-desplegable p {
+.menu-desplegable .nombre-usuario {
+  font-weight: 600;
   color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.menu-desplegable .tipo-plan {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.menu-desplegable ul {
+  list-style: none;
 }
 
 .menu-desplegable a:hover {
+  background: var(--bg-color);
   color: var(--primary-color);
 }
 

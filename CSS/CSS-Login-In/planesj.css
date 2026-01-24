@@ -5,17 +5,17 @@
   --primary-color: #1E90FF;
   --secondary-color: #3D5A80;
   --accent-color: #E0FBFC;
-  
+
   /* Neutral Colors */
   --text-color: #333333;
   --bg-color: #F0F4F8;
   --card-bg: #FFFFFF;
-  
+
   /* Additional Colors */
   --dark-blue: #112D4E;
   --light-blue: #DBE2EF;
   --gray-blue: #98C1D9;
-  
+
   /* Grayscale */
   --gray-100: #f8f9fa;
   --gray-200: #e9ecef;
@@ -26,12 +26,12 @@
   --gray-700: #495057;
   --gray-800: #343a40;
   --gray-900: #212529;
-  
+
   /* Component Colors */
   --header-bg: var(--dark-blue);
   --footer-bg: var(--dark-blue);
   --button-text: #FFFFFF;
-  
+
   /* Shadows and Effects */
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --hover-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -77,15 +77,16 @@ body {
 /* Header Styles */
 .encabezado-principal {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   background: var(--dark-blue);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 2000;
+  gap: 2rem;
 }
 
 .logo-container {
@@ -103,8 +104,10 @@ body {
 
 .logo a {
   display: block;
-  width: 200px; /* Cambia el ancho del área del logo */
-  height: 40px; /* Cambia la altura del área del logo */
+  width: 200px;
+  /* Cambia el ancho del área del logo */
+  height: 40px;
+  /* Cambia la altura del área del logo */
 }
 
 .logo img {
@@ -165,6 +168,62 @@ body {
   position: relative;
 }
 
+/* Avatar con inicial del usuario */
+.avatar-inicial {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.avatar-inicial:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+/* Contenedor de avatar para imagen o inicial */
+.avatar-container-header {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+}
+
+.avatar-container-header:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+}
+
+.avatar-img-header {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-container-header .avatar-inicial {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: linear-gradient(135deg, #1E90FF, #3D5A80);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .menu-perfil img {
   width: 40px;
   height: 40px;
@@ -201,11 +260,26 @@ body {
   transition: color 0.3s ease;
 }
 
-.menu-desplegable p {
+.menu-desplegable .nombre-usuario {
+  font-weight: 600;
   color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.menu-desplegable .tipo-plan {
+  font-size: 0.85rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.menu-desplegable ul {
+  list-style: none;
 }
 
 .menu-desplegable a:hover {
+  background: var(--bg-color);
   color: var(--primary-color);
 }
 
@@ -239,16 +313,20 @@ body {
   background-color: var(--light-blue);
   color: var(--dark-blue);
 }
-  
+
 /* Main Content Styles */
 .contenido-principal {
-  padding: 4rem; /* Aumenta el padding para dar más espacio alrededor del contenido */
+  padding: 4rem;
+  /* Aumenta el padding para dar más espacio alrededor del contenido */
   background-color: var(--background-color);
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Centra el contenido en la pantalla */
-  width: 90%; /* Cambié max-width por width, de esta forma el contenedor se adapta mejor */
-  max-width: 1400px; /* Aumenté el máximo de ancho para que se expanda más */
+  margin: 0 auto;
+  /* Centra el contenido en la pantalla */
+  width: 90%;
+  /* Cambié max-width por width, de esta forma el contenedor se adapta mejor */
+  max-width: 1400px;
+  /* Aumenté el máximo de ancho para que se expanda más */
 }
 
 .contenido-principal h1 {
@@ -276,7 +354,8 @@ body {
   background-color: var(--light-color);
   border-radius: 12px;
   padding: 2.5rem;
-  margin-bottom: 3rem; /* Aumento el margen inferior */
+  margin-bottom: 3rem;
+  /* Aumento el margen inferior */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -300,10 +379,12 @@ body {
   background-color: var(--secondary-color);
   color: var(--accent-color);
   border: none;
-  padding: 1rem 2rem; /* Aumento el padding */
+  padding: 1rem 2rem;
+  /* Aumento el padding */
   border-radius: 25px;
   cursor: pointer;
-  font-size: 1.2rem; /* Aumento el tamaño de la fuente */
+  font-size: 1.2rem;
+  /* Aumento el tamaño de la fuente */
   transition: background-color 0.3s ease, transform 0.3s ease;
   margin-top: 1.5rem;
   width: 100%;
@@ -346,15 +427,18 @@ body {
 
 /* Colores más suaves personalizados para cada tipo de plan */
 .plan-basico {
-  background-color: #e3f4e3; /* Verde pastel más suave */
+  background-color: #e3f4e3;
+  /* Verde pastel más suave */
 }
 
 .plan-avanzado-duo {
-  background-color: #fef7c3; /* Amarillo claro pastel */
+  background-color: #fef7c3;
+  /* Amarillo claro pastel */
 }
 
 .plan-avanzado-4 {
-  background-color: #fbd0d1; /* Rojo suave pastel */
+  background-color: #fbd0d1;
+  /* Rojo suave pastel */
 }
 
 /* Estilo al pasar el cursor sobre un plan */
@@ -437,7 +521,9 @@ body {
 }
 
 /* Botones de acción */
-.btn-elegir, .btn-actual, .btn-contactar {
+.btn-elegir,
+.btn-actual,
+.btn-contactar {
   background-image: var(--button-gradient);
   color: var(--text-light);
   border: none;
@@ -452,7 +538,9 @@ body {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-elegir:hover, .btn-actual:hover, .btn-contactar:hover {
+.btn-elegir:hover,
+.btn-actual:hover,
+.btn-contactar:hover {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(255, 103, 0, 0.5);
 }
@@ -524,8 +612,13 @@ body {
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .plan {

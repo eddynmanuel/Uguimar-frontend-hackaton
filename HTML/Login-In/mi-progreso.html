@@ -35,14 +35,18 @@
                 <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
                         id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <div class="avatar-inicial" id="profile-toggle" aria-label="Menú de perfil">U</div>
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
                         <ul>
                             <li><a href="perfil.html">Ver mi perfil</a></li>
-                            <li><a href="#">Obtén 1 mes gratis</a></li>
-                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
                             <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
                         </ul>
                     </div>
@@ -56,12 +60,24 @@
                 <h2>Resumen de Progreso</h2>
                 <div class="estadisticas">
                     <div class="estadistica">
+                        <i class="fas fa-graduation-cap estadistica-icono"></i>
                         <h3>Cursos Completados</h3>
+                        <p class="numero">5</p>
+                    </div>
+                    <div class="estadistica">
+                        <i class="fas fa-clock estadistica-icono"></i>
+                        <h3>Horas de Estudio</h3>
+                        <p class="numero">48</p>
+                    </div>
+                    <div class="estadistica">
+                        <i class="fas fa-certificate estadistica-icono"></i>
+                        <h3>Certificados</h3>
                         <p class="numero">3</p>
                     </div>
                     <div class="estadistica">
-                        <h3>Horas de Estudio</h3>
-                        <p class="numero">24</p>
+                        <i class="fas fa-fire estadistica-icono"></i>
+                        <h3>Racha Actual</h3>
+                        <p class="numero">12 días</p>
                     </div>
                 </div>
             </section>
@@ -69,17 +85,115 @@
             <section class="cursos-en-progreso">
                 <h2>Cursos en Progreso</h2>
                 <div class="lista-cursos">
-                    <div class="curso">
-                        <h3>Introducción a Python</h3>
-                        <div class="barra-progreso">
-                            <div class="progreso" style="width: 75%;">75%</div>
+                    <div class="curso" data-curso-id="1">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/_uQrJ0TkZlc/hqdefault.jpg" alt="Python">
+                        </div>
+                        <div class="curso-info">
+                            <h3>Introducción a Python</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> María García</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 75%;">75%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 8 de 10 - Funciones avanzadas</p>
                         </div>
                         <button class="btn-continuar">Continuar</button>
                     </div>
-                    <div class="curso">
-                        <h3>JavaScript Avanzado</h3>
-                        <div class="barra-progreso">
-                            <div class="progreso" style="width: 30%;">30%</div>
+                    <div class="curso" data-curso-id="2">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/W6NZfCO5SIk/hqdefault.jpg" alt="JavaScript">
+                        </div>
+                        <div class="curso-info">
+                            <h3>JavaScript Avanzado</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Juan Pérez</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 45%;">45%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 5 de 12 - Async/Await</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="3">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/SqcY0GlETPk/hqdefault.jpg" alt="React">
+                        </div>
+                        <div class="curso-info">
+                            <h3>React.js Completo</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Carlos López</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 30%;">30%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 4 de 15 - Componentes y Props</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="4">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/HXV3zeQKqGY/hqdefault.jpg" alt="SQL">
+                        </div>
+                        <div class="curso-info">
+                            <h3>Bases de Datos SQL</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Ana Martínez</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 60%;">60%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 6 de 10 - Joins y Subconsultas</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="5">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/Oe421EPjeBE/hqdefault.jpg" alt="Node.js">
+                        </div>
+                        <div class="curso-info">
+                            <h3>Node.js y Express</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Pedro Ruiz</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 20%;">20%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 2 de 10 - Creando el servidor</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="6">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/RGOj5yH7evk/hqdefault.jpg" alt="Git">
+                        </div>
+                        <div class="curso-info">
+                            <h3>Git y GitHub</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Sofía Vargas</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 90%;">90%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 9 de 10 - Pull Requests</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="7">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/1Rs2ND1ryYc/hqdefault.jpg" alt="CSS">
+                        </div>
+                        <div class="curso-info">
+                            <h3>CSS Avanzado y Animaciones</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Miguel Torres</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 55%;">55%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 6 de 11 - Flexbox y Grid</p>
+                        </div>
+                        <button class="btn-continuar">Continuar</button>
+                    </div>
+                    <div class="curso" data-curso-id="8">
+                        <div class="curso-imagen">
+                            <img src="https://img.youtube.com/vi/BwuLxPH8IDs/hqdefault.jpg" alt="TypeScript">
+                        </div>
+                        <div class="curso-info">
+                            <h3>TypeScript Profesional</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Elena Ruiz</p>
+                            <div class="barra-progreso">
+                                <div class="progreso" style="width: 15%;">15%</div>
+                            </div>
+                            <p class="curso-modulo">Módulo 2 de 14 - Tipos básicos</p>
                         </div>
                         <button class="btn-continuar">Continuar</button>
                     </div>
@@ -87,33 +201,171 @@
             </section>
 
             <section class="logros">
-                <h2>Logros Desbloqueados</h2>
+                <h2>Logros Desbloqueados <span class="logros-contador">12/25</span></h2>
                 <div class="lista-logros">
-                    <div class="logro">
-                        <div class="logro-icono">
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono oro">
                             <i class="fas fa-medal" aria-hidden="true"></i>
                         </div>
                         <div class="logro-info">
                             <h4>Primer Curso Completado</h4>
                             <p>¡Felicitaciones por completar tu primer curso!</p>
+                            <span class="logro-fecha">Obtenido: 15 Dic 2025</span>
                         </div>
                     </div>
-                    <div class="logro">
-                        <div class="logro-icono">
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono fuego">
                             <i class="fas fa-fire" aria-hidden="true"></i>
                         </div>
                         <div class="logro-info">
                             <h4>Racha de 7 días</h4>
-                            <p>¡Mantén tu racha diaria de aprendizaje!</p>
+                            <p>¡Una semana completa de aprendizaje continuo!</p>
+                            <span class="logro-fecha">Obtenido: 22 Dic 2025</span>
                         </div>
                     </div>
-                    <div class="logro">
-                        <div class="logro-icono">
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono bronce">
                             <i class="fas fa-clock" aria-hidden="true"></i>
                         </div>
                         <div class="logro-info">
                             <h4>10 horas de estudio</h4>
                             <p>Has acumulado 10 horas de aprendizaje.</p>
+                            <span class="logro-fecha">Obtenido: 18 Dic 2025</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono plata">
+                            <i class="fas fa-star" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Estudiante Destacado</h4>
+                            <p>Obtuviste una calificación perfecta en un examen.</p>
+                            <span class="logro-fecha">Obtenido: 28 Dic 2025</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono oro">
+                            <i class="fas fa-trophy" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Maestro del Código</h4>
+                            <p>Completaste 5 cursos de programación.</p>
+                            <span class="logro-fecha">Obtenido: 10 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono fuego">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Aprendiz Veloz</h4>
+                            <p>Completaste un curso en menos de una semana.</p>
+                            <span class="logro-fecha">Obtenido: 5 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono plata">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Colaborador Activo</h4>
+                            <p>Respondiste 10 preguntas en la comunidad.</p>
+                            <span class="logro-fecha">Obtenido: 8 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono bronce">
+                            <i class="fas fa-book-open" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Explorador Curioso</h4>
+                            <p>Exploraste cursos de 3 categorías diferentes.</p>
+                            <span class="logro-fecha">Obtenido: 20 Dic 2025</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono oro">
+                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Primer Certificado</h4>
+                            <p>¡Obtuviste tu primer certificado oficial!</p>
+                            <span class="logro-fecha">Obtenido: 2 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono fuego">
+                            <i class="fas fa-fire-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Racha Imparable</h4>
+                            <p>¡Mantuviste una racha de 14 días seguidos!</p>
+                            <span class="logro-fecha">Obtenido: 12 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono plata">
+                            <i class="fas fa-laptop-code" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Desarrollador Junior</h4>
+                            <p>Completaste la ruta de Desarrollo Web Frontend.</p>
+                            <span class="logro-fecha">Obtenido: 15 Ene 2026</span>
+                        </div>
+                    </div>
+                    <div class="logro desbloqueado">
+                        <div class="logro-icono bronce">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <div class="logro-info">
+                            <h4>Networker</h4>
+                            <p>Te uniste a 3 grupos de estudio.</p>
+                            <span class="logro-fecha">Obtenido: 18 Ene 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cursos-completados">
+                <h2>Cursos Completados Recientemente</h2>
+                <div class="lista-cursos-completados">
+                    <div class="curso-completado">
+                        <div class="curso-completado-imagen">
+                            <img src="https://img.youtube.com/vi/pQN-pnXPaVg/hqdefault.jpg" alt="HTML">
+                            <div class="completado-badge"><i class="fas fa-check-circle"></i></div>
+                        </div>
+                        <div class="curso-completado-info">
+                            <h3>HTML5 desde Cero</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Ana García</p>
+                            <p class="curso-calificacion"><i class="fas fa-star"></i> Calificación: 95/100</p>
+                            <a href="#" class="btn-certificado"><i class="fas fa-download"></i> Descargar
+                                Certificado</a>
+                        </div>
+                    </div>
+                    <div class="curso-completado">
+                        <div class="curso-completado-imagen">
+                            <img src="https://img.youtube.com/vi/1PnVor36_40/hqdefault.jpg" alt="CSS">
+                            <div class="completado-badge"><i class="fas fa-check-circle"></i></div>
+                        </div>
+                        <div class="curso-completado-info">
+                            <h3>CSS3 Fundamentos</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Carlos López</p>
+                            <p class="curso-calificacion"><i class="fas fa-star"></i> Calificación: 88/100</p>
+                            <a href="#" class="btn-certificado"><i class="fas fa-download"></i> Descargar
+                                Certificado</a>
+                        </div>
+                    </div>
+                    <div class="curso-completado">
+                        <div class="curso-completado-imagen">
+                            <img src="https://img.youtube.com/vi/RqQ1d1qEWlE/hqdefault.jpg" alt="JavaScript">
+                            <div class="completado-badge"><i class="fas fa-check-circle"></i></div>
+                        </div>
+                        <div class="curso-completado-info">
+                            <h3>JavaScript Básico</h3>
+                            <p class="curso-instructor"><i class="fas fa-user"></i> Juan Martínez</p>
+                            <p class="curso-calificacion"><i class="fas fa-star"></i> Calificación: 92/100</p>
+                            <a href="#" class="btn-certificado"><i class="fas fa-download"></i> Descargar
+                                Certificado</a>
                         </div>
                     </div>
                 </div>

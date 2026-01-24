@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     carritoToggle.addEventListener('click', function () {
-        window.location.href = 'planesj.html';
+        window.location.href = 'carrito.html';
     });
 
     // Función para actualizar el nombre de usuario
@@ -62,17 +62,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Función para actualizar el avatar con la inicial del usuario
-    function updateProfileAvatar() {
-        const avatarElement = document.getElementById('profile-toggle');
-        const userName = localStorage.getItem('userName');
-        if (userName && avatarElement && avatarElement.classList.contains('avatar-inicial')) {
-            avatarElement.textContent = userName.charAt(0).toUpperCase();
+    // Función para actualizar el avatar (imagen o inicial) desde localStorage
+    function loadAvatarFromStorage() {
+        const savedAvatar = localStorage.getItem('userAvatar');
+        const userName = localStorage.getItem('userName') || 'Usuario';
+        const inicial = userName.charAt(0).toUpperCase();
+
+        const avatarImgHeader = document.getElementById('avatar-img-header');
+        const avatarInicialHeader = document.getElementById('avatar-inicial-header');
+
+        // Actualizar avatar
+        if (savedAvatar && avatarImgHeader && avatarInicialHeader) {
+            // Mostrar imagen
+            avatarImgHeader.src = savedAvatar;
+            avatarImgHeader.style.display = 'block';
+            avatarInicialHeader.style.display = 'none';
+        } else if (avatarInicialHeader) {
+            // Mostrar inicial
+            if (avatarImgHeader) {
+                avatarImgHeader.style.display = 'none';
+            }
+            avatarInicialHeader.style.display = 'flex';
+            avatarInicialHeader.textContent = inicial;
+        }
+
+        // Compatibilidad con estructura antigua
+        const profileToggle = document.getElementById('profile-toggle');
+        if (profileToggle && profileToggle.classList.contains('avatar-inicial')) {
+            profileToggle.textContent = inicial;
         }
     }
 
     updateUserName();
-    updateProfileAvatar();
+    loadAvatarFromStorage();
 
     // Función para cerrar sesión
     function cerrarSesion() {
@@ -95,13 +117,40 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializar el contador del carrito
     actualizarContadorCarrito();
 
+    // Datos de cursos en progreso para redirección
+    const CURSOS_EN_PROGRESO = {
+        1: { nombre: 'Introducción a Python', instructor: 'María García', videoUrl: 'https://youtube.com/watch?v=_uQrJ0TkZlc', valoracion: 4.8 },
+        2: { nombre: 'JavaScript Avanzado', instructor: 'Juan Pérez', videoUrl: 'https://youtube.com/watch?v=W6NZfCO5SIk', valoracion: 4.7 },
+        3: { nombre: 'React.js Completo', instructor: 'Carlos López', videoUrl: 'https://youtube.com/watch?v=SqcY0GlETPk', valoracion: 4.9 },
+        4: { nombre: 'Bases de Datos SQL', instructor: 'Ana Martínez', videoUrl: 'https://youtube.com/watch?v=HXV3zeQKqGY', valoracion: 4.6 },
+        5: { nombre: 'Node.js y Express', instructor: 'Pedro Ruiz', videoUrl: 'https://youtube.com/watch?v=Oe421EPjeBE', valoracion: 4.5 },
+        6: { nombre: 'Git y GitHub', instructor: 'Sofía Vargas', videoUrl: 'https://youtube.com/watch?v=RGOj5yH7evk', valoracion: 4.8 },
+        7: { nombre: 'CSS Avanzado y Animaciones', instructor: 'Miguel Torres', videoUrl: 'https://youtube.com/watch?v=1Rs2ND1ryYc', valoracion: 4.7 },
+        8: { nombre: 'TypeScript Profesional', instructor: 'Elena Ruiz', videoUrl: 'https://youtube.com/watch?v=BwuLxPH8IDs', valoracion: 4.6 }
+    };
+
     // Funcionalidad específica para la página de progreso
     const btnsContinuar = document.querySelectorAll('.btn-continuar');
 
     btnsContinuar.forEach(btn => {
         btn.addEventListener('click', function () {
-            const cursoNombre = this.closest('.curso').querySelector('h3').textContent;
-            alert(`Continuando con el curso: ${cursoNombre}`);
+            const cursoElement = this.closest('.curso');
+            const cursoId = cursoElement.dataset.cursoId;
+
+            if (cursoId && CURSOS_EN_PROGRESO[cursoId]) {
+                const curso = CURSOS_EN_PROGRESO[cursoId];
+                const params = new URLSearchParams({
+                    videoUrl: curso.videoUrl,
+                    cursoNombre: curso.nombre,
+                    instructor: curso.instructor,
+                    valoracion: curso.valoracion,
+                    fromCurso: 'true'
+                });
+                window.location.href = `contenido.html?${params.toString()}`;
+            } else {
+                const cursoNombre = cursoElement.querySelector('h3').textContent;
+                alert(`Continuando con el curso: ${cursoNombre}`);
+            }
         });
     });
 

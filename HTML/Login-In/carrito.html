@@ -1,155 +1,256 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Página de pagos de GuimarBot - Realiza tus compras de cursos de forma segura" />
-    <title>GuimarBot - Pagos</title>
+    <meta name="description" content="Carrito de compras - UGuimar" />
+    <title>UGuimar - Mi Carrito</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="../../CSS/CSS-Login-In/carrito.css" />
-    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
+
 <body>
     <div class="contenedor-app">
-      <header class="encabezado-principal">
-        <button id="menu-toggle" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <h1 class="logo"><a href="inicioj.html"></a>UGuimar</h1>
-        <form id="search-form" class="barra-busqueda">
-            <input type="text" id="busqueda-curso" placeholder="¿Qué curso quieres empezar?">
-        </form>
+        <header class="encabezado-principal">
+            <button id="menu-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <h1 class="logo">
+                <a href="inicioj.html">
+                    <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
+                </a>
+            </h1>
 
-        <nav class="navegacion-principal" id="main-nav">
-            <ul>
-                <li><a href="inicioj.html">🏠 Inicio</a></li>
-                <li><a href="mi-progreso.html">📈 Mi Progreso</a></li>
-                <li><a href="becasj.html">🎓 Beca</a></li>
-                <li><a href="mis-rutas.html">🗺️ Mis Rutas</a></li>
-            </ul>
-        </nav>
-        
-        <div class="acciones-usuario">
-            <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span id="contador-carrito">0</span></button>
-            <div class="menu-perfil">
-                <img src="../../RECURSOS/Recursos - Login-In/account-symbol-leader-and-workers-team-logo-vector.webp" alt="Foto de perfil" id="profile-toggle">
-                <div class="menu-desplegable" id="profile-dropdown">
-                    <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
-                    <p class="tipo-plan">UGuimar Free</p>
-                    <ul>
-                        <li><a href="perfil.html">Ver mi perfil</a></li>
-                        <li><a href="#">Obtén 1 mes gratis</a></li>
-                        <li><a href="#">Mi Suscripción</a></li>
-                        <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
-                    </ul>
+            <nav class="navegacion-principal" id="main-nav">
+                <ul>
+                    <li><a href="inicioj.html"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="mi-progreso.html"><i class="fas fa-chart-line"></i> Mi Progreso</a></li>
+                    <li><a href="becasj.html"><i class="fas fa-graduation-cap"></i> Beca</a></li>
+                    <li><a href="mis-rutas.html"><i class="fas fa-map-marked-alt"></i> Mis Rutas</a></li>
+                </ul>
+            </nav>
+
+            <div class="acciones-usuario">
+                <button class="boton-icono carrito-activo" id="carrito-toggle" aria-label="Ver carrito">
+                    🛒<span id="contador-carrito">0</span>
+                </button>
+                <div class="menu-perfil">
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
+                    <div class="menu-desplegable" id="profile-dropdown">
+                        <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
+                        <p class="tipo-plan">UGuimar Free</p>
+                        <ul>
+                            <li><a href="perfil.html">Ver mi perfil</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
+                            <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="contenido-principal">
+            <div class="carrito-header">
+                <h1><i class="fas fa-shopping-cart"></i> Mi Carrito</h1>
+                <a href="inicioj.html" class="btn-continuar-comprando">
+                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                </a>
+            </div>
+
+            <div class="carrito-contenido">
+                <!-- Lista de productos -->
+                <section class="carrito-productos">
+                    <div class="productos-header">
+                        <h2><i class="fas fa-book"></i> Cursos en tu Carrito</h2>
+                        <span class="productos-count" id="productos-count">0 cursos</span>
+                    </div>
+
+                    <!-- Lista de items del carrito -->
+                    <div class="productos-lista" id="productos-lista">
+                        <!-- Los productos se cargarán dinámicamente -->
+                    </div>
+
+                    <!-- Mensaje cuando el carrito está vacío -->
+                    <div class="carrito-vacio oculto" id="carrito-vacio">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Tu carrito está vacío</h3>
+                        <p>¡Explora nuestros cursos y agrega los que más te gusten!</p>
+                        <a href="inicioj.html" class="btn-explorar">
+                            <i class="fas fa-search"></i> Explorar Cursos
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Resumen de la compra -->
+                <aside class="carrito-resumen">
+                    <div class="resumen-card">
+                        <h2><i class="fas fa-receipt"></i> Resumen de Compra</h2>
+
+                        <div class="resumen-detalles">
+                            <div class="resumen-linea">
+                                <span>Subtotal</span>
+                                <span id="subtotal">S/. 0.00</span>
+                            </div>
+                            <div class="resumen-linea descuento oculto" id="linea-descuento">
+                                <span>Descuento</span>
+                                <span id="descuento">-S/. 0.00</span>
+                            </div>
+                            <div class="resumen-linea total">
+                                <span>Total</span>
+                                <span id="total">S/. 0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="cupon-container">
+                            <label for="cupon">¿Tienes un cupón?</label>
+                            <div class="cupon-input">
+                                <input type="text" id="cupon" placeholder="Ingresa tu código">
+                                <button type="button" id="btn-aplicar-cupon">Aplicar</button>
+                            </div>
+                        </div>
+
+                        <button class="btn-pagar" id="btn-ir-pago" disabled>
+                            <i class="fas fa-lock"></i> Proceder al Pago
+                        </button>
+
+                        <div class="seguridad-info">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Pago 100% seguro</span>
+                        </div>
+                    </div>
+
+                    <!-- Métodos de pago aceptados -->
+                    <div class="metodos-pago">
+                        <p>Métodos de pago aceptados:</p>
+                        <div class="metodos-iconos">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+
+        <!-- Modal de Pago -->
+        <div id="modal-pago" class="modal oculto">
+            <div class="modal-contenido modal-pago">
+                <div class="modal-header">
+                    <h2><i class="fas fa-credit-card"></i> Detalles de Pago</h2>
+                    <button class="modal-cerrar" id="cerrar-modal-pago">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="metodos-pago-selector">
+                        <button class="metodo-btn activo" data-metodo="tarjeta">
+                            <i class="fas fa-credit-card"></i> Tarjeta
+                        </button>
+                        <button class="metodo-btn" data-metodo="yape">
+                            <i class="fas fa-mobile-alt"></i> Yape
+                        </button>
+                        <button class="metodo-btn" data-metodo="paypal">
+                            <i class="fab fa-paypal"></i> PayPal
+                        </button>
+                    </div>
+
+                    <!-- Formulario Tarjeta -->
+                    <form id="form-tarjeta" class="form-pago">
+                        <div class="form-grupo">
+                            <label for="nombre-tarjeta">Nombre en la tarjeta</label>
+                            <input type="text" id="nombre-tarjeta" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-grupo">
+                            <label for="numero-tarjeta">Número de tarjeta</label>
+                            <input type="text" id="numero-tarjeta" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-fila">
+                            <div class="form-grupo">
+                                <label for="fecha-exp">Fecha de expiración</label>
+                                <input type="text" id="fecha-exp" placeholder="MM/AA" required>
+                            </div>
+                            <div class="form-grupo">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" required>
+                            </div>
+                        </div>
+                        <div class="pago-total">
+                            <span>Total a pagar:</span>
+                            <span id="pago-total-monto">S/. 0.00</span>
+                        </div>
+                        <button type="submit" class="btn-confirmar-pago">
+                            <i class="fas fa-lock"></i> Pagar Ahora
+                        </button>
+                    </form>
+
+                    <!-- Info Yape -->
+                    <div id="form-yape" class="form-pago oculto">
+                        <div class="yape-info">
+                            <div class="yape-qr">
+                                <i class="fas fa-qrcode"></i>
+                            </div>
+                            <p class="yape-numero">+51 987 654 321</p>
+                            <p>Escanea el código QR o yapea al número</p>
+                            <div class="pago-total">
+                                <span>Total a pagar:</span>
+                                <span id="pago-total-yape">S/. 0.00</span>
+                            </div>
+                            <button type="button" class="btn-confirmar-pago" id="btn-confirmar-yape">
+                                <i class="fas fa-check"></i> Confirmar Pago
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Info PayPal -->
+                    <div id="form-paypal" class="form-pago oculto">
+                        <div class="paypal-info">
+                            <i class="fab fa-paypal paypal-logo"></i>
+                            <p>Serás redirigido a PayPal para completar tu pago</p>
+                            <div class="pago-total">
+                                <span>Total a pagar:</span>
+                                <span id="pago-total-paypal">S/. 0.00</span>
+                            </div>
+                            <button type="button" class="btn-paypal" id="btn-ir-paypal">
+                                <i class="fab fa-paypal"></i> Pagar con PayPal
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </header>
-    
-    <main class="container">
-          <section class="payment-section">
-              <div class="payment-info">
-                  <h2>Detalles de Pago</h2>
 
-                  <div class="payment-methods">
-                      <button class="payment-method" id="tarjeta" data-payment="tarjeta">
-                          <img class="method-icon" src="IMAGE/credit-card.webp" alt="Tarjeta de crédito" />
-                          <span>Tarjeta</span>
-                      </button>
+        <!-- Modal de Éxito -->
+        <div id="modal-exito" class="modal oculto">
+            <div class="modal-contenido modal-exito">
+                <div class="exito-icono">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>¡Pago Exitoso!</h2>
+                <p>Tu compra ha sido procesada correctamente.</p>
+                <p>Recibirás un correo con los detalles de tu compra.</p>
+                <button class="btn-ir-cursos" id="btn-ir-cursos">
+                    <i class="fas fa-play"></i> Ir a Mis Cursos
+                </button>
+            </div>
+        </div>
 
-                      <button class="payment-method" id="yape" data-payment="yape">
-                          <img class="method-icon" src="IMAGE/yape.webp" alt="Yape" />
-                          <span>Yape</span>
-                      </button>
-
-                      <button class="payment-method" id="paypal" data-payment="paypal">
-                          <img class="method-icon" src="IMAGE/paypal.webp" alt="PayPal" />
-                          <span>PayPal</span>
-                      </button>
-
-                      <button class="payment-method" id="pagoefectivo" data-payment="pagoefectivo">
-                          <img class="method-icon" src="IMAGE/pagoefectivo.webp" alt="PagoEfectivo" />
-                          <span>PagoEfectivo</span>
-                      </button>
-                  </div>
-
-                  <form id="payment-form">
-                      <div id="tarjeta-section" class="form-section">
-                          <div class="form-group">
-                              <label for="card-name">Nombre en la Tarjeta</label>
-                              <input type="text" id="card-name" placeholder="Tu nombre completo" required />
-                          </div>
-
-                          <div class="form-group">
-                              <label for="card-number">Número de Tarjeta</label>
-                              <input type="text" id="card-number" placeholder="1234 5678 9101 1121" required />
-                          </div>
-
-                          <div class="form-row">
-                              <div class="form-group">
-                                  <label for="expiry-date">Fecha de Expiración</label>
-                                  <input type="text" id="expiry-date" placeholder="MM/YY" required />
-                              </div>
-                              <div class="form-group">
-                                  <label for="cvv">CVV</label>
-                                  <input type="text" id="cvv" placeholder="123" required />
-                              </div>
-                          </div>
-                      </div>
-
-                      <div id="yape-section" class="form-section oculto">
-                          <div class="qr-container">
-                              <img src="IMAGE/yape-qr.webp" alt="Código QR de Yape" class="qr-code" />
-                              <div class="yape-info">
-                                  <p class="yape-number">+51 931 540 241</p>
-                                  <p class="yape-instruction">Escanea el código QR para pagar</p>
-                              </div>
-                          </div>
-                      </div>
-
-                      <div id="paypal-section" class="form-section oculto">
-                          <div class="form-group">
-                              <label for="paypal-email">Correo Electrónico</label>
-                              <input type="email" id="paypal-email" placeholder="tu@email.com" required />
-                          </div>
-                      </div>
-
-                      <div id="pagoefectivo-section" class="form-section oculto">
-                          <div class="pago-efectivo-info">
-                              <h3>Pago en Efectivo</h3>
-                              <p>Genera tu código y paga en cualquier agente autorizado</p>
-                              <button type="button" class="generate-code-btn">Generar Código de Pago</button>
-                          </div>
-                      </div>
-
-                      <div class="form-footer">
-                          <div class="total-amount">
-                              <label for="total">Total a Pagar</label>
-                              <input type="text" id="total" value="S/. 0.00" readonly />
-                          </div>
-                          <button type="submit" class="submit-button">Pagar Ahora</button>
-                      </div>
-                  </form>
-              </div>
-
-              <div class="cart-summary">
-                  <h2>Carrito de Compras</h2>
-                  <div class="cart">
-                      <a href="cursos.html" class="continue-shopping">← Continuar comprando</a>
-                      <p class="cart-count">Tienes <span id="item-count">0</span> artículos en tu carrito</p>
-                      <ul id="cart-items" class="cart-items"></ul>
-                  </div>
-              </div>
-          </section>
-      </main>
+        <footer class="pie-pagina">
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
+        </footer>
     </div>
+
     <script src="../../JS/JS-Login-In/carrito.js"></script>
 </body>
-</html>
 
+</html>

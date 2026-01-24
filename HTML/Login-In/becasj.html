@@ -35,14 +35,18 @@
                 <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
                         id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <div class="avatar-inicial" id="profile-toggle" aria-label="Menú de perfil">U</div>
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
                         <ul>
                             <li><a href="perfil.html">Ver mi perfil</a></li>
-                            <li><a href="#">Obtén 1 mes gratis</a></li>
-                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
                             <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
                         </ul>
                     </div>
@@ -52,59 +56,321 @@
 
         <main class="contenido-principal">
             <h1>Becas UGuimar</h1>
+
+            <!-- Indicador de progreso -->
+            <section class="progreso-beca">
+                <div class="pasos-beca">
+                    <div class="paso activo" data-paso="1">
+                        <div class="paso-numero">1</div>
+                        <span class="paso-texto">Cursos Previos</span>
+                    </div>
+                    <div class="paso-linea"></div>
+                    <div class="paso" data-paso="2">
+                        <div class="paso-numero">2</div>
+                        <span class="paso-texto">Examen</span>
+                    </div>
+                    <div class="paso-linea"></div>
+                    <div class="paso" data-paso="3">
+                        <div class="paso-numero">3</div>
+                        <span class="paso-texto">Documentos</span>
+                    </div>
+                    <div class="paso-linea"></div>
+                    <div class="paso" data-paso="4">
+                        <div class="paso-numero">4</div>
+                        <span class="paso-texto">Beca Otorgada</span>
+                    </div>
+                </div>
+            </section>
+
             <section class="info-becas">
-                <h2>Información sobre Becas</h2>
-                <p>Easycode ofrece becas para estudiantes destacados. Completa tu solicitud subiendo los documentos
-                    necesarios y cumpliendo con los requisitos académicos y financieros.</p>
+                <h2><i class="fas fa-info-circle"></i> Información sobre Becas</h2>
+                <p>UGuimar ofrece becas para estudiantes destacados. Para obtener la beca debes seguir estos pasos:</p>
+                <div class="pasos-info">
+                    <div class="paso-info">
+                        <div class="paso-info-icono"><i class="fas fa-book"></i></div>
+                        <div class="paso-info-contenido">
+                            <h4>1. Completar Cursos Previos</h4>
+                            <p>Debes aprobar los cursos requeridos para desbloquear el examen de admisión.</p>
+                        </div>
+                    </div>
+                    <div class="paso-info">
+                        <div class="paso-info-icono"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="paso-info-contenido">
+                            <h4>2. Aprobar el Examen</h4>
+                            <p>Realiza el examen de admisión con una calificación mínima de 80%.</p>
+                        </div>
+                    </div>
+                    <div class="paso-info">
+                        <div class="paso-info-icono"><i class="fas fa-file-upload"></i></div>
+                        <div class="paso-info-contenido">
+                            <h4>3. Subir Documentos</h4>
+                            <p>Sube tus documentos en formato foto (JPG, PNG) o PDF.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="requisitos-beca">
-                <h2>Requisitos para la Beca</h2>
-                <div class="cursos-requeridos">
-                    <h3>Cursos a Aprobar</h3>
-                    <ul>
-                        <li>
-                            <span>Introducción a la Programación</span>
-                            <button class="btn-iniciar-curso" data-curso="curso1">Iniciar Curso</button>
-                        </li>
-                        <li>
-                            <span>Fundamentos de Desarrollo Web</span>
-                            <button class="btn-iniciar-curso" data-curso="curso2">Iniciar Curso</button>
-                        </li>
-                    </ul>
+            <!-- PASO 1: Cursos Previos -->
+            <section class="requisitos-beca" id="seccion-cursos">
+                <h2><i class="fas fa-book-open"></i> Paso 1: Cursos Previos Requeridos</h2>
+                <p class="seccion-descripcion">Completa todos los cursos para habilitar el examen de admisión.</p>
+
+                <div class="progreso-cursos">
+                    <div class="progreso-cursos-barra">
+                        <div class="progreso-cursos-fill" id="progreso-cursos-fill" style="width: 0%;"></div>
+                    </div>
+                    <span class="progreso-cursos-texto" id="progreso-cursos-texto">0 de 3 cursos completados</span>
                 </div>
-                <div class="examen-admision">
-                    <h3>Examen de Admisión</h3>
-                    <p>Debes aprobar el examen con una calificación mínima de 80%.</p>
-                    <button class="btn-iniciar-examen disabled" id="btn-iniciar-examen" disabled>Iniciar Examen</button>
+
+                <div class="lista-cursos-beca">
+                    <div class="curso-beca" data-curso="curso1">
+                        <div class="curso-beca-imagen">
+                            <img src="https://img.youtube.com/vi/pQN-pnXPaVg/hqdefault.jpg"
+                                alt="Introducción a la Programación">
+                            <div class="curso-beca-estado" id="estado-curso1">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="curso-beca-info">
+                            <h3>Introducción a la Programación</h3>
+                            <p class="curso-beca-instructor"><i class="fas fa-user"></i> Ana García</p>
+                            <p class="curso-beca-duracion"><i class="fas fa-clock"></i> 4 horas</p>
+                            <div class="curso-beca-progreso">
+                                <div class="barra-progreso-curso">
+                                    <div class="progreso-curso-fill" id="progreso-curso1" style="width: 0%;"></div>
+                                </div>
+                                <span id="progreso-texto-curso1">0%</span>
+                            </div>
+                        </div>
+                        <button class="btn-curso-beca" id="btn-curso1" data-curso="curso1">
+                            <i class="fas fa-play"></i> Iniciar Curso
+                        </button>
+                    </div>
+
+                    <div class="curso-beca" data-curso="curso2">
+                        <div class="curso-beca-imagen">
+                            <img src="https://img.youtube.com/vi/1PnVor36_40/hqdefault.jpg"
+                                alt="Fundamentos de Desarrollo Web">
+                            <div class="curso-beca-estado bloqueado" id="estado-curso2">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="curso-beca-info">
+                            <h3>Fundamentos de Desarrollo Web</h3>
+                            <p class="curso-beca-instructor"><i class="fas fa-user"></i> Carlos López</p>
+                            <p class="curso-beca-duracion"><i class="fas fa-clock"></i> 6 horas</p>
+                            <div class="curso-beca-progreso">
+                                <div class="barra-progreso-curso">
+                                    <div class="progreso-curso-fill" id="progreso-curso2" style="width: 0%;"></div>
+                                </div>
+                                <span id="progreso-texto-curso2">0%</span>
+                            </div>
+                        </div>
+                        <button class="btn-curso-beca disabled" id="btn-curso2" data-curso="curso2" disabled>
+                            <i class="fas fa-lock"></i> Bloqueado
+                        </button>
+                    </div>
+
+                    <div class="curso-beca" data-curso="curso3">
+                        <div class="curso-beca-imagen">
+                            <img src="https://img.youtube.com/vi/W6NZfCO5SIk/hqdefault.jpg"
+                                alt="Lógica de Programación">
+                            <div class="curso-beca-estado bloqueado" id="estado-curso3">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                        </div>
+                        <div class="curso-beca-info">
+                            <h3>Lógica de Programación</h3>
+                            <p class="curso-beca-instructor"><i class="fas fa-user"></i> María García</p>
+                            <p class="curso-beca-duracion"><i class="fas fa-clock"></i> 5 horas</p>
+                            <div class="curso-beca-progreso">
+                                <div class="barra-progreso-curso">
+                                    <div class="progreso-curso-fill" id="progreso-curso3" style="width: 0%;"></div>
+                                </div>
+                                <span id="progreso-texto-curso3">0%</span>
+                            </div>
+                        </div>
+                        <button class="btn-curso-beca disabled" id="btn-curso3" data-curso="curso3" disabled>
+                            <i class="fas fa-lock"></i> Bloqueado
+                        </button>
+                    </div>
                 </div>
             </section>
 
-            <section class="documentos-beca">
-                <h2>Documentos para la Beca</h2>
+            <!-- PASO 2: Examen de Admisión -->
+            <section class="examen-beca" id="seccion-examen">
+                <h2><i class="fas fa-clipboard-list"></i> Paso 2: Examen de Admisión</h2>
+                <div class="examen-contenido">
+                    <div class="examen-info">
+                        <div class="examen-icono" id="examen-icono">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="examen-detalles">
+                            <h3 id="examen-titulo">Examen Bloqueado</h3>
+                            <p id="examen-descripcion">Completa los 3 cursos previos para desbloquear el examen.</p>
+                            <ul class="examen-requisitos">
+                                <li><i class="fas fa-clock"></i> Duración: 60 minutos</li>
+                                <li><i class="fas fa-question-circle"></i> 30 preguntas</li>
+                                <li><i class="fas fa-star"></i> Calificación mínima: 80%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="examen-estado" id="examen-estado">
+                        <div class="examen-bloqueado">
+                            <i class="fas fa-lock"></i>
+                            <p>Completa los cursos previos</p>
+                        </div>
+                    </div>
+                    <button class="btn-iniciar-examen disabled" id="btn-iniciar-examen" disabled>
+                        <i class="fas fa-lock"></i> Examen Bloqueado
+                    </button>
+                </div>
+            </section>
+
+            <!-- PASO 3: Documentos para la Beca -->
+            <section class="documentos-beca bloqueado" id="seccion-documentos">
+                <div class="seccion-bloqueada-overlay" id="overlay-documentos">
+                    <i class="fas fa-lock"></i>
+                    <p>Aprueba el examen para subir tus documentos</p>
+                </div>
+                <h2><i class="fas fa-file-alt"></i> Paso 3: Documentos para la Beca</h2>
+                <p class="seccion-descripcion">Sube los siguientes documentos en formato <strong>foto (JPG,
+                        PNG)</strong> o <strong>PDF</strong>.</p>
+
                 <form id="form-documentos-beca">
-                    <div class="campo-documento">
-                        <label for="dni">DNI o Documento de Identidad</label>
-                        <input type="file" id="dni" name="dni" accept=".pdf,.jpg,.png" required>
+                    <div class="documentos-grid">
+                        <div class="documento-card" id="card-dni">
+                            <div class="documento-icono">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <div class="documento-info">
+                                <h4>DNI o Documento de Identidad</h4>
+                                <p>Foto frontal y reverso del documento</p>
+                            </div>
+                            <div class="documento-upload">
+                                <input type="file" id="dni" name="dni" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <label for="dni" class="btn-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+                                </label>
+                                <span class="archivo-nombre" id="nombre-dni">Ningún archivo seleccionado</span>
+                            </div>
+                            <div class="documento-preview" id="preview-dni"></div>
+                        </div>
+
+                        <div class="documento-card" id="card-expediente">
+                            <div class="documento-icono">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="documento-info">
+                                <h4>Expediente Académico</h4>
+                                <p>Notas o certificado de estudios</p>
+                            </div>
+                            <div class="documento-upload">
+                                <input type="file" id="expediente" name="expediente" accept=".pdf,.jpg,.jpeg,.png"
+                                    required>
+                                <label for="expediente" class="btn-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+                                </label>
+                                <span class="archivo-nombre" id="nombre-expediente">Ningún archivo seleccionado</span>
+                            </div>
+                            <div class="documento-preview" id="preview-expediente"></div>
+                        </div>
+
+                        <div class="documento-card" id="card-justificacion">
+                            <div class="documento-icono">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="documento-info">
+                                <h4>Justificación Financiera</h4>
+                                <p>Comprobante de ingresos o carta de necesidad</p>
+                            </div>
+                            <div class="documento-upload">
+                                <input type="file" id="justificacion-financiera" name="justificacion-financiera"
+                                    accept=".pdf,.jpg,.jpeg,.png" required>
+                                <label for="justificacion-financiera" class="btn-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+                                </label>
+                                <span class="archivo-nombre" id="nombre-justificacion">Ningún archivo
+                                    seleccionado</span>
+                            </div>
+                            <div class="documento-preview" id="preview-justificacion"></div>
+                        </div>
+
+                        <div class="documento-card" id="card-foto">
+                            <div class="documento-icono">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="documento-info">
+                                <h4>Foto Tipo Carnet</h4>
+                                <p>Foto reciente con fondo blanco</p>
+                            </div>
+                            <div class="documento-upload">
+                                <input type="file" id="foto-carnet" name="foto-carnet" accept=".jpg,.jpeg,.png"
+                                    required>
+                                <label for="foto-carnet" class="btn-upload">
+                                    <i class="fas fa-cloud-upload-alt"></i> Subir archivo
+                                </label>
+                                <span class="archivo-nombre" id="nombre-foto">Ningún archivo seleccionado</span>
+                            </div>
+                            <div class="documento-preview" id="preview-foto"></div>
+                        </div>
                     </div>
-                    <div class="campo-documento">
-                        <label for="expediente">Expediente Académico</label>
-                        <input type="file" id="expediente" name="expediente" accept=".pdf" required>
+
+                    <div class="documentos-actions">
+                        <button type="submit" class="btn-enviar-solicitud" id="btn-enviar-solicitud" disabled>
+                            <i class="fas fa-paper-plane"></i> Enviar Solicitud de Beca
+                        </button>
                     </div>
-                    <div class="campo-documento">
-                        <label for="justificacion-financiera">Justificación Financiera</label>
-                        <input type="file" id="justificacion-financiera" name="justificacion-financiera" accept=".pdf"
-                            required>
-                    </div>
-                    <button type="submit" class="btn-subir-documentos">Subir Documentos</button>
                 </form>
+            </section>
+
+            <!-- Mensaje de éxito -->
+            <section class="beca-exito oculto" id="seccion-exito">
+                <div class="exito-contenido">
+                    <div class="exito-icono">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>¡Solicitud Enviada!</h2>
+                    <p>Tu solicitud de beca ha sido enviada correctamente. Te notificaremos el resultado por correo
+                        electrónico en un plazo de 5-7 días hábiles.</p>
+                    <div class="exito-info">
+                        <p><i class="fas fa-envelope"></i> Revisa tu correo electrónico</p>
+                        <p><i class="fas fa-clock"></i> Tiempo de respuesta: 5-7 días hábiles</p>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer class="pie-pagina">
-            <p>© 2024 Easycode. Todos los derechos reservados.</p>
+            <p>© 2024 UGuimar. Todos los derechos reservados.</p>
         </footer>
     </div>
+
+    <!-- Modal de Examen -->
+    <div id="modal-examen" class="modal oculto">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h2><i class="fas fa-clipboard-list"></i> Examen de Admisión</h2>
+                <span class="modal-cerrar" id="cerrar-modal-examen">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-examen-body">
+                <!-- El contenido del examen se cargará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Resultado -->
+    <div id="modal-resultado" class="modal oculto">
+        <div class="modal-contenido modal-resultado">
+            <div class="resultado-icono" id="resultado-icono">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 id="resultado-titulo">¡Felicitaciones!</h2>
+            <p id="resultado-mensaje">Has aprobado el examen con una calificación de 85%.</p>
+            <button class="btn-cerrar-resultado" id="btn-cerrar-resultado">Continuar</button>
+        </div>
+    </div>
+
     <script src="../../JS/JS-Login-In/becasj.js"></script>
 </body>
 

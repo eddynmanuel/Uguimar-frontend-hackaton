@@ -109,6 +109,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const urlParams = new URLSearchParams(window.location.search);
     const rutaId = urlParams.get('ruta_id');
 
+    // Inicializar header
+    initHeader();
+
     if (rutaId) {
         // Obtener info de la escuela
         const escuela = getEscuelaByRutaId(rutaId);
@@ -135,6 +138,92 @@ document.addEventListener('DOMContentLoaded', function () {
         mostrarError('No se proporcionó un ID de ruta válido');
     }
 });
+
+function initHeader() {
+    const profileToggle = document.getElementById('profile-toggle');
+    const profileDropdown = document.getElementById('profile-dropdown');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mainNav = document.getElementById('main-nav');
+    const carritoToggle = document.getElementById('carrito-toggle');
+    const contadorCarrito = document.getElementById('contador-carrito');
+    const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+
+    // Toggle menú perfil
+    if (profileToggle && profileDropdown) {
+        profileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            profileDropdown.classList.remove('active');
+        });
+    }
+
+    // Toggle menú móvil
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+        });
+    }
+
+    // Carrito
+    if (carritoToggle) {
+        carritoToggle.addEventListener('click', () => {
+            window.location.href = 'carrito.html';
+        });
+    }
+
+    // Actualizar contador carrito
+    if (contadorCarrito) {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        contadorCarrito.textContent = carrito.length;
+    }
+
+    // Cerrar sesión
+    if (cerrarSesionBtn) {
+        cerrarSesionBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('userId');
+            localStorage.removeItem('userName');
+            localStorage.removeItem('userLastName');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userRole');
+            window.location.href = '../Principal/Principal.html';
+        });
+    }
+
+    // Cargar nombre de usuario y avatar
+    updateUserName();
+    loadAvatarFromStorage();
+}
+
+function updateUserName() {
+    const userNameElement = document.getElementById('userName');
+    const userName = localStorage.getItem('userName');
+    if (userName && userNameElement) {
+        userNameElement.textContent = userName;
+    }
+}
+
+function loadAvatarFromStorage() {
+    const savedAvatar = localStorage.getItem('userAvatar');
+    const userName = localStorage.getItem('userName') || 'Usuario';
+    const inicial = userName.charAt(0).toUpperCase();
+
+    const avatarImgHeader = document.getElementById('avatar-img-header');
+    const avatarInicialHeader = document.getElementById('avatar-inicial-header');
+
+    if (savedAvatar && avatarImgHeader && avatarInicialHeader) {
+        avatarImgHeader.src = savedAvatar;
+        avatarImgHeader.style.display = 'block';
+        avatarInicialHeader.style.display = 'none';
+    } else if (avatarInicialHeader) {
+        if (avatarImgHeader) avatarImgHeader.style.display = 'none';
+        avatarInicialHeader.style.display = 'flex';
+        avatarInicialHeader.textContent = inicial;
+    }
+}
 
 function cargarCurso(rutaId) {
     // Usar datos simulados

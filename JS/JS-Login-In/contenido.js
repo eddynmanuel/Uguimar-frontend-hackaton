@@ -164,6 +164,9 @@ function loadCourseDataFromUrl() {
     const moduloId = urlParams.get('modulo_id');
     const videoUrl = urlParams.get('videoUrl');
     const cursoNombre = urlParams.get('cursoNombre');
+    const instructor = urlParams.get('instructor');
+    const valoracion = urlParams.get('valoracion');
+    const fromCurso = urlParams.get('fromCurso');
 
     currentModuloId = moduloId ? parseInt(moduloId) : null;
 
@@ -171,6 +174,7 @@ function loadCourseDataFromUrl() {
     const moduloTitulo = document.getElementById('modulo-titulo');
     const instructorNombre = document.getElementById('instructor-nombre');
     const videoPlayer = document.querySelector('.video-container iframe');
+    const videoNavigation = document.querySelector('.video-navigation');
 
     // Si viene de un módulo específico
     if (currentModuloId && MODULOS_DATA[currentModuloId]) {
@@ -192,7 +196,47 @@ function loadCourseDataFromUrl() {
         // Actualizar estado de botones de navegación
         actualizarBotonesNavegacion();
     }
-    // Si viene con un videoUrl (desde cursos destacados)
+    // Si viene de cursos destacados o recomendados (fromCurso=true)
+    else if (fromCurso === 'true' && videoUrl) {
+        // Ocultar botones de navegación para cursos destacados/recomendados
+        if (videoNavigation) {
+            videoNavigation.style.display = 'none';
+        }
+
+        if (videoPlayer) {
+            if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
+                let videoId = '';
+                if (videoUrl.includes('youtube.com/watch?v=')) {
+                    videoId = videoUrl.split('v=')[1].split('&')[0];
+                } else if (videoUrl.includes('youtu.be/')) {
+                    videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+                }
+                videoPlayer.src = `https://www.youtube.com/embed/${videoId}`;
+            } else {
+                videoPlayer.src = videoUrl;
+            }
+        }
+
+        // Mostrar nombre del curso
+        if (cursoNombre && cursoTitulo) {
+            cursoTitulo.textContent = decodeURIComponent(cursoNombre);
+        } else if (cursoTitulo) {
+            cursoTitulo.textContent = 'Curso';
+        }
+
+        // Mostrar nombre del instructor
+        if (instructor && instructorNombre) {
+            instructorNombre.textContent = decodeURIComponent(instructor);
+        }
+
+        // Mostrar valoración en el título del módulo
+        if (valoracion && moduloTitulo) {
+            moduloTitulo.innerHTML = `<span class="valoracion-curso"><i class="fas fa-star" style="color: #ffc107;"></i> ${valoracion}</span>`;
+        }
+
+        document.title = cursoNombre ? `UGuimar - ${decodeURIComponent(cursoNombre)}` : 'UGuimar - Curso';
+    }
+    // Si viene con un videoUrl sin fromCurso (compatibilidad hacia atrás)
     else if (videoUrl) {
         if (videoPlayer) {
             if (videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be')) {
@@ -489,4 +533,33 @@ window.addEventListener('DOMContentLoaded', () => {
         const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
         contadorCarrito.textContent = carrito.length;
     }
+
+    // Función para cargar avatar desde localStorage
+    function loadAvatarFromStorage() {
+        const savedAvatar = localStorage.getItem('userAvatar');
+        const userName = localStorage.getItem('userName') || 'Usuario';
+        const inicial = userName.charAt(0).toUpperCase();
+
+        const avatarImgHeader = document.getElementById('avatar-img-header');
+        const avatarInicialHeader = document.getElementById('avatar-inicial-header');
+        const userNameElement = document.getElementById('userName');
+
+        // Actualizar nombre
+        if (userNameElement) {
+            userNameElement.textContent = userName;
+        }
+
+        // Actualizar avatar
+        if (savedAvatar && avatarImgHeader && avatarInicialHeader) {
+            avatarImgHeader.src = savedAvatar;
+            avatarImgHeader.style.display = 'block';
+            avatarInicialHeader.style.display = 'none';
+        } else if (avatarInicialHeader) {
+            if (avatarImgHeader) avatarImgHeader.style.display = 'none';
+            avatarInicialHeader.style.display = 'flex';
+            avatarInicialHeader.textContent = inicial;
+        }
+    }
+
+    loadAvatarFromStorage();
 });

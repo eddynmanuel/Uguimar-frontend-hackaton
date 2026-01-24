@@ -22,9 +22,6 @@
                     <img src="../../RECURSOS/Recursos - Login-In/logo.webp" alt="UGuimar Logo" />
                 </a>
             </h1>
-            <form id="search-form" class="barra-busqueda">
-                <input type="text" id="busqueda-curso" placeholder="Buscar rutas...">
-            </form>
 
             <nav class="navegacion-principal" id="main-nav">
                 <ul>
@@ -39,14 +36,18 @@
                 <button class="boton-icono" id="carrito-toggle" aria-label="Ver carrito">🛒<span
                         id="contador-carrito">0</span></button>
                 <div class="menu-perfil">
-                    <div class="avatar-inicial" id="profile-toggle" aria-label="Menú de perfil">U</div>
+                    <div class="avatar-container-header" id="profile-toggle" aria-label="Menú de perfil">
+                        <img src="" alt="Foto de perfil" class="avatar-img-header" id="avatar-img-header"
+                            style="display: none;">
+                        <div class="avatar-inicial" id="avatar-inicial-header">U</div>
+                    </div>
                     <div class="menu-desplegable" id="profile-dropdown">
                         <p class="nombre-usuario">¡Hola, <span id="userName">Usuario</span>!</p>
                         <p class="tipo-plan">UGuimar Free</p>
                         <ul>
                             <li><a href="perfil.html">Ver mi perfil</a></li>
-                            <li><a href="#">Obtén 1 mes gratis</a></li>
-                            <li><a href="#">Mi Suscripción</a></li>
+                            <li><a href="promo-mes-gratis.html">Obtén 1 mes gratis</a></li>
+                            <li><a href="perfil.html#pagos">Mi Suscripción</a></li>
                             <li><a href="#" id="cerrarSesionBtn" class="cerrar-sesion">Cerrar sesión</a></li>
                         </ul>
                     </div>
@@ -55,9 +56,64 @@
         </header>
 
         <main class="contenido-principal">
-            <h1>Mis Rutas de Aprendizaje</h1>
-            <div class="rutas-container">
-                <!-- Las rutas se cargarán dinámicamente aquí -->
+            <!-- Vista principal de rutas -->
+            <div id="vista-rutas">
+                <div class="rutas-header">
+                    <h1><i class="fas fa-route"></i> Mis Rutas de Aprendizaje</h1>
+                    <p class="rutas-subtitulo">Explora y continúa tus rutas de aprendizaje personalizadas</p>
+                </div>
+
+                <!-- Estadísticas de rutas -->
+                <div class="rutas-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-road"></i>
+                        <div class="stat-info">
+                            <span class="stat-numero" id="total-rutas">8</span>
+                            <span class="stat-texto">Rutas Activas</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-book-open"></i>
+                        <div class="stat-info">
+                            <span class="stat-numero" id="total-cursos">45</span>
+                            <span class="stat-texto">Cursos Totales</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-info">
+                            <span class="stat-numero" id="cursos-completados">12</span>
+                            <span class="stat-texto">Cursos Completados</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <span class="stat-numero" id="horas-totales">86h</span>
+                            <span class="stat-texto">Horas de Estudio</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenedor de rutas -->
+                <div class="rutas-container" id="rutas-container">
+                    <!-- Las rutas se cargarán dinámicamente aquí -->
+                </div>
+            </div>
+
+            <!-- Vista de detalle de ruta -->
+            <div id="vista-detalle-ruta" class="oculto">
+                <button class="btn-volver" id="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver a Mis Rutas
+                </button>
+
+                <div class="ruta-detalle-header" id="ruta-detalle-header">
+                    <!-- Se cargará dinámicamente -->
+                </div>
+
+                <div class="ruta-detalle-contenido" id="ruta-detalle-contenido">
+                    <!-- Se cargará dinámicamente -->
+                </div>
             </div>
         </main>
 
