@@ -1,96 +1,99 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=CLIENTE/HTML/Principal/Principal.html">
-    <title>UGuimar - Redirigiendo...</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UGuimar - Cargando...</title>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #112D4E 0%, #1E90FF 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .loading-container {
-            text-align: center;
-            padding: 2rem;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #112D4E 0%, #1E90FF 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
 
-        .logo {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
+    .loading-container {
+      text-align: center;
+      padding: 2rem;
+    }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 1.5rem auto;
-        }
+    .logo {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 1.5rem auto;
+    }
 
-        .message {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
-        .fallback-link {
-            margin-top: 2rem;
-            display: block;
-        }
+    .message {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
 
-        .fallback-link a {
-            color: white;
-            text-decoration: none;
-            padding: 0.75rem 2rem;
-            border: 2px solid white;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
+    .fallback-link {
+      margin-top: 2rem;
+      display: block;
+    }
 
-        .fallback-link a:hover {
-            background: white;
-            color: #112D4E;
-        }
-    </style>
+    .fallback-link a {
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      border: 2px solid white;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .fallback-link a:hover {
+      background: white;
+      color: #112D4E;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="loading-container">
-        <div class="logo">UGuimar</div>
-        <div class="spinner"></div>
-        <p class="message">Cargando plataforma educativa...</p>
-        <div class="fallback-link">
-            <a href="CLIENTE/HTML/Principal/Principal.html">Ir a la página principal</a>
-        </div>
+  <div class="loading-container">
+    <div class="logo">UGuimar</div>
+    <div class="spinner"></div>
+    <p class="message">Cargando plataforma educativa...</p>
+
+    <div class="fallback-link">
+      <a href="../CLIENTE/HTML/Principal/Principal.html">
+        Ir a la página principal
+      </a>
     </div>
+  </div>
 
-    <script>
-        window.location.replace('CLIENTE/HTML/Principal/Principal.html');
-    </script>
+  <script>
+    setTimeout(() => {
+      window.location.replace('../CLIENTE/HTML/Principal/Principal.html');
+    }, 300);
+  </script>
 </body>
-
 </html>
