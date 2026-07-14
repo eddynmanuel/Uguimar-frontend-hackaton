@@ -135,3 +135,41 @@ renderEscuelas();
 function showCourseDetails(courseId) {
     console.log('Mostrar detalles del curso con ID:', courseId);
 }
+
+// ==============================
+// HAMBURGER MENU FUNCTIONALITY
+// ==============================
+const hamburgerToggle = document.getElementById('hamburger-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (hamburgerToggle && navLinks) {
+    hamburgerToggle.addEventListener('click', () => {
+        hamburgerToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close menu when clicking on a link
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburgerToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburgerToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburgerToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
